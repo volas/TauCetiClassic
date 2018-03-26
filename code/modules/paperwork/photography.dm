@@ -42,7 +42,7 @@
 
 /obj/item/weapon/photo/attackby(obj/item/weapon/P, mob/user)
 	if(istype(P, /obj/item/weapon/pen) || istype(P, /obj/item/toy/crayon))
-		var/txt = sanitize_alt(copytext(input(user, "What would you like to write on the back?", "Photo Writing", null)  as text, 1, 128))
+		var/txt = sanitize(copytext(input(user, "What would you like to write on the back?", "Photo Writing", null)  as text, 1, 128))
 		//txt = copytext(txt, 1, 128)
 		if(loc == user && user.stat == CONSCIOUS)
 			scribble = txt

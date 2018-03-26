@@ -392,7 +392,7 @@
 
 		var last_fields_value = fields
 
-		t = sanitize_alt(t, list("\n"="\[br\]","ÿ"=LETTER_255))
+		t = sanitize(t, list("\n"="\[br\]","ÿ"=LETTER_255))
 
 		// check for exploits
 		for(var/bad in paper_blacklist)

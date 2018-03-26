@@ -660,7 +660,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if(! (C.stat & (BROKEN|NOPOWER) ) )
 			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( C.loc )
 			P.name = "'[command_name()] Update.'"
-			P.info = sanitize_alt(copytext(input, 1, MAX_MESSAGE_LEN), list("ÿ"=LETTER_255))
+			P.info = sanitize(copytext(input, 1, MAX_MESSAGE_LEN), list("ÿ"=LETTER_255))
 			P.update_icon()
 			C.messagetitle.Add("[command_name()] Update")
 			C.messagetext.Add(P.info)
@@ -1061,11 +1061,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/sent_text = sanitize_alt(input(usr, "Please, enter the text you want to send.", "What?", "") as message|null)
+	var/sent_text = sanitize(input(usr, "Please, enter the text you want to send.", "What?", "") as message|null)
 	if(!sent_text)
 		return
 
-	var/sent_name = sanitize_alt(input(usr, "Pick a title for the message. Do not forget about prohibit of the use of the Cyrillic alphabet in the names of objects, enter Cancel to stop sending", "Title") as text)
+	var/sent_name = sanitize(input(usr, "Pick a title for the message. Do not forget about prohibit of the use of the Cyrillic alphabet in the names of objects, enter Cancel to stop sending", "Title") as text)
 	if(!sent_name)
 		sent_name = "NanoTrasen Update"
 	if(sent_name == "Cancel")
@@ -1088,7 +1088,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/stamp_text = null
 	if(stamp_type)
-		stamp_text = sanitize_alt(input(usr, "Pick a message for stamp text (e.g. This paper has been stamped by the Central Compound Quantum Relay). In case of empty field there will be default stamp text.") as text)
+		stamp_text = sanitize(input(usr, "Pick a message for stamp text (e.g. This paper has been stamped by the Central Compound Quantum Relay). In case of empty field there will be default stamp text.") as text)
 
 	var/obj/item/weapon/paper/P = new
 	P.name = sent_name

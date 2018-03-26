@@ -259,7 +259,7 @@
 	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 
 	if(sane)
-		msg = sanitize_alt(msg)
+		msg = sanitize(msg)
 
 	if(length(memory) == 0)
 		memory += msg

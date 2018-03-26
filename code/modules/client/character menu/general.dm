@@ -159,16 +159,16 @@
 	else
 		. += 					"<br><b>Records:</b>"
 		. += 					"<br>Medical Records:"
-		. += 					" <a href=\"byond://?src=\ref[user];preference=records;task=med_record\">[length(med_record)>0?"[sanitize_popup(copytext(med_record, 1, 3))]...":"\[...\]"]</a>"
+		. += 					" <a href=\"byond://?src=\ref[user];preference=records;task=med_record\">[length(med_record)>0?"[copytext(med_record, 1, 3)]...":"\[...\]"]</a>"
 		. += 					"<br>Security Records:"
-		. += 					" <a href=\"byond://?src=\ref[user];preference=records;task=sec_record\">[length(sec_record)>0?"[sanitize_popup(copytext(sec_record, 1, 3))]...":"\[...\]"]</a>"
+		. += 					" <a href=\"byond://?src=\ref[user];preference=records;task=sec_record\">[length(sec_record)>0?"[copytext(sec_record, 1, 3)]...":"\[...\]"]</a>"
 		. += 					"<br>Employment Records:"
-		. += 					" <a href=\"byond://?src=\ref[user];preference=records;task=gen_record\">[length(gen_record)>0?"[sanitize_popup(copytext(gen_record, 1, 3))]...":"\[...\]"]</a>"
+		. += 					" <a href=\"byond://?src=\ref[user];preference=records;task=gen_record\">[length(gen_record)>0?"[copytext(gen_record, 1, 3)]...":"\[...\]"]</a>"
 
 	. += 						"<br><br>"
 
 	. += 						"<b>Flavor:</b>"
-	. += 						" <a href='byond://?src=\ref[user];preference=flavor_text;task=input'>[length(flavor_text)>0?"[sanitize_popup(copytext(flavor_text, 1, 3))]...":"\[...\]"]</a>"
+	. += 						" <a href='byond://?src=\ref[user];preference=flavor_text;task=input'>[length(flavor_text)>0?"[copytext(flavor_text, 1, 3)]...":"\[...\]"]</a>"
 	. += 					"</td>"
 	. += 				"</tr>"
 	. += 			"</table>"	//Backstory table end
@@ -250,7 +250,7 @@
 		if("input")
 			switch(href_list["preference"])
 				if("name")
-					var/new_name = reject_bad_name( input(user, "Choose your character's name:", "Character Preference")  as text|null )
+					var/new_name = sanitize_name( input(user, "Choose your character's name:", "Character Preference")  as text|null )
 					if(new_name)
 						real_name = new_name
 					else

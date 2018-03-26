@@ -60,7 +60,7 @@
 
 	//var/message_a = sanitize_plus_chat(say_quote(message))
 	//на бэй опять рефакторят, нужно обновить эту часть кода. А пока, так
-	var/message_a = "<span class='say_quote'>hisses,</span> \"<span class='body'>[sanitize_plus_chat(message)]</span>\""
+	var/message_a = "<span class='say_quote'>hisses,</span> \"<span class='body'>[message]</span>\""
 
 	var/rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> <span class='message'>[message_a]</span></span></i>"
 	for (var/mob/living/S in player_list)

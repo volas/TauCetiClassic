@@ -149,7 +149,7 @@
 		if(storedinfo.len < i)
 			break
 		var/turf/T = get_turf(src)
-		T.visible_message("<font color=Maroon><B>Tape Recorder</B>: [sanitize_chat(storedinfo[i])]</font>")
+		T.visible_message("<font color=Maroon><B>Tape Recorder</B>: [storedinfo[i]]</font>")
 		if(storedinfo.len < i+1)
 			playsleepseconds = 1
 			sleep(10)
