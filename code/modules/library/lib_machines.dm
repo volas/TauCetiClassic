@@ -246,7 +246,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				dat += "<FONT color=red>No data found in scanner memory.</FONT><BR>"
 			else
 				dat += {"<TT>Data marked for upload...</TT><BR>
-				<TT>Title: </TT>[sanitize_popup(scanner.cache.name)]<BR>"}
+				<TT>Title: </TT>[sanitize(scanner.cache.name)]<BR>"}
 				if(!scanner.cache.author)
 					scanner.cache.author = "Anonymous"
 				dat += {"<TT>Author: </TT><A href='?src=\ref[src];setauthor=1'>[scanner.cache.author]</A><BR>

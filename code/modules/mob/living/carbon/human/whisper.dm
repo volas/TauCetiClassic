@@ -28,7 +28,7 @@
 	if(src.stat)
 		return
 
-	message = trim(sanitize_plus(copytext(message,1,MAX_MESSAGE_LEN)))	//made consistent with say
+	message = trim(sanitize(copytext(message,1,MAX_MESSAGE_LEN)))	//made consistent with say
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"

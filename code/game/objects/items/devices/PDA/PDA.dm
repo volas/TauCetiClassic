@@ -671,7 +671,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				mode=2
 
 		if("Ringtone")
-			var/t = input(U, "Please enter new ringtone", name, revert_ja(ttone)) as text
+			var/t = input(U, "Please enter new ringtone", name, reset_ja(ttone)) as text
 			if (in_range(src, U) && loc == U)
 				if (t)
 					if(src.hidden_uplink && hidden_uplink.check_trigger(U, lowertext(t), lowertext(lock_code)))

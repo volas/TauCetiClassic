@@ -55,7 +55,7 @@
 		//Maybe, we need trim text twice? Here and before copytext?
 		input = trim(input)
 
-	return input
+	return input+"&#8203;"//if we see this - it's double sanitize!
 
 //Run sanitize(), but remove <, >, " first to prevent displaying them as &gt; &lt; &34; in some places, after html_encode().
 //Best used for sanitize object names, window titles.

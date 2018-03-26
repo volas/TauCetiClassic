@@ -3,7 +3,7 @@
 	if (silent)
 		return
 
-	message = sanitize_plus(copytext(message, 1, MAX_MESSAGE_LEN))
+	message = sanitize(copytext(message, 1, MAX_MESSAGE_LEN))
 
 	if (length(message) >= 2)
 		if (department_radio_keys[copytext(message, 1, 3)] == "alientalk")
@@ -23,7 +23,7 @@
 	if (silent)
 		return
 
-	message = sanitize_plus(copytext(message, 1, MAX_MESSAGE_LEN))
+	message = sanitize(copytext(message, 1, MAX_MESSAGE_LEN))
 
 	if (length(message) >= 2)
 		if (department_radio_keys[copytext(message, 1, 3)] == "alientalk")
@@ -39,7 +39,7 @@
 	if (silent)
 		return
 
-	message = sanitize_plus(copytext(message, 1, MAX_MESSAGE_LEN))
+	message = sanitize(copytext(message, 1, MAX_MESSAGE_LEN))
 
 	if (length(message) >= 2)
 		if (department_radio_keys[copytext(message, 1, 3)] == "alientalk")
@@ -58,7 +58,7 @@
 	if (!message)
 		return
 
-	//var/message_a = sanitize_plus_chat(say_quote(message))
+	//var/message_a = sanitize_chat(say_quote(message))
 	//на бэй опять рефакторят, нужно обновить эту часть кода. А пока, так
 	var/message_a = "<span class='say_quote'>hisses,</span> \"<span class='body'>[message]</span>\""
 

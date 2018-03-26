@@ -201,7 +201,7 @@ proc/slur(phrase)
 			if(lowertext_(newletter)==CHARACTER_231)	newletter=CHARACTER_241 //cyrillic z to s
 		switch(rand(1,15))
 			if(1,3,5,8)	newletter="[lowertext_(newletter)]"
-			if(2,4,6,15)	newletter="[uppertext_alt(newletter)]"
+			if(2,4,6,15)	newletter="[uppertext_(newletter)]"
 			if(7)	newletter+="'"
 		newphrase+="[newletter]";counter-=1
 	return newphrase

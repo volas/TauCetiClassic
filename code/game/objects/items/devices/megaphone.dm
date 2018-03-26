@@ -28,7 +28,7 @@
 		return
 
 	playsound(src, 'sound/items/megaphone.ogg', 100, 1, 1)
-	var/message = sanitize_plus(copytext(input(user, "Shout a message?", "Megaphone", null)  as text,1,MAX_MESSAGE_LEN))
+	var/message = sanitize(copytext(input(user, "Shout a message?", "Megaphone", null)  as text,1,MAX_MESSAGE_LEN))
 	if(!message)
 		return
 	message = (capitalize(message))

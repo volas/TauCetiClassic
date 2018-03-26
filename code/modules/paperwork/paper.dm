@@ -69,12 +69,12 @@
 
 	var/data
 	if((!(ishuman(user) || isobserver(user) || issilicon(user)) && !forceshow) || forcestars)
-		data = "<HTML><HEAD><TITLE>[sanitize_popup(name)]</TITLE></HEAD><BODY>[sanitize_plus_popup(stars(revert_ja(info)))][stamp_text]</BODY></HTML>"
+		data = "<HTML><HEAD><TITLE>[sanitize(name)]</TITLE></HEAD><BODY>[sanitize_popup(stars(reset_ja(info)))][stamp_text]</BODY></HTML>"
 		if(view)
 			user << browse(data, "window=[name]")
 			onclose(user, "[name]")
 	else
-		data = "<HTML><HEAD><TITLE>[sanitize_popup(name)]</TITLE></HEAD><BODY>[infolinks ? info_links : info][stamp_text]</BODY></HTML>"
+		data = "<HTML><HEAD><TITLE>[sanitize(name)]</TITLE></HEAD><BODY>[infolinks ? info_links : info][stamp_text]</BODY></HTML>"
 		if(view)
 			user << browse(data, "window=[name]")
 			onclose(user, "[name]")
