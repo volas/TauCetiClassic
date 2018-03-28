@@ -650,8 +650,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null
-	var/customname = input(usr, "Pick a title for the report. Do not forget about prohibit of the use of the Cyrillic alphabet in the names of objects. ", "Title") as text|null
+	var/input = sanitize(input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null, MAX_PAPER_MESSAGE_LEN, extra = FALSE)
+	var/customname = sanitize_safe(input(usr, "Pick a title for the report. Do not forget about prohibit of the use of the Cyrillic alphabet in the names of objects. ", "Title") as text|null)
 	if(!input)
 		return
 	if(!customname)
@@ -660,7 +660,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if(! (C.stat & (BROKEN|NOPOWER) ) )
 			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( C.loc )
 			P.name = "'[command_name()] Update.'"
-			P.info = sanitize(copytext(input, 1, MAX_MESSAGE_LEN), list("ÿ"=LETTER_255))
+			P.info = replacetext(input, "\n", "<br/>")
 			P.update_icon()
 			C.messagetitle.Add("[command_name()] Update")
 			C.messagetext.Add(P.info)
@@ -1061,11 +1061,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/sent_text = sanitize(input(usr, "Please, enter the text you want to send.", "What?", "") as message|null)
+	var/sent_text = sanitize(input(usr, "Please, enter the text you want to send.", "What?", "") as message|null, MAX_PAPER_MESSAGE_LEN)
 	if(!sent_text)
 		return
 
-	var/sent_name = sanitize(input(usr, "Pick a title for the message. Do not forget about prohibit of the use of the Cyrillic alphabet in the names of objects, enter Cancel to stop sending", "Title") as text)
+	var/sent_name = sanitize_safe(input(usr, "Pick a title for the message. Do not forget about prohibit of the use of the Cyrillic alphabet in the names of objects, enter Cancel to stop sending", "Title") as text)
 	if(!sent_name)
 		sent_name = "NanoTrasen Update"
 	if(sent_name == "Cancel")
@@ -1092,7 +1092,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/obj/item/weapon/paper/P = new
 	P.name = sent_name
-	P.info = checkhtml(html_decode(sent_text))
+	P.info = sent_text
 
 	if(stamp_type)
 		var/obj/item/weapon/stamp/S = new stamp_type

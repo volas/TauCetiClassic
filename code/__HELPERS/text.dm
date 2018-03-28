@@ -149,16 +149,18 @@
 
 
 //reset to placeholder for inputs, logs
-/proc/reset_ja(var/text)
+/proc/reset_ja(text)
 	return replace_characters(text, list(JA_CODE=JA_PLACEHOLDER, JA_CODE_ASCII=JA_PLACEHOLDER, JA_CHARACTER=JA_PLACEHOLDER))
 
 //replace ja with entity for chat/popup
-/proc/entity_ja(var/text)
+/proc/entity_ja(text)
 	#ifdef DEBUG_CYRILLIC
 	world.log << "DEBUG: entity_ja(), text: [text]"
 	#endif
 	return replace_characters(text, list(JA_PLACEHOLDER=JA_ENTITY, JA_ENTITY_ASCII=JA_ENTITY))
 
+/proc/input_default(text)
+	return html_decode(reset_ja(text))
 /*
  * Text searches
  */
@@ -195,11 +197,6 @@
 /*
  * Text modification
  */
-
-/* TODO2
-/proc/replacetext(text, find, replacement)
-	return list2text(text2list(text, find), replacement)
-*/
 
 /proc/replace_characters(var/t,var/list/repl_chars)
 	for(var/char in repl_chars)
@@ -246,6 +243,31 @@
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(t)
 	return uppertext_(copytext(t, 1, 2)) + copytext(t, 2)
+
+//This proc strips html properly, remove < > and all text between
+//for complete text sanitizing should be used sanitize()
+/proc/strip_html_properly(var/input)
+	if(!input)
+		return
+	var/opentag = 1 //These store the position of < and > respectively.
+	var/closetag = 1
+	while(1)
+		opentag = findtext(input, "<")
+		closetag = findtext(input, ">")
+		if(closetag && opentag)
+			if(closetag < opentag)
+				input = copytext(input, (closetag + 1))
+			else
+				input = copytext(input, 1, opentag) + copytext(input, (closetag + 1))
+		else if(closetag || opentag)
+			if(opentag)
+				input = copytext(input, 1, opentag)
+			else
+				input = copytext(input, (closetag + 1))
+		else
+			break
+
+	return input
 
 //Centers text by adding spaces to either side of the string.
 /proc/dd_centertext(message, length)

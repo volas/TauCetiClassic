@@ -1624,15 +1624,15 @@
 	else if(href_list["CentcommFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["CentcommFaxReply"])
 
-		var/input = sanitize(input(src.owner, "Please, enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Centcomm", "") as message|null)
+		var/input = sanitize(input(src.owner, "Please, enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work.", "Outgoing message from Centcomm", "") as message|null, extra = FALSE)
 		if(!input)
 			return
 
-		var/customname = sanitize(input(src.owner, "Pick a title for the report", "Title") as text|null)
+		var/customname = sanitize_safe(input(src.owner, "Pick a title for the report", "Title") as text|null)
 
 		var/obj/item/weapon/paper/P = new
 		P.name = "[command_name()]- [customname]"
-		P.info = checkhtml(html_decode(input))
+		P.info = input
 
 		var/obj/item/weapon/stamp/centcomm/S = new
 		S.stamp_paper(P, use_stamp_by_message = TRUE)

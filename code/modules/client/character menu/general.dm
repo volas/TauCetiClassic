@@ -191,19 +191,19 @@
 		if("records")
 			switch(href_list["task"])
 				if("med_record")
-					var/medmsg = sanitize(copytext(input(usr,"Set your medical notes here.","Medical Records",html_decode(reset_ja(med_record))) as message, 1, MAX_PAPER_MESSAGE_LEN), list("ÿ"=LETTER_255))
+					var/medmsg = sanitize(input(usr,"Set your medical notes here.","Medical Records",html_decode(reset_ja(med_record))) as message, MAX_PAPER_MESSAGE_LEN, extra = FALSE)
 
 					if(medmsg != null)
 						med_record = medmsg
 
 				if("sec_record")
-					var/secmsg = sanitize(copytext(input(usr,"Set your security notes here.","Security Records",html_decode(reset_ja(sec_record))) as message, 1, MAX_PAPER_MESSAGE_LEN), list("ÿ"=LETTER_255))
+					var/secmsg = sanitize(input(usr,"Set your security notes here.","Security Records",html_decode(reset_ja(sec_record))) as message, MAX_PAPER_MESSAGE_LEN, extra = FALSE)
 
 					if(secmsg != null)
 						sec_record = secmsg
 
 				if("gen_record")
-					var/genmsg = sanitize(copytext(input(usr,"Set your employment notes here.","Employment Records",html_decode(reset_ja(gen_record))) as message, 1, MAX_PAPER_MESSAGE_LEN), list("ÿ"=LETTER_255))
+					var/genmsg = sanitize(input(usr,"Set your employment notes here.","Employment Records",html_decode(reset_ja(gen_record))) as message, MAX_PAPER_MESSAGE_LEN, extra = FALSE)
 
 					if(genmsg != null)
 						gen_record = genmsg

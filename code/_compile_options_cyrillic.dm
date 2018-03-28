@@ -11,11 +11,3 @@
 #define JA_ENTITY_ASCII     "&#255;"  //for old text and histoty, we don't need this anymore because goonchat (God bless goonchat)
 
 //#define DEBUG_CYRILLIC
-
-//just defines for some characters
-#define CHARACTER_247 "÷"
-#define CHARACTER_249 "ù"
-#define CHARACTER_229 "å"
-#define CHARACTER_232 "è"
-#define CHARACTER_231 "ç"
-#define CHARACTER_241 "ñ"

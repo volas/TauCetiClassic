@@ -671,15 +671,13 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				mode=2
 
 		if("Ringtone")
-			var/t = input(U, "Please enter new ringtone", name, reset_ja(ttone)) as text
-			if (in_range(src, U) && loc == U)
-				if (t)
-					if(src.hidden_uplink && hidden_uplink.check_trigger(U, lowertext(t), lowertext(lock_code)))
-						to_chat(U, "The PDA softly beeps.")
-						ui.close()
-					else
-						t = sanitize(copytext(t, 1, 20))
-						ttone = t
+			var/t = sanitize(input(U, "Please enter new ringtone", name, input_default(ttone)) as text, 20)
+			if (t && in_range(src, U) && loc == U)
+				if(src.hidden_uplink && hidden_uplink.check_trigger(U, lowertext(t), lowertext(lock_code)))
+					to_chat(U, "The PDA softly beeps.")
+					ui.close()
+				else
+					ttone = t
 			else
 				ui.close()
 				return 0
@@ -932,9 +930,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	if(tap)
 		U.visible_message("<span class='notice'>[U] taps on \his PDA's screen.</span>")
 	U.last_target_click = world.time
-	var/t = input(U, "Please enter message", name, null) as text
-	t = sanitize(copytext(t, 1, MAX_MESSAGE_LEN))
-	t = readd_quotes(t)
+	var/t = sanitize(input(U, "Please enter message", name, null) as text)
+	t = replacetext(t, "&#34;", "\"")
+
 	if (!t || !istype(P))
 		return
 	if (!in_range(src, U) && loc != U)

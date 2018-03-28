@@ -196,9 +196,9 @@ proc/slur(phrase)
 			if(lowertext(newletter)=="s")	newletter="ch"
 			if(lowertext(newletter)=="a")	newletter="ah"
 			if(lowertext(newletter)=="c")	newletter="k"
-			if(lowertext_(newletter)==CHARACTER_247)	newletter=CHARACTER_249 //cyrillic ch to sh
-			if(lowertext_(newletter)==CHARACTER_229)	newletter=CHARACTER_232 //cyrillic e to i
-			if(lowertext_(newletter)==CHARACTER_231)	newletter=CHARACTER_241 //cyrillic z to s
+			if(lowertext_(newletter)=="ч")	newletter="щ" //247 -> 249
+			if(lowertext_(newletter)=="е")	newletter="и" //229 -> 232
+			if(lowertext_(newletter)=="з")	newletter="с" //231 -> 241
 		switch(rand(1,15))
 			if(1,3,5,8)	newletter="[lowertext_(newletter)]"
 			if(2,4,6,15)	newletter="[uppertext_(newletter)]"
