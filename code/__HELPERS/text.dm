@@ -18,6 +18,13 @@
 	var/sanitized_text = replacetext(t, "'", "\\'")
 	sanitized_text = replacetext(sanitized_text, "\"", "\\\"")
 	return sanitized_text
+	
+// Sanitize inputs to avoid SQL injection attacks
+proc/sql_sanitize_text(text)
+	text = replacetext(text, "'", "''")
+	text = replacetext(text, ";", "")
+	text = replacetext(text, "&", "")
+	return text
 
 /*
  * Text sanitization
@@ -160,7 +167,7 @@
 	return replace_characters(text, list(JA_PLACEHOLDER=JA_ENTITY, JA_ENTITY_ASCII=JA_ENTITY))
 
 /proc/input_default(text)
-	return html_decode(reset_ja(text))
+	return html_decode(reset_ja(text))//replace br with \n?
 /*
  * Text searches
  */
