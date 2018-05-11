@@ -1,3 +1,5 @@
+#define AUTOBAN_TIME 60//in minutes
+
 var/global/geoip_query_counter = 0
 var/global/geoip_next_counter_reset = 0
 var/global/list/geoip_ckey_updated = list()
@@ -34,18 +36,17 @@ var/global/list/geoip_ckey_updated = list()
 	if(status == "updated")
 		if(proxy == "true")
 			var/reason = "No proxy allowed"
-			AddBan(C.ckey, C.computer_id, reason, "taukitty", 0, 0, C.mob.lastKnownIP)
+			AddBan(C.ckey, C.computer_id, reason, "taukitty", 1, AUTOBAN_TIME, C.mob.lastKnownIP)
 			to_chat(C, "<span class='danger'><BIG><B>You have been banned by Tau Kitty.\nReason: [reason].</B></BIG></span>")
-			to_chat(C, "<span class='red'>This is a permanent ban.</span>")
+			to_chat(C, "\red This is a temporary ban, it will be removed in [AUTOBAN_TIME] minutes.")
 			if(config.banappeals)
 				to_chat(C, "<span class='red'>To try to resolve this matter head to [config.banappeals]</span>")
 			else
 				to_chat(C, "<span class='red'>No ban appeals URL has been set.</span>")
-			ban_unban_log_save("Tau Kitty has permabanned [C.ckey]. - Reason: [reason] - This is a permanent ban.")
-			log_admin("Tau Kitty has banned [C.ckey].\nReason: [reason]\nThis is a permanent ban.")
-			message_admins("Tau Kitty has banned [C.ckey].\nReason: [reason]\nThis is a permanent ban.")
-			feedback_inc("ban_perma",1)
-			DB_ban_record_2(BANTYPE_PERMA, C.mob, -1, reason)
+			ban_unban_log_save("Tau Kitty has banned [C.ckey]. - Reason: [reason] - This will be removed in [AUTOBAN_TIME] minutes.")
+			log_admin("Tau Kitty has banned [C.ckey].\nReason: [reason]\nThis will be removed in [AUTOBAN_TIME] minutes.")
+			message_admins("Tau Kitty has banned [C.ckey].\nReason: [reason]\nThis will be removed in [AUTOBAN_TIME] minutes.")
+			DB_ban_record_2(BANTYPE_TEMP, C.mob, AUTOBAN_TIME, reason)
 			del(C)
 		else
 			var/msg = "[holder] connected from ([country], [regionName], [city]) using ISP: ([isp]) with IP: ([ip]) Proxy: ([proxy])"
@@ -110,3 +111,5 @@ var/global/list/geoip_ckey_updated = list()
 
 	var/msg = file2text(vl["CONTENT"])
 	return json2list(msg)
+
+#undef AUTOBAN_TIME
