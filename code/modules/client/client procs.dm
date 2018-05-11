@@ -344,7 +344,13 @@ var/list/blacklisted_builds = list(
 	var/static/tokens = list()
 	var/static/cidcheck_failedckeys = list() //to avoid spamming the admins if the same guy keeps trying.
 	var/static/cidcheck_spoofckeys = list()
+	var/sql_ckey = sanitize_sql(ckey)
+	var/DBQuery/query_cidcheck = dbcon.NewQuery("SELECT computerid FROM erro_player WHERE ckey = '[sql_ckey]'")
+	query_cidcheck.Execute()
 
+	var/lastcid
+	if (query_cidcheck.NextRow())
+		lastcid = query_cidcheck.item[1]
 	var/oldcid = cidcheck[ckey]
 
 	if (oldcid)
@@ -355,11 +361,15 @@ var/list/blacklisted_builds = list(
 			cidcheck[ckey] = computer_id
 			tokens[ckey] = cid_check_reconnect()
 
-			sleep(10) //browse is queued, we don't want them to disconnect before getting the browse() command.
+			sleep(15 SECONDS) //Longer sleep here since this would trigger if a client tries to reconnect manually because the inital reconnect failed
+
+			 //we sleep after telling the client to reconnect, so if we still exist something is up
+			log_access("Forced disconnect: [key] [computer_id] [address] - CID randomizer check")
+
 			del(src)
 			return TRUE
 
-		if (oldcid != computer_id) //IT CHANGED!!!
+		if (oldcid != computer_id && computer_id != lastcid) //IT CHANGED!!!
 			cidcheck -= ckey //so they can try again after removing the cid randomizer.
 
 			to_chat(src, "<span class='userdanger'>Connection Error:</span>")
@@ -368,8 +378,10 @@ var/list/blacklisted_builds = list(
 			if (!cidcheck_failedckeys[ckey])
 				message_admins("<span class='adminnotice'>[key_name(src)] has been detected as using a cid randomizer. Connection rejected.</span>")
 				send2slack_logs(key_name(src), "has been detected as using a cid randomizer. Connection rejected.", "(CidRandomizer)")
+
 				cidcheck_failedckeys[ckey] = TRUE
 				notes_add(ckey, "Detected as using a cid randomizer.")
+
 
 			log_access("Failed Login: [key] [computer_id] [address] - CID randomizer confirmed (oldcid: [oldcid])")
 
@@ -384,22 +396,17 @@ var/list/blacklisted_builds = list(
 				message_admins("<span class='adminnotice'>[key_name_admin(src)] has been allowed to connect after appearing to have attempted to spoof a cid randomizer check because it <i>appears</i> they aren't spoofing one this time</span>")
 				cidcheck_spoofckeys -= ckey
 			cidcheck -= ckey
-	else
-		var/sql_ckey = sanitize_sql(ckey)
-		var/DBQuery/query_cidcheck = dbcon.NewQuery("SELECT computerid FROM erro_player WHERE ckey = '[sql_ckey]'")
-		query_cidcheck.Execute()
+	else if (computer_id != lastcid)
+		cidcheck[ckey] = computer_id
+		tokens[ckey] = cid_check_reconnect()
 
-		var/lastcid
-		if (query_cidcheck.NextRow())
-			lastcid = query_cidcheck.item[1]
+		sleep(5 SECONDS) //browse is queued, we don't want them to disconnect before getting the browse() command.
 
-		if (computer_id != lastcid)
-			cidcheck[ckey] = computer_id
-			tokens[ckey] = cid_check_reconnect()
+		//we sleep after telling the client to reconnect, so if we still exist something is up
+		log_access("Forced disconnect: [key] [computer_id] [address] - CID randomizer check")
 
-			sleep(10) //browse is queued, we don't want them to disconnect before getting the browse() command.
-			del(src)
-			return TRUE
+		qdel(src)
+		return TRUE
 
 /client/proc/cid_check_reconnect()
 	var/token = md5("[rand(0,9999)][world.time][rand(0,9999)][ckey][rand(0,9999)][address][rand(0,9999)][computer_id][rand(0,9999)]")
