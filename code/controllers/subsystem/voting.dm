@@ -187,7 +187,7 @@ var/datum/subsystem/vote/SSvote
 				choices.Add(config.votable_modes)
 			if("crew_transfer")
 				if(!is_admin)
-					if(get_security_level() == "red" || get_security_level() == "delta")
+					if(get_security_level() == "delta")
 						return 0
 				choices.Add("End Shift","Continue Playing")
 			if("custom")
