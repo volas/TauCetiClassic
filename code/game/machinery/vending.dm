@@ -843,10 +843,10 @@
 						/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/carrotseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/chantermycelium = 3,
 						/obj/item/seeds/chiliseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/cornseed = 3,/obj/item/seeds/replicapod = 3,
 						/obj/item/seeds/eggplantseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/lemonseed = 3,
-						/obj/item/seeds/limeseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/potatoseed = 3,/obj/item/seeds/poppyseed = 3,
-						/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/riceseed= 3,/obj/item/seeds/soyaseed = 3,/obj/item/seeds/sunflowerseed = 3,
-						/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/towermycelium = 3,/obj/item/seeds/watermelonseed = 3,/obj/item/seeds/wheatseed = 3,
-						/obj/item/seeds/whitebeetseed = 3)
+						/obj/item/seeds/limeseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/potatoseed = 3,
+						/obj/item/seeds/poppyseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/riceseed= 3,/obj/item/seeds/soyaseed = 3,
+						/obj/item/seeds/sunflowerseed = 3,/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/towermycelium = 3,/obj/item/seeds/watermelonseed = 3,
+						/obj/item/seeds/wheatseed = 3,/obj/item/seeds/whitebeetseed = 3)
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
 					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,)
 	premium = list(/obj/item/toy/waterflower = 1)
@@ -902,7 +902,7 @@
 		var/obj/item/device/occult_scanner/OS = I
 		OS.scanned_type = src.type
 		to_chat(user, "<span class='notice'>[src] has been succesfully scanned by [OS]</span>")
-	if(istype(I, /obj/item/weapon/ectoplasm))
+	if(istype(I, /obj/item/weapon/reagent_containers/food/snacks/ectoplasm))
 		RedeemEctoplasm(I, user)
 		return
 	..()
@@ -1191,6 +1191,6 @@
 					/obj/item/clothing/under/fluff/olddressuniform = 5, /obj/item/clothing/under/fluff/jumpsuitdown = 5, /obj/item/clothing/under/fluff/jane_sidsuit = 5, /obj/item/clothing/under/sundress = 5,
 					/obj/item/clothing/under/roman = 3, /obj/item/clothing/shoes/roman = 3, /obj/item/clothing/head/helmet/roman = 2, /obj/item/clothing/head/helmet/roman/legionaire = 1, /obj/item/clothing/under/smoking = 3,
 					/obj/item/clothing/suit/tuxedo = 3,/obj/item/clothing/under/popking = 1, /obj/item/clothing/under/popking/alternate = 1, /obj/item/clothing/suit/hooded/angel_suit = 1,
-					/obj/item/clothing/mask/fake_face = 2,)
-	prices = list(/obj/item/clothing/head/xenos = 100, /obj/item/clothing/suit/xenos = 200, /obj/item/clothing/suit/monkeysuit = 200)
+					/obj/item/clothing/mask/fake_face = 2, /obj/item/clothing/suit/hooded/ian_costume = 1, /obj/item/clothing/suit/hooded/carp_costume = 1)
+	prices = list(/obj/item/clothing/head/xenos = 100, /obj/item/clothing/suit/xenos = 200, /obj/item/clothing/suit/monkeysuit = 200, /obj/item/clothing/suit/hooded/carp_costume = 200)
 	contraband = list(/obj/item/clothing/mask/gas/fawkes = 2)
