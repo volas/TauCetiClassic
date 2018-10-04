@@ -220,7 +220,7 @@ var/list/blacklisted_builds = list(
 	if(config.allow_donators && ckey in donators)
 		donator = 1
 		to_chat(src, "<span class='info bold'>Hello [key]! Thanks for supporting us! You have access to all the additional donator-only features this month.</span>")
-		
+
 	log_client_to_db(tdata)
 
 	send_resources()
@@ -260,9 +260,11 @@ var/list/blacklisted_builds = list(
 	directory -= ckey
 	mentors -= src
 	clients -= src
+#ifndef KILL_PARALLAX
 	if(movingmob != null)
 		movingmob.client_mobs_in_contents -= mob
 		UNSETEMPTY(movingmob.client_mobs_in_contents)
+#endif
 	return ..()
 
 

@@ -20,7 +20,7 @@
 		set_light(brightness)
 	else
 		icon_state = initial(icon_state)
-		set_light(0)
+		kill_light()
 
 /obj/item/decoration/garland/atom_init()
 	. = ..()

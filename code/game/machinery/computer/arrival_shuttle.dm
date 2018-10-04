@@ -89,9 +89,10 @@ var/lastMove = 0
 	fromArea = toArea
 	toArea = destArea
 	sleep(ARRIVAL_SHUTTLE_MOVE_TIME)
+#ifndef KILL_PARALLAX
 	curr_location.parallax_slowdown()
 	sleep(PARALLAX_LOOP_TIME)
-
+#endif
 	fromArea.move_contents_to(toArea, null, WEST)
 	radio.autosay(arrival_note, "Arrivals Alert System")
 

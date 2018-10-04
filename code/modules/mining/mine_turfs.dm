@@ -43,25 +43,21 @@
 		T = get_step(src, NORTH)
 		if (T)
 			var/image/I = image('icons/turf/walls.dmi', "rock_side_s", layer=6)
-			I.plane = 6
 			T.overlays += I
 	if((istype(get_step(src, SOUTH), /turf/simulated/floor)) || (istype(get_step(src, SOUTH), /turf/space)) || (istype(get_step(src, SOUTH), /turf/simulated/shuttle/floor)))
 		T = get_step(src, SOUTH)
 		if (T)
 			var/image/I = image('icons/turf/walls.dmi', "rock_side_n", layer=6)
-			I.plane = 6
 			T.overlays += I
 	if((istype(get_step(src, EAST), /turf/simulated/floor)) || (istype(get_step(src, EAST), /turf/space)) || (istype(get_step(src, EAST), /turf/simulated/shuttle/floor)))
 		T = get_step(src, EAST)
 		if (T)
 			var/image/I = image('icons/turf/walls.dmi', "rock_side_w", layer=6)
-			I.plane = 6
 			T.overlays += I
 	if((istype(get_step(src, WEST), /turf/simulated/floor)) || (istype(get_step(src, WEST), /turf/space)) || (istype(get_step(src, WEST), /turf/simulated/shuttle/floor)))
 		T = get_step(src, WEST)
 		if (T)
 			var/image/I = image('icons/turf/walls.dmi', "rock_side_e", layer=6)
-			I.plane = 6
 			T.overlays += I
 
 /turf/simulated/mineral/ex_act(severity)
