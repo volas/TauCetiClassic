@@ -147,6 +147,7 @@
 		O.screen_loc = "[cx],[cy]"
 		O.layer = ABOVE_HUD_LAYER
 		O.plane = ABOVE_HUD_PLANE
+		O.appearance_flags = APPEARANCE_UI
 		cx++
 		if (cx > mx)
 			cx = tx
@@ -175,6 +176,7 @@
 			O.maptext = ""
 			O.layer = ABOVE_HUD_LAYER
 			O.plane = ABOVE_HUD_PLANE
+			O.appearance_flags = APPEARANCE_UI
 			cx++
 			if (cx > (4+cols))
 				cx = 4
