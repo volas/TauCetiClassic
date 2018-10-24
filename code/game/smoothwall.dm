@@ -139,7 +139,32 @@
 				junction |= get_dir(src,W)
 	var/turf/simulated/wall/wall = src
 	wall.icon_state = "[wall.walltype][junction]"
+
+	if(ticker.current_state > GAME_STATE_SETTING_UP)
+		relativewall_overlays() //first run at atom_init_late
+
 	return
+
+/turf/simulated/wall/proc/relativewall_overlays()
+	return
+
+/turf/simulated/wall/r_wall/relativewall_overlays()
+	if(length(overlays))
+		overlays.Cut()
+
+	var/list/junction = list()
+
+	for(var/turf/simulated/wall/W in orange(src,1))
+		if(abs(src.x-W.x)-abs(src.y-W.y) && W.type == /turf/simulated/wall/)
+			junction += get_dir(src,W)
+
+	for(var/obj/structure/falsewall/W in orange(src,1))
+		if(abs(src.x-W.x)-abs(src.y-W.y))
+			junction += get_dir(src,W)
+
+	if(length(junction))
+		for(var/O in junction)
+			overlays += image('icons/turf/walls.dmi', "rwall_overlay-[O]", layer=ABOVE_NORMAL_TURF_LAYER)
 
 /obj/effect/alien/resin/relativewall()
 

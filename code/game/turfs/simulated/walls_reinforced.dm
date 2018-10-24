@@ -13,6 +13,13 @@
 
 	var/d_state = 0
 
+/turf/simulated/wall/r_wall/atom_init()
+	..()
+	return INITIALIZE_HINT_LATELOAD
+
+/turf/simulated/wall/r_wall/atom_init_late()
+	relativewall_overlays()
+
 /turf/simulated/wall/r_wall/attack_hand(mob/user)
 	user.SetNextMove(CLICK_CD_MELEE)
 	if(HULK in user.mutations) //#Z2
@@ -117,6 +124,7 @@
 			if (istype(W, /obj/item/weapon/wirecutters))
 				playsound(src, 'sound/items/Wirecutter.ogg', 100, 1)
 				src.d_state = 1
+				src.overlays.Cut()
 				src.icon_state = "r_wall-1"
 				new /obj/item/stack/rods(src)
 				to_chat(user, "<span class='notice'>You cut the outer grille.</span>")
@@ -133,6 +141,7 @@
 
 					if(d_state == 1 && user.loc == T && user.get_active_hand() == W)
 						src.d_state = 2
+						src.overlays.Cut()
 						src.icon_state = "r_wall-2"
 						to_chat(user, "<span class='notice'>You remove the support lines.</span>")
 				return
@@ -143,6 +152,7 @@
 				if(!O.use(1))
 					return
 				src.d_state = 0
+				src.overlays.Cut()
 				src.icon_state = "r_wall"
 				relativewall_neighbours()	//call smoothwall stuff
 				to_chat(user, "<span class='notice'>You replace the outer grille.</span>")
@@ -162,6 +172,7 @@
 
 						if(d_state == 2 && user.loc == T && user.get_active_hand() == WT)
 							src.d_state = 3
+							src.overlays.Cut()
 							src.icon_state = "r_wall-3"
 							to_chat(user, "<span class='notice'>You press firmly on the cover, dislodging it.</span>")
 				else
@@ -179,6 +190,7 @@
 
 					if(d_state == 2 && user.loc == T && user.get_active_hand() == W)
 						src.d_state = 3
+						src.overlays.Cut()
 						src.icon_state = "r_wall-3"
 						to_chat(user, "<span class='notice'>You press firmly on the cover, dislodging it.</span>")
 				return
@@ -195,6 +207,7 @@
 
 					if(d_state == 3 && user.loc == T && user.get_active_hand() == W)
 						src.d_state = 4
+						src.overlays.Cut()
 						src.icon_state = "r_wall-4"
 						to_chat(user, "<span class='notice'>You pry off the cover.</span>")
 				return
@@ -211,6 +224,7 @@
 
 					if(d_state == 4 && user.loc == T && user.get_active_hand() == W)
 						src.d_state = 5
+						src.overlays.Cut()
 						src.icon_state = "r_wall-5"
 						to_chat(user, "<span class='notice'>You remove the bolts anchoring the support rods.</span>")
 				return
@@ -229,6 +243,7 @@
 
 						if(d_state == 5 && user.loc == T && user.get_active_hand() == WT)
 							src.d_state = 6
+							src.overlays.Cut()
 							src.icon_state = "r_wall-6"
 							new /obj/item/stack/rods(src)
 							to_chat(user, "<span class='notice'>The support rods drop out as you cut them loose from the frame.</span>")
@@ -247,6 +262,7 @@
 
 					if(d_state == 5 && user.loc == T && user.get_active_hand() == W)
 						src.d_state = 6
+						src.overlays.Cut()
 						src.icon_state = "r_wall-6"
 						new /obj/item/stack/rods(src)
 						to_chat(user, "<span class='notice'>The support rods drop out as you cut them loose from the frame.</span>")
