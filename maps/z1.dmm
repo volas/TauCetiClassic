@@ -24409,20 +24409,17 @@
 	},
 /area/storage/primary)
 "aQU" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/poddoor/shutters{
-	density = 0;
-	dir = 4;
-	icon_state = "shutter0";
-	id = "Bar";
-	name = "Bar Shutters";
-	opacity = 0
+/obj/item/device/radio/intercom{
+	broadcasting = 0;
+	name = "Station Intercom (General)";
+	pixel_y = 20
 	},
-/obj/item/weapon/storage/box/trick_o_treat,
+/obj/machinery/vending/spooky,
 /turf/simulated/floor{
-	icon_state = "grimy"
+	dir = 1;
+	icon_state = "neutral"
 	},
-/area/crew_quarters/bar)
+/area/storage/primary)
 "aQV" = (
 /obj/machinery/vending/tool,
 /turf/simulated/floor{
@@ -25171,12 +25168,11 @@
 	},
 /area/chapel/main)
 "aSB" = (
-/obj/machinery/vending/spooky,
-/turf/simulated/floor{
-	dir = 9;
-	icon_state = "warndark"
-	},
-/area/hallway/secondary/entry)
+/obj/item/device/paicard,
+/obj/structure/table/woodentable/poker,
+/obj/item/weapon/storage/box/trick_o_treat,
+/turf/simulated/floor,
+/area/crew_quarters/playroom)
 "aSC" = (
 /turf/simulated/floor{
 	dir = 8;
@@ -27989,16 +27985,12 @@
 	},
 /area/hallway/secondary/entry)
 "aYQ" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/kitchen/utensil/spoon,
-/obj/item/weapon/kitchen/utensil/fork{
-	pixel_x = 8
-	},
-/obj/item/weapon/storage/box/trick_o_treat,
+/obj/machinery/vending/spooky,
 /turf/simulated/floor{
-	icon_state = "dark"
+	dir = 9;
+	icon_state = "warndark"
 	},
-/area/crew_quarters/bar)
+/area/hallway/secondary/entry)
 "aYR" = (
 /turf/simulated/floor{
 	icon_state = "Stairs_wide"
@@ -31736,17 +31728,10 @@
 	},
 /area/crew_quarters/locker)
 "bgN" = (
-/obj/item/device/radio/intercom{
-	broadcasting = 0;
-	name = "Station Intercom (General)";
-	pixel_y = 20
-	},
-/obj/machinery/vending/spooky,
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "neutral"
-	},
-/area/storage/primary)
+/obj/structure/table,
+/obj/item/weapon/storage/box/trick_o_treat,
+/turf/simulated/floor,
+/area/crew_quarters/locker)
 "bgO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -43824,11 +43809,16 @@
 /turf/simulated/floor/carpet,
 /area/medical/patients_rooms)
 "bHU" = (
-/obj/item/device/paicard,
-/obj/structure/table/woodentable/poker,
+/obj/structure/table/woodentable,
+/obj/item/weapon/kitchen/utensil/spoon,
+/obj/item/weapon/kitchen/utensil/fork{
+	pixel_x = 8
+	},
 /obj/item/weapon/storage/box/trick_o_treat,
-/turf/simulated/floor,
-/area/crew_quarters/playroom)
+/turf/simulated/floor{
+	icon_state = "dark"
+	},
+/area/crew_quarters/bar)
 "bHV" = (
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_x = 32
@@ -46137,10 +46127,20 @@
 	},
 /area/crew_quarters/bar)
 "bMZ" = (
-/obj/structure/table,
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "Bar";
+	name = "Bar Shutters";
+	opacity = 0
+	},
 /obj/item/weapon/storage/box/trick_o_treat,
-/turf/simulated/floor,
-/area/crew_quarters/locker)
+/turf/simulated/floor{
+	icon_state = "grimy"
+	},
+/area/crew_quarters/bar)
 "bNa" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance{
@@ -47175,23 +47175,9 @@
 /turf/simulated/floor,
 /area/hallway/primary/starboard)
 "bPv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/table,
-/obj/item/weapon/phone,
-/obj/machinery/camera{
-	c_tag = "Pre-Op Room";
-	network = list("SS13","Medical")
-	},
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/medical/surgeryobs)
+/mob/living/simple_animal/hostile/skellington,
+/turf/simulated/floor/plating,
+/area/maintenance/asmaint)
 "bPw" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -66742,15 +66728,16 @@
 /area/turret_protected/ai)
 "cGE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /obj/structure/table,
-/obj/machinery/alarm{
-	frequency = 1600;
-	pixel_y = 26
+/obj/item/weapon/phone,
+/obj/machinery/camera{
+	c_tag = "Pre-Op Room";
+	network = list("SS13","Medical")
 	},
 /obj/item/clothing/accessory/stethoscope,
 /turf/simulated/floor{
@@ -72998,10 +72985,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/disposal)
-"job" = (
-/mob/living/simple_animal/hostile/skellington,
-/turf/simulated/floor/plating,
-/area/maintenance/asmaint)
 "jrb" = (
 /obj/structure/stool/bed/chair{
 	dir = 4
@@ -76476,7 +76459,9 @@
 	pixel_x = 5;
 	pixel_y = -2
 	},
-/obj/structure/table/glass,
+/obj/structure/table/tray{
+	dir = 4
+	},
 /turf/simulated/floor{
 	dir = 5;
 	icon_state = "whiteyellow"
@@ -94802,7 +94787,7 @@ bvL
 byX
 alz
 aok
-aWw
+bmG
 bMW
 aMZ
 bRx
@@ -96075,7 +96060,7 @@ aGy
 aGy
 aaa
 aEb
-aSB
+aYQ
 bbt
 bdC
 aEL
@@ -96088,7 +96073,7 @@ bzf
 aGn
 bHJ
 bKU
-aQU
+bMZ
 bOL
 bRB
 aGn
@@ -97371,7 +97356,7 @@ aGn
 bwd
 bzi
 bEq
-aYQ
+bHU
 bLc
 bzi
 bEl
@@ -101467,7 +101452,7 @@ hpb
 hpb
 hpb
 aFL
-bgN
+aQU
 aJk
 aJk
 aVo
@@ -103010,7 +102995,7 @@ aNp
 aOz
 aQe
 ake
-bHU
+aSB
 aTU
 aVv
 aWY
@@ -105600,7 +105585,7 @@ aZw
 aYf
 aSP
 beJ
-bMZ
+bgN
 brx
 baq
 aUs
@@ -122845,7 +122830,7 @@ bJm
 bJm
 qWb
 bJm
-bPv
+cGE
 bSh
 bUz
 bQR
@@ -123102,7 +123087,7 @@ bIe
 tpb
 tob
 qZb
-cGE
+bPv
 bSg
 bTK
 cCh
@@ -125411,7 +125396,7 @@ jFb
 cak
 lvb
 mlb
-job
+bPv
 mVb
 nWb
 mub

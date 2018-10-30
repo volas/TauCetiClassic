@@ -4,6 +4,7 @@
  *		Wooden tables
  *		Reinforced tables
  *		Racks
+ *		Surgical tray
  */
 
 
@@ -62,7 +63,7 @@
 			var/tabledirs = 0
 			for(var/direction in list(turn(dir,90), turn(dir,-90)) )
 				var/obj/structure/table/T = locate(/obj/structure/table,get_step(src,direction))
-				if (canconnect && T && T.flipped && T.canconnect && T.dir == src.dir)
+				if (canconnect && T && T.flipped && T.canconnect && T.dir == src.dir && !(istype(T, /obj/structure/table/tray)))
 					type++
 					tabledirs |= direction
 			var/base = "table"
@@ -112,7 +113,7 @@
 					continue
 			if(!skip_sum) //means there is a window between the two tiles in this direction
 				var/obj/structure/table/T = locate(/obj/structure/table,get_step(src,direction))
-				if(T && !T.flipped && T.canconnect && canconnect)
+				if(T && !T.flipped && T.canconnect && canconnect && !(istype(T, /obj/structure/table/tray)))
 					if(direction <5)
 						dir_sum += direction
 					else
@@ -139,7 +140,7 @@
 				dir_sum = 4
 		if(dir_sum%16 in list(5,6,9,10))
 			var/obj/structure/table/T = locate(/obj/structure/table,get_step(src.loc,dir_sum%16))
-			if(T && T.canconnect && canconnect)
+			if(T && T.canconnect && canconnect && !(istype(T, /obj/structure/table/tray)))
 				table_type = 3 //full table (not the 1 tile thick one, but one of the 'tabledir' tables)
 			else
 				table_type = 2 //1 tile thick, corner table (treated the same as streight tables in code later on)
@@ -275,7 +276,12 @@
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		destroy()
 
+/obj/structure/table/do_climb(mob/user)
+	. = ..()
+	item_placed(user)
 
+/obj/structure/table/proc/item_placed(item)
+	return
 
 /obj/structure/table/attack_hand(mob/user)
 	if(HULK in user.mutations)
@@ -424,6 +430,7 @@
 				return
 			W.pixel_x = Clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
 			W.pixel_y = Clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			item_placed(W)
 	return
 
 /obj/structure/table/proc/slam(var/mob/living/A, var/mob/living/M, var/obj/item/weapon/grab/G)
@@ -723,6 +730,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"
 	density = 1
+	climbable = 1
 	anchored = 1.0
 	layer = CONTAINER_STRUCTURE_LAYER
 	throwpass = 1	//You can throw objects over this, despite it's density.
@@ -741,6 +749,20 @@
 				qdel(src)
 				new /obj/item/weapon/rack_parts(src.loc)
 
+/obj/structure/rack/MouseDrop_T(obj/O as obj, mob/user as mob)
+	..()
+	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
+		return
+	if(isessence(usr) || isrobot(usr))
+		return
+	var/obj/item/weapon/W = O
+	if(!W.canremove || W.flags & NODROP)
+		return
+	user.drop_item()
+	if (O.loc != src.loc)
+		step(O, get_dir(O, src))
+	return
+
 /obj/structure/rack/blob_act()
 	if(prob(75))
 		qdel(src)
@@ -756,21 +778,11 @@
 		return 1
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return 1
+	if(locate(/obj/structure/rack) in get_turf(mover))
+		return 1
 	else
 		return 0
 
-/obj/structure/rack/MouseDrop_T(obj/O, mob/user)
-	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
-		return
-	if(isrobot(user) || isessence(user))
-		return
-	var/obj/item/weapon/W = O
-	if(!W.canremove || W.flags & NODROP)
-		return
-	user.drop_item()
-	if (O.loc != src.loc)
-		step(O, get_dir(O, src))
-	return
 
 /obj/structure/rack/attackby(obj/item/weapon/W, mob/user)
 	if (istype(W, /obj/item/weapon/wrench))
@@ -833,4 +845,72 @@
 		destroy()
 
 /obj/structure/rack/attack_tk() // no telehulk sorry
+	return
+
+/*
+ * Surgical tray
+ */
+
+/obj/structure/table/tray
+	name = "surgical tray"
+	density = 1
+	throwpass = 1	//You can throw objects over this, despite it's density.")
+	climbable = 1
+	desc = "A small metal tray with wheels."
+	anchored = FALSE
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "surgical tray"
+	var/static/list/typecache_can_hold = typecacheof(list(
+		/obj/item,
+		/mob)
+		)
+	var/list/held_items = list()
+	parts = /obj/item/stack/sheet/metal
+
+/obj/structure/table/tray/atom_init()
+	. = ..()
+	verbs -= /obj/structure/table/verb/do_flip
+	for(var/atom/movable/held in get_turf(src))
+		if(is_type_in_typecache(held, typecache_can_hold))
+			held_items += held.UID()
+
+/obj/structure/table/tray/Move(NewLoc, direct)
+	var/atom/OldLoc = loc
+
+	. = ..()
+	if(!.) // ..() will return 0 if we didn't actually move anywhere.
+		return .
+
+	if(direct & (direct - 1)) // This represents a diagonal movement, which is split into multiple cardinal movements. We'll handle moving the items on the cardinals only.
+		return .
+
+	var/atom/movable/held
+	for(var/held_uid in held_items)
+		held = locateUID(held_uid)
+		if(!held)
+			held_items -= held_uid
+			continue
+		if(OldLoc != held.loc)
+			held_items -= held_uid
+			continue
+		held.forceMove(NewLoc)
+
+/obj/structure/table/tray/item_placed(atom/movable/item)
+	. = ..()
+	if(is_type_in_typecache(item, typecache_can_hold))
+		held_items += item.UID()
+
+/obj/structure/table/tray/flip()
+	return 0
+
+/obj/structure/table/tray/attackby(obj/item/W, mob/user, params)
+	. = TRUE
+	if (istype(W, /obj/item/weapon/grab) && get_dist(src,user) < 2)
+		return
+	..()
+
+/obj/structure/table/tray/update_icon()
+	return
+
+/obj/structure/table/tray/update_adjacent()
 	return
