@@ -295,6 +295,7 @@ var/global/loopModeNames=list(
 		"zvukbanok" = "Sounds of beer cans",
 		"eurobeat" = "Eurobeat",
 		"finland" = "Suomi wave",
+		"dreamsofvenus" = "Dreams of Venus",
 	)
 
 // Relaxing elevator music~
@@ -320,6 +321,7 @@ var/global/loopModeNames=list(
 		"zvukbanok" = "Sounds of beer cans",
 		"eurobeat" = "Eurobeat",
 		"finland" = "Suomi wave",
+		"dreamsofvenus" = "Dreams of Venus",
 	)
 
 /obj/machinery/media/jukebox/techno
