@@ -254,6 +254,9 @@ var/datum/subsystem/ticker/ticker
 		if(admins_number == 0)
 			send2adminirc("Round has started with no admins online.")*/
 
+		for(var/mob/living/carbon/human/H in player_list)
+			H.put_in_hands(new /obj/item/weapon/cane)
+
 	return 1
 
 

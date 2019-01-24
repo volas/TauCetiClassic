@@ -349,7 +349,7 @@ commented cause polls are kinda broken now, needs refactoring */
 		data_core.manifest_inject(character)
 		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 	//	AnnounceArrival(character, rank)
-
+		character.put_in_hands(new /obj/item/weapon/cane)
 	else
 		character.Robotize()
 
