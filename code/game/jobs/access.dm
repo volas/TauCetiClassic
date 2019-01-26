@@ -69,7 +69,6 @@
 /var/const/access_barber = 69
 /var/const/access_paramedic = 70
 /var/const/access_engineering_lobby = 71
-
 /var/const/access_medbay_storage = 72
 
 	//BEGIN CENTCOM ACCESS
