@@ -105,3 +105,7 @@ var/mob/dview/dview_mob = new
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	initialized = TRUE
 	return INITIALIZE_HINT_NORMAL
+
+/mob/dview/Destroy()
+	stack_trace("ALRIGHT WHICH FUCKER TRIED TO DELETE *MY* DVIEW?")
+	return QDEL_HINT_LETMELIVE
