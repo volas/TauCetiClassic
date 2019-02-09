@@ -16,7 +16,7 @@
 
 	//required positional args: channel, text
 	//optional: --attachment_message TEXT, --name NAME, --icon EMOJI
-	ext_python("slackbot_message.py", script_args)
+	ext_python2("slackbot_message.py", script_args)
 
 /proc/send2slack_service(msg)
 	if(!msg)
