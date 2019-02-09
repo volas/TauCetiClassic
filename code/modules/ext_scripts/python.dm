@@ -11,3 +11,17 @@
 	var/command = config.python_path + " " + script + " " + args
 
 	return world.shelleo(command)
+
+/proc/ext_python2(script, args, scriptsprefix = 1)
+	if(!config.python_path)
+		warning("Python path is undefined, see config.python_path")
+		return
+	
+	if(scriptsprefix) script = "scripts/" + script
+
+	if(world.system_type == MS_WINDOWS)
+		script = replacetext(script, "/", "\\")
+
+	var/command = config.python_path + " " + script + " " + args
+
+	return shell(command)
