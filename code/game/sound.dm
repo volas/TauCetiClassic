@@ -133,4 +133,12 @@ var/const/FALLOFF_SOUNDS = 0.5
 				soundin = pick('sound/effects/bonebreak1.ogg', 'sound/effects/bonebreak2.ogg', 'sound/effects/bonebreak3.ogg', 'sound/effects/bonebreak4.ogg')
 			if ("footsteps")
 				soundin = pick('sound/effects/tile1.wav', 'sound/effects/tile2.wav', 'sound/effects/tile3.wav', 'sound/effects/tile4.wav')
+			if ("rigbreath")
+				soundin = pick('sound/misc/rigbreath1.ogg','sound/misc/rigbreath2.ogg','sound/misc/rigbreath3.ogg')
+			if ("breathmask")
+				soundin = pick('sound/misc/breathmask1.ogg','sound/misc/breathmask2.ogg')
+			if ("malevomit")
+				soundin = pick('sound/misc/mvomit1.ogg','sound/misc/mvomit2.ogg')
+			if ("femalevomit")
+				soundin = pick('sound/misc/fvomit1.ogg','sound/misc/fvomit2.ogg')
 	return soundin
