@@ -5,6 +5,7 @@ var/list/admin_datums = list()
 	var/client/owner	= null
 	var/rights = 0
 	var/fakekey			= null
+	var/belfogor		= "Belfogor"
 	var/deadminned = FALSE
 
 	var/datum/marked_datum

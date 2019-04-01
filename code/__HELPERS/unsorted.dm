@@ -482,6 +482,8 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 		if(C && C.holder && C.holder.fakekey && !include_name)
 			. += "Administrator"
+		else if(C && C.holder && C.holder.belfogor && !include_name)
+			. += C.holder.belfogor
 		else
 			. += key
 

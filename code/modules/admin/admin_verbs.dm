@@ -979,6 +979,8 @@ var/list/admin_verbs_hideable = list(
 	var/display_name = src.key
 	if(holder && holder.fakekey)
 		display_name = holder.fakekey
+	else if(holder && holder.belfogor)
+		display_name = holder.belfogor
 
 	for(var/mob/M in player_list)
 		if((M.mind && M.mind.special_role) || (M.client && M.client.holder))

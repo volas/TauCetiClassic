@@ -140,7 +140,10 @@ var/world_topic_spam_protect_time = world.timeofday
 				if(C.holder.fakekey)
 					continue	//so stealthmins aren't revealed by the hub
 				admins++
-			s["player[n]"] = C.key
+			if(C.holder && C.holder.belfogor)
+				s["player[n]"] = C.holder.belfogor
+			else
+				s["player[n]"] = C.key
 			n++
 		s["players"] = n
 

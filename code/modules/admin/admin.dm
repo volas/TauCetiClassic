@@ -698,7 +698,7 @@ proc/message_admins(msg, reg_flag = R_ADMIN)
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")
-		to_chat(world, "\red <b>Restarting world!</b> \blue Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!")
+		to_chat(world, "\red <b>Restarting world!</b> \blue Initiated by [(usr.client.holder.fakekey||usr.client.holder.belfogor) ? "Admin" : usr.key]!")
 		log_admin("[key_name(usr)] initiated a reboot.")
 
 		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")
@@ -721,7 +721,7 @@ proc/message_admins(msg, reg_flag = R_ADMIN)
 	var/message = sanitize(input("Global message to send:", "Admin Announce", null, null)  as message, 500, extra = 0)
 
 	if(message)
-		to_chat(world, "<span class='admin_announce'><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n <span class='italic emojify linkify'>[message]</span></span>")
+		to_chat(world, "<span class='admin_announce'><b>[(usr.client.holder.fakekey||usr.client.holder.belfogor) ? "Administrator" : usr.key] Announces:</b>\n <span class='italic emojify linkify'>[message]</span></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 		feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -927,7 +927,7 @@ proc/message_admins(msg, reg_flag = R_ADMIN)
 	if(!usr.client.holder)	return
 	if( alert("Reboot server?",,"Yes","No") == "No")
 		return
-	to_chat(world, "\red <b>Rebooting world!</b> \blue Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!")
+	to_chat(world, "\red <b>Rebooting world!</b> \blue Initiated by [(usr.client.holder.fakekey||usr.client.holder.belfogor) ? "Admin" : usr.key]!")
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
 
 	feedback_set_details("end_error","immediate admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")

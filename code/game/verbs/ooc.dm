@@ -59,6 +59,11 @@ var/global/normal_ooc_colour = "#002eb8"
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
+				else if(holder.belfogor)
+					if(C.holder)
+						display_name = "[holder.belfogor]/([src.key])"
+					else
+						display_name = holder.belfogor
 
 			if(supporter && prefs.ooccolor)
 				display_name = "<span style='color: [prefs.ooccolor]'>[display_name]</span>"
@@ -140,9 +145,13 @@ var/global/normal_ooc_colour = "#002eb8"
 
 	var/display_name = "[mob.name]"
 	var/is_fake_key = FALSE
+	var/is_belfogor = FALSE
 	if(holder && holder.fakekey)
 		display_name = holder.fakekey
 		is_fake_key = TRUE
+	else if(holder && holder.belfogor)
+		display_name = holder.belfogor
+		is_belfogor = TRUE
 	if(isobserver(mob))
 		display_name = "(Ghost) [key]"
 	else if(prefs.chat_toggles & CHAT_CKEY)
@@ -162,6 +171,8 @@ var/global/normal_ooc_colour = "#002eb8"
 		if(C.prefs.chat_toggles & CHAT_LOOC)
 			if(is_fake_key && C.holder)
 				display_name = "[holder.fakekey]/([key])"
+			else if(is_belfogor && C.holder)
+				display_name = "[holder.belfogor]/([key])"
 			to_chat(C, "<font color='#6699CC'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message emojify linkify'>[msg]</span></span></font>")
 
 	for(var/client/C in admins)

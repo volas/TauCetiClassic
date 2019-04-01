@@ -13,6 +13,8 @@
 			var/entry = "&emsp;[C.key]"
 			if(C.holder && C.holder.fakekey)
 				entry += " <i>(as [C.holder.fakekey])</i>"
+			if(C.holder && C.holder.belfogor)
+				entry += " <i>(as [C.holder.belfogor])</i>"
 			entry += " - Playing as [C.mob.real_name]"
 			switch(C.mob.stat)
 				if(UNCONSCIOUS)
@@ -62,6 +64,8 @@
 			if(C.ckey in stealth_keys) continue
 			if(C.holder && C.holder.fakekey)
 				Lines += C.holder.fakekey
+			else if(C.holder && C.holder.belfogor)
+				Lines += C.holder.belfogor
 			else
 				Lines += C.key
 
@@ -86,6 +90,8 @@
 			messages[1] += "&emsp;[C] is a [C.holder.rank]"
 			if(C.holder.fakekey)
 				messages[1] += " <i>(as [C.holder.fakekey])</i>"
+			else if(C.holder.belfogor)
+				messages[1] += " <i>(as [C.holder.belfogor])</i>"
 			if(isobserver(C.mob))
 				messages[1] += " - Observing"
 			else if(isnewplayer(C.mob))
@@ -113,7 +119,10 @@
 			if(C.ckey in stealth_keys)
 				continue
 			if(!C.holder.fakekey)
-				messages[1] += "&emsp;[C] is a [C.holder.rank]\n"
+				if(C.holder.belfogor)
+					messages[1] += "&emsp;[C.holder.belfogor] is a [C.holder.rank]\n"
+				else
+					messages[1] += "&emsp;[C] is a [C.holder.rank]\n"
 				num_online[1]++
 		for(var/client/C in mentors)
 			messages[2] += "&emsp;[C] is a Mentor\n"
