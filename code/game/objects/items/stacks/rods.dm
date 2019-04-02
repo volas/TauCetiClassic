@@ -29,7 +29,7 @@
 			to_chat(user, "<span class='warning'>You need at least two rods to do this!</span>")
 			return
 
-		if(WT.remove_fuel(0, user))
+		if(WT.use(0, user))
 			var/obj/item/stack/sheet/metal/new_item = new(usr.loc, , TRUE)
 			user.visible_message(
 				"[user.name] shaped [src] into metal with the welding tool.",
@@ -62,9 +62,10 @@
 		if(get_amount() < 2)
 			to_chat(user, "<span class='warning'>You need at least two rods to do this!</span>")
 			return
-		if(user.is_busy()) return
+		if(user.is_busy(src))
+			return
 		to_chat(usr, "<span class='notice'>Assembling grille...</span>")
-		if (!do_after(usr, 10, target = usr))
+		if (!use_tool(usr, usr, 10))
 			return
 		if (!use(2))
 			return

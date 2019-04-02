@@ -41,36 +41,35 @@
 
 	if(iswelder(W) && ((glass_material && !glass_only) || mineral || !anchored))
 		var/obj/item/weapon/weldingtool/WT = W
-		if(WT.remove_fuel(0, user))
-			if(user.is_busy()) return
-			playsound(src, 'sound/items/Welder2.ogg', 50, 1)
-			if(glass_material)
-				user.visible_message("[user] welds the glass panel out of the airlock assembly.", "You start to weld the glass panel out of the airlock assembly.")
-				if(do_after(user, 40, target = src))
-					if(!src || !WT.isOn())
-						return
-					to_chat(user, "<span class='notice'>You welded the glass panel out!</span>")
-					new /obj/item/stack/sheet/rglass(loc)
-					set_glass(FALSE)
+		if(!WT.tool_start_check(user, amount=0))
+			return
+		if(glass_material)
+			user.visible_message("[user] welds the glass panel out of the airlock assembly.", "You start to weld the glass panel out of the airlock assembly.")
+			if(WT.use_tool(src, user, 40, volume = 50))
+				if(!src || !WT.isOn())
+					return
+				to_chat(user, "<span class='notice'>You welded the glass panel out!</span>")
+				new /obj/item/stack/sheet/rglass(loc)
+				set_glass(FALSE)
 
-			else if(mineral)
-				user.visible_message("[user] welds the [mineral] plating off the airlock assembly.", "You start to weld the [mineral] plating off the airlock assembly.")
-				if(do_after(user, 40, target = src))
-					if(!src || !WT.isOn())
-						return
-					to_chat(user, "<span class='notice'>You welded the [mineral] plating off!</span>")
-					var/M = text2path("/obj/item/stack/sheet/mineral/[mineral]")
-					new M(loc, 2)
-					change_mineral_airlock_type()
+		else if(mineral)
+			user.visible_message("[user] welds the [mineral] plating off the airlock assembly.", "You start to weld the [mineral] plating off the airlock assembly.")
+			if(WT.use_tool(src, user, 40, volume = 50))
+				if(!src || !WT.isOn())
+					return
+				to_chat(user, "<span class='notice'>You welded the [mineral] plating off!</span>")
+				var/M = text2path("/obj/item/stack/sheet/mineral/[mineral]")
+				new M(loc, 2)
+				change_mineral_airlock_type()
 
-			else if(!anchored)
-				user.visible_message("[user] dissassembles the airlock assembly.", "You start to dissassemble the airlock assembly.")
-				if(do_after(user, 40, target = src))
-					if(!src || !WT.isOn())
-						return
-					to_chat(user, "<span class='notice'>You dissasembled the airlock assembly!</span>")
-					new /obj/item/stack/sheet/metal(loc, 4)
-					qdel (src)
+		else if(!anchored)
+			user.visible_message("[user] dissassembles the airlock assembly.", "You start to dissassemble the airlock assembly.")
+			if(WT.use_tool(src, user, 40, volume = 50))
+				if(!src || !WT.isOn())
+					return
+				to_chat(user, "<span class='notice'>You dissasembled the airlock assembly!</span>")
+				new /obj/item/stack/sheet/metal(loc, 4)
+				qdel (src)
 		else
 			to_chat(user, "<span class='notice'>You need more welding fuel.</span>")
 			return
@@ -83,20 +82,19 @@
 		else
 			user.visible_message("[user] secures the airlock assembly to the floor.", "You start to secure the airlock assembly to the floor.")
 
-		if(do_after(user, 40, target = src))
+		if(W.use_tool(src, user, 40, volume = 50))
 			if(!src)
 				return
 			to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secured the airlock assembly!</span>")
 			anchored = !anchored
 
 	else if(iscoil(W) && state == ASSEMBLY_SECURED && anchored )
-		if(user.is_busy()) return
+		if(user.is_busy(src))
+			return
 		var/obj/item/stack/cable_coil/coil = W
 		user.visible_message("[user] wires the airlock assembly.", "You start to wire the airlock assembly.")
-		if(do_after(user, 40, target = src))
+		if(coil.use_tool(src, user, 40, amount = 1, volume = 50))
 			if(!src)
-				return
-			if(!coil.use(1))
 				return
 			state = ASSEMBLY_WIRED
 			to_chat(user, "<span class='notice'>You wire the airlock!</span>")
@@ -106,7 +104,7 @@
 		playsound(src, 'sound/items/Wirecutter.ogg', 100, 1)
 		user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
-		if(do_after(user, 40, target = src))
+		if(W.use_tool(src, user, 40, volume = 50))
 			if(!src)
 				return
 			to_chat(user, "<span class='notice'>You cut the airlock wires!</span>")
@@ -119,7 +117,7 @@
 			playsound(src, 'sound/items/Screwdriver.ogg', 100, 1)
 			user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
-			if(do_after(user, 40, target = src))
+			if(W.use_tool(src, user, 40, volume = 50))
 				if(!src)
 					return
 				user.drop_item()
@@ -129,11 +127,9 @@
 				electronics = AE
 
 	else if(iscrowbar(W) && state == ASSEMBLY_NEAR_FINISHED)
-		if(user.is_busy()) return
-		playsound(src, 'sound/items/Crowbar.ogg', 100, 1)
 		user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove the electronics from the airlock assembly.")
+		if(W.use_tool(src, user, 40, volume = 100))
 
-		if(do_after(user, 40, target = src))
 			if(!src)
 				return
 			to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
@@ -156,7 +152,7 @@
 					if(user.is_busy()) return
 					playsound(src, 'sound/items/Crowbar.ogg', 100, 1)
 					user.visible_message("[user] adds [S.name] to the [src].", "You start to install [S.name] into the [src].")
-					if(do_after(user, 40, target = src))
+					if(W.use_tool(user, 40, target = src, volume = 100))
 						to_chat(user, "<span class='notice'>You installed reinforced glass windows into the [src]!</span>")
 						if(!S.use(1))
 							return
@@ -168,12 +164,11 @@
 				if(can_insert_mineral())
 					var/M = S.sheettype
 					if(S.get_amount() >= 2)
-						if(user.is_busy()) return
+						if(user.is_busy(src))
+							return
 						playsound(src, 'sound/items/Crowbar.ogg', 100, 1)
 						user.visible_message("[user] adds [S.name] to the airlock assembly.", "You start to install [S.name] into the airlock assembly.")
-						if(do_after(user, 40, target = src))
-							if(!S.use(2))
-								return
+						if(S.use_tool(src, user, 40, amount = 2, volume = 100))
 							to_chat(user, "<span class='notice'>You installed [M] plating into the airlock assembly!</span>")
 							change_mineral_airlock_type(M)
 					else
@@ -182,11 +177,11 @@
 					to_chat(user, "<span class='notice'>You can't add [S] to the [src].</span>")
 
 	else if(isscrewdriver(W) && state == ASSEMBLY_NEAR_FINISHED )
-		if(user.is_busy()) return
-		playsound(src, 'sound/items/Screwdriver.ogg', 100, 1)
+		if(user.is_busy(src))
+			return
 		to_chat(user, "<span class='notice'>Now finishing the airlock.</span>")
 
-		if(do_after(user, 40, target = src))
+		if(W.use_tool(src, user, 40, volume = 100))
 			if(!src)
 				return
 			to_chat(user, "<span class='notice'>You finish the airlock!</span>")
