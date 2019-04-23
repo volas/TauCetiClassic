@@ -272,7 +272,7 @@
 				if ((!( ticker ) || SSshuttle.location))
 					return
 				SSshuttle.incall()
-				captain_announce("The emergency shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.",,, "escalled")
+				captain_announce("The emergency shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.", sound = "emer_shut_called")
 				log_admin("[key_name(usr)] called the Emergency Shuttle")
 				message_admins("\blue [key_name_admin(usr)] called the Emergency Shuttle to the station")
 				make_maint_all_access(FALSE)
@@ -283,7 +283,7 @@
 				switch(SSshuttle.direction)
 					if(-1)
 						SSshuttle.incall()
-						captain_announce("The emergency shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.",,, "escalled")
+						captain_announce("The emergency shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.", sound = "emer_shut_called")
 						log_admin("[key_name(usr)] called the Emergency Shuttle")
 						message_admins("\blue [key_name_admin(usr)] called the Emergency Shuttle to the station")
 						make_maint_all_access(FALSE)
@@ -303,7 +303,7 @@
 
 		SSshuttle.settimeleft( input("Enter new shuttle duration (seconds):","Edit Shuttle Timeleft", SSshuttle.timeleft() ) as num )
 		log_admin("[key_name(usr)] edited the Emergency Shuttle's timeleft to [SSshuttle.timeleft()]")
-		captain_announce("The emergency shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.",,, "escalled")
+		captain_announce("The emergency shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.", sound = "emer_shut_called")
 		message_admins("\blue [key_name_admin(usr)] edited the Emergency Shuttle's timeleft to [SSshuttle.timeleft()]")
 		href_list["secretsadmin"] = "check_antagonist"
 
@@ -2382,7 +2382,7 @@
 				message_admins("[key_name_admin(usr)] activated Japanese Animes mode")
 				for(var/mob/M in player_list)
 					if(!isnewplayer(M))
-						M.playsound_local(null, 'sound/AI/animes.ogg', 80, channel = 802, wait = 1, is_global = 1)
+						M.playsound_local(null, 'sound/AI/animes.ogg', 80, channel = CHANNEL_ANNOUNCE, wait = 1, is_global = 1)
 			if("eagles")//SCRAW
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","EgL")

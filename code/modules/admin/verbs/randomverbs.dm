@@ -668,6 +668,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			command_alert(input, customname);
 		if("No")
 			to_chat(world, "\red New NanoTrasen Update available at all communication consoles.")
+			for(var/mob/M in player_list)
+				if(!isnewplayer(M))
+					M.playsound_local(null, 'sound/AI/commandreport.ogg', 70, channel = CHANNEL_ANNOUNCE, wait = 1, is_global = 1)
 
 	log_admin("[key_name(src)] has created a command report: [input]")
 	message_admins("[key_name_admin(src)] has created a command report")
@@ -939,11 +942,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(type == "Crew transfer")
 		SSshuttle.shuttlealert(1)
 		SSshuttle.incall()
-		captain_announce("A crew transfer has been initiated. The shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.",,, "cscalled")
+		captain_announce("A crew transfer has been initiated. The shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.", sound = "crew_shut_called")
 	else
 		var/eaccess = alert(src, "Grant acces to maints for everyone?", "Confirm", "Yes", "No")
 		SSshuttle.incall()
-		captain_announce("The emergency shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.",,, "escalled")
+		captain_announce("The emergency shuttle has been called. It will arrive in [shuttleminutes2text()] minutes.", sound = "emer_shut_called")
 
 		if(eaccess == "Yes")
 			make_maint_all_access(FALSE)
