@@ -414,7 +414,8 @@
 /area/djstation)
 "ba" = (
 /obj/structure/computerframe{
-	anchored = 1
+	anchored = 1;
+	dir = 4
 	},
 /turf/simulated/floor{
 	icon_state = "grimy"
@@ -790,7 +791,9 @@
 	icon_state = "0-2"
 	},
 /obj/structure/cable,
-/obj/machinery/computer/monitor,
+/obj/machinery/computer/monitor{
+	dir = 4
+	},
 /turf/simulated/floor,
 /area/derelict/solar_control)
 "bX" = (
@@ -35135,7 +35138,7 @@ is
 ht
 hk
 gl
-gl
+aa
 aa
 aa
 aa
@@ -35391,8 +35394,8 @@ hX
 it
 hu
 hl
-jd
 gl
+aa
 aa
 aa
 aa
@@ -35649,7 +35652,7 @@ iu
 hv
 hm
 gl
-gl
+aa
 aa
 aa
 aa
@@ -36413,7 +36416,7 @@ gt
 gt
 gl
 hl
-hu
+jd
 hl
 hu
 hl

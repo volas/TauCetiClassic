@@ -251,7 +251,9 @@
 	name = "DNA Modifier Access Console"
 	desc = "Scand DNA."
 	icon = 'icons/obj/computer.dmi'
-	icon_state = "scanner"
+	icon_state = "dna"
+	state_broken_preset = "crewb"
+	state_nopower_preset = "crew0"
 	light_color = "#315ab4"
 	density = 1
 	circuit = /obj/item/weapon/circuitboard/scan_consolenew
@@ -294,10 +296,12 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/scan_consolenew/atom_init_late()
+	var/dir_initial = dir // so it doesnt rotate // we arent using initial(dir), cause we need the current one
 	for(dir in list(NORTH,EAST,SOUTH,WEST))
 		connected = locate(/obj/machinery/dna_scannernew, get_step(src, dir))
 		if(!isnull(connected))
 			break
+	dir = dir_initial
 	spawn(250)
 		injector_ready = 1
 
