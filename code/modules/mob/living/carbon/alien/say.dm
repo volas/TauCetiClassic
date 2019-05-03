@@ -5,6 +5,9 @@
 
 	message = sanitize(message)
 
+	if(copytext(message,1,2) == "*")
+		return emote(copytext(message,2))
+
 	if (length(message) >= 2)
 		if (department_radio_keys[copytext(message, 1, 3)] == "alientalk")
 			message = copytext(message, 3)
@@ -15,7 +18,7 @@
 				alien_talk(message)
 		else
 			if (copytext(message, 1, 2) != "*" && !stat)
-				playsound(loc, "hiss", 25, 1, 1)//So aliens can hiss while they hiss yo/N
+				playsound(loc, "xenomorph_talk", 25, 1, 1)//So aliens can hiss while they hiss yo/N
 			return ..(message, sanitize = 0)
 
 /mob/living/carbon/alien/facehugger/say(message)
