@@ -156,14 +156,15 @@ Doesn't work on other aliens/AI.*/
 	set category = "Alien"
 
 	if(world.time < last_screech + screech_delay)
+		to_chat(src, "<span class='warning'>Your vocal cords are too tired, you need [round((last_screech + screech_delay - world.time)/10)] seconds to rest...</span>")
 		return
 
-	playsound(src, 'sound/effects/screech2.ogg', 100, 1)
+	playsound(src, 'sound/voice/xenomorph/queen_roar.ogg', 100)
 	for(var/mob/living/carbon/human/H in oviewers())
 		if(H.sdisabilities & DEAF || istype(H.l_ear, /obj/item/clothing/ears/earmuffs) || istype(H.r_ear, /obj/item/clothing/ears/earmuffs))
+			to_chat(H, "<span class='warning'>You feel strong vibrations and quiet noise...</span>")
 			continue
 
-		to_chat(H, "<font color='red' size='7'>HISSSSSS</font>")
 		H.SetSleeping(0)
 		H.stuttering += 20
 		H.ear_deaf += 30
@@ -171,9 +172,11 @@ Doesn't work on other aliens/AI.*/
 		if(prob(30))
 			H.Stun(10)
 			H.Paralyse(4)
+			H.show_message("[H.name] falls to their [pick("side", "knees")], covers their [pick("head", "ears")] and [pick("shrivels their face in agony", "it looks like screams loud")]!", "<font color='red' size='7'>RRRRRRAAAAAAAAAAAAAAAAAAGHHHHHH! MY EA-A-ARS! ITS TOO LO-O-O-O-O-O-UD! NGGGHHHHHHH!</font>")
 		else
 			H.Stun(5)
 			H.Paralyse(2)
+			H.show_message("[H.name] wrinkles their [pick("yeys", "face")] in agony and bends[pick(" half", "")]!", "<font color='red' size='7'>VVNNNGGGGHHHHHHH! MY EARS! ITS TOO LOUD! HHHHHHOOO!</font>")
 	last_screech = world.time
 #define ALIEN_NEUROTOXIN 1
 #define ALIEN_ACID 2
