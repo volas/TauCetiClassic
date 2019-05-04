@@ -286,7 +286,7 @@ Doesn't work on other aliens/AI.*/
                              || (locate(/obj/structure/mineral_door/resin) in get_turf(src))   || (locate(/obj/structure/alien/resin/wall) in get_turf(src)) \
                              || (locate(/obj/structure/alien/resin/membrane) in get_turf(src)) || (locate(/obj/structure/stool/bed/nest) in get_turf(src))
                              // does anyone have an idea how to make it shorter?
-/mob/living/carbon/alien/humanoid/verb/resin() // -- TLE
+/mob/living/carbon/alien/humanoid/proc/resin() // -- TLE
 	set name = "Secrete Resin (75)"
 	set desc = "Secrete tough malleable resin."
 	set category = "Alien"
