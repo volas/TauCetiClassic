@@ -23,8 +23,13 @@ Doesn't work on other aliens/AI.*/
 	set desc = "Plants some alien weeds."
 	set category = "Alien"
 
+	if(locate(/obj/structure/alien/weeds/node) in get_turf(src))
+		to_chat(src, "There is already a weed's node.")
+		return
+
 	if(powerc(50,1))
 		adjustToxLoss(-50)
+		playsound(src, 'sound/effects/resin_build.ogg', 33, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(text("\green <B>[src] has planted some alien weeds!</B>"), 1)
 		new /obj/structure/alien/weeds/node(loc)
@@ -156,27 +161,33 @@ Doesn't work on other aliens/AI.*/
 	set category = "Alien"
 
 	if(world.time < last_screech + screech_delay)
-		to_chat(src, "<span class='warning'>Your vocal cords are too tired, you need [round((last_screech + screech_delay - world.time)/10)] seconds to rest...</span>")
+		to_chat(src, "<span class='warning'>You're too tired to scream so loud again. You need [round((last_screech + screech_delay - world.time)/10)] seconds to rest...</span>")
 		return
 
-	playsound(src, 'sound/voice/xenomorph/queen_roar.ogg', 100)
+	playsound(src, 'sound/voice/xenomorph/queen_roar.ogg', 100, 0)
 	for(var/mob/living/carbon/human/H in oviewers())
 		if(H.sdisabilities & DEAF || istype(H.l_ear, /obj/item/clothing/ears/earmuffs) || istype(H.r_ear, /obj/item/clothing/ears/earmuffs))
 			to_chat(H, "<span class='warning'>You feel strong vibrations and quiet noise...</span>")
 			continue
 
+		to_chat(H, pick("<font color='red' size='7'>RRRRRRAAAAAAAAAAAAAAAAAAGHHHHHH! MY EA-A-ARS! ITS TOO LO-O-O-O-O-O-UD! NGGGHHHHHHH!</font>", "<font color='red' size='7'>VVNNNGGGGHHHHHHH! MY EARS! ITS TOO LOUD! HHHHHHOOO!</font>"))
 		H.SetSleeping(0)
 		H.stuttering += 20
 		H.ear_deaf += 30
 		H.Weaken(3)
 		if(prob(30))
+			H.playsound_local(null, 'sound/effects/mob/earring_30s.ogg', 90, 0)
 			H.Stun(10)
 			H.Paralyse(4)
-			H.show_message("[H.name] falls to their [pick("side", "knees")], covers their [pick("head", "ears")] and [pick("shrivels their face in agony", "it looks like screams loud")]!", "<font color='red' size='7'>RRRRRRAAAAAAAAAAAAAAAAAAGHHHHHH! MY EA-A-ARS! ITS TOO LO-O-O-O-O-O-UD! NGGGHHHHHHH!</font>")
+			H.show_message("[H.name] falls to their [pick("side", "knees")], covers their [pick("head", "ears")] and [pick("shrivels their face in agony", "it looks like screams loud")]!", "<span class='warning'>You're trying to scream in hopes of hearing your voice...</span>")
+			if(H.gender == FEMALE)
+				H.playsound_local(null, 'sound/effects/mob/earring_yell_female.ogg', 90, 0)
+			else
+				H.playsound_local(null, 'sound/effects/mob/earring_yell_male.ogg', 90, 0)
 		else
+			H.playsound_local(null, 'sound/effects/mob/earring_15s.ogg', 90, 0)
 			H.Stun(5)
 			H.Paralyse(2)
-			H.show_message("[H.name] wrinkles their [pick("yeys", "face")] in agony and bends[pick(" half", "")]!", "<font color='red' size='7'>VVNNNGGGGHHHHHHH! MY EARS! ITS TOO LOUD! HHHHHHOOO!</font>")
 	last_screech = world.time
 #define ALIEN_NEUROTOXIN 1
 #define ALIEN_ACID 2
@@ -271,20 +282,25 @@ Doesn't work on other aliens/AI.*/
 	return
 #undef ALIEN_NEUROTOXIN
 #undef ALIEN_ACID
-/mob/living/carbon/alien/humanoid/proc/resin() // -- TLE
+#define ALREADY_STRUCTURE_THERE (locate(/obj/structure/alien/air_plant) in get_turf(src))      || (locate(/obj/structure/alien/egg) in get_turf(src)) \
+                             || (locate(/obj/structure/mineral_door/resin) in get_turf(src))   || (locate(/obj/structure/alien/resin/wall) in get_turf(src)) \
+                             || (locate(/obj/structure/alien/resin/membrane) in get_turf(src)) || (locate(/obj/structure/stool/bed/nest) in get_turf(src))
+                             // does anyone have an idea how to make it shorter?
+/mob/living/carbon/alien/humanoid/verb/resin() // -- TLE
 	set name = "Secrete Resin (75)"
 	set desc = "Secrete tough malleable resin."
 	set category = "Alien"
 
-	if((locate(/obj/structure/alien/air_plant) in get_turf(src)) || (locate(/obj/structure/alien/egg) in get_turf(src)) || (locate(/obj/structure/mineral_door/resin) in get_turf(src)) || (locate( /obj/structure/alien/resin/wall) in get_turf(src)) || (locate(/obj/structure/alien/resin/membrane) in get_turf(src)) || (locate(/obj/structure/stool/bed/nest) in get_turf(src)))
+	if(ALREADY_STRUCTURE_THERE)
 		to_chat (src, "There is already a structure there.")
 		return
 
-	if(powerc(75))
+	if(powerc(75, 1))
 		var/choice = input("Choose what you wish to shape.","Resin building") as null|anything in list("resin door","resin wall","resin membrane","resin nest") //would do it through typesof but then the player choice would have the type path and we don't want the internal workings to be exposed ICly - Urist
 		if(!choice || !powerc(75))	return
 		adjustToxLoss(-75)
 		to_chat(src, "\green You shape a [choice].")
+		playsound(src, 'sound/effects/resin_build.ogg', 100, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(text("\red <B>[src] vomits up a thick purple substance and begins to shape it!</B>"), 1)
 		switch(choice)
@@ -319,9 +335,16 @@ Doesn't work on other aliens/AI.*/
 	set desc = "Plants some alien weeds."
 	set category = "Alien"
 
-	if(powerc(250,1))
+	if(ALREADY_STRUCTURE_THERE)
+		to_chat(src, "There is already a structure there.")
+		return
+
+	if(powerc(250, 1))
 		adjustToxLoss(-250)
+		playsound(src, 'sound/effects/resin_build.ogg', 100, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(text("\green <B>[src] has planted some alien weeds!</B>"), 1)
 		new /obj/structure/alien/air_plant(loc)
 	return
+
+#undef ALREADY_STRUCTURE_THERE
