@@ -108,7 +108,7 @@
 				else
 					to_chat(src, "<span class='warning'>You can give out your location to the hosts, you don't want to risk it!</span>")
 			else
-				message = "<B>The [src.name] makes a weak noise."
+				message = "<B>The [src.name]</B> makes a weak noise."
 				m_type = 2
 		if("growl")
 			if(!muzzled)
