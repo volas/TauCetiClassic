@@ -1,12 +1,12 @@
-/mob/living/carbon/alien/humanoid/emote(act, m_type=1, message = null, player_caused)
+/mob/living/carbon/alien/humanoid/emote(act, m_type=1, message = null)
 
 	if(stat == DEAD && (act != "deathgasp"))
 		return
 	if(stat == UNCONSCIOUS || sleeping > 0)
 		return
-	if(findtext(act,"s",-1) && !findtext(act,"_",-2))//Removes ending s's unless they are prefixed with a '_'
-		if(act != "hiss")
-			act = copytext(act,1,length(act))
+	if(findtext(act, "s", -1) && !findtext(act, "_", -2))//Removes ending s's unless they are prefixed with a '_'
+		if((act != "hiss") && (act != "happy_hiss"))
+			act = copytext(act, 1, length(act))
 	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle)
 
 	switch(act)
@@ -48,7 +48,7 @@
 				if(last_sound_emote < world.time)
 					message = pick("<B>The [src.name]</B> sadly screeches.", "<B>The [src.name]</B> sadly whines.")
 					m_type = 2
-					playsound(src, 'sound/voice/xenomorph/death_screech.ogg', 20, 1)
+					playsound(src, 'sound/voice/xenomorph/whimper.ogg', 15, 1)
 				else
 					to_chat(src, "<span class='warning'>You notice you make too much noises! You can give out your location to the hosts, you don't want to risk it!</span>")
 			else
@@ -105,7 +105,7 @@
 					message = "<B>The [src.name]</B>[pick(" relaxed", " predatory", " excitedly", " joyfully", " maliciously", " menacingly", " suspiciously", "")] growls."
 					m_type = 2
 					playsound(src, "xenomorph_growl", 80, 0)
-					last_sound_emote = world.time + 7 SECONDS
+					last_sound_emote = world.time + 6 SECONDS
 				else
 					to_chat(src, "<span class='warning'>You notice you make too much noises! You can give out your location to the hosts, you don't want to risk it!</span>")
 			else
@@ -117,7 +117,7 @@
 		if("sit")
 			message = "<B>The [src.name]</B> sits down[pick(" like a good girl", " wearily", " and turns his tail into a ball")]."
 			m_type = 1
-			if(prob(33)) // xenomorphs are not good boys!
+			if(prob(50)) // xenomorphs are not good girls!
 				to_chat(src, "<span class='warning'>You feel shame. [pick("You want to hunt, not waste time", "You're not an obedient girl", "You're not a good girl")].</span>")
 		if("sway")
 			message = "<B>The [src.name]</B> sways around [pick("dizzily", "drunkenly", "wearily")]."
@@ -147,10 +147,10 @@
 			m_type = 1
 		if("help")
 			to_chat(src, "<span class ='notice'>SOUNDED IN <B>BOLD</B>:   <B>deathgasp</B>, dance, drool, grin, jump, <B>happy_hiss</B>, <B>hiss</B>, nod, \
-			                                        <B>roar</B>, roll, scratch, shake, sit, sway, tail, twitch, <B>whimper</B>, <B>growl</B></span>")
+			                                                              <B>roar</B>, roll, scratch, shake, sit, sway, tail, twitch, <B>whimper</B>, <B>growl</B></span>")
 		else
-			to_chat(src, "<span class='notice'>This action is not provided: [act]. Write \"*help\" to find out all available emotes. Write \"*me\" or \"*custom\" to do your own emote. \
-			                   Otherwise, you can perform your action via the \"F4\" button.</span>")
+			to_chat(src, "<span class='notice'>This action is not provided: \"[act]\". Write \"*help\" to find out all available emotes. Write \"*me\" or \"*custom\" to do your own emote. \
+			                                   Otherwise, you can perform your action via the \"F4\" button.</span>")
 	if(message)
 		log_emote("[name]/[key] : [message]")
 		for(var/mob/M in observer_list)
