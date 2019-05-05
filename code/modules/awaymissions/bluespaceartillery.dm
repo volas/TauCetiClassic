@@ -4,7 +4,7 @@
 	var/intensity = 1
 	name = "bluespace artillery control"
 	icon_state = "control_boxp1"
-	icon = 'icons/obj/machines/particle_accelerator.dmi'
+	icon = 'icons/obj/machines/particle_accelerator2.dmi'
 	density = 1
 	anchored = 1
 
