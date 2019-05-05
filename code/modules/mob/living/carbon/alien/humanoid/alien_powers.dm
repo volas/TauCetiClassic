@@ -176,16 +176,16 @@ Doesn't work on other aliens/AI.*/
 		H.ear_deaf += 30
 		H.Weaken(3)
 		if(prob(30))
-			H.playsound_local(null, 'sound/effects/mob/earring_30s.ogg', 90, 0)
+			H.playsound_local(null, 'sound/effects/mob/earring_30s.ogg', 100, 0)
 			H.Stun(10)
 			H.Paralyse(4)
 			H.show_message("[H.name] falls to their [pick("side", "knees")], covers their [pick("head", "ears")] and [pick("shrivels their face in agony", "it looks like screams loud")]!", "<span class='warning'>You're trying to scream in hopes of hearing your voice...</span>")
 			if(H.gender == FEMALE)
-				H.playsound_local(null, 'sound/effects/mob/earring_yell_female.ogg', 90, 0)
+				H.playsound_local(null, 'sound/effects/mob/earring_yell_female.ogg', 100, 0)
 			else
-				H.playsound_local(null, 'sound/effects/mob/earring_yell_male.ogg', 90, 0)
+				H.playsound_local(null, 'sound/effects/mob/earring_yell_male.ogg', 100, 0)
 		else
-			H.playsound_local(null, 'sound/effects/mob/earring_15s.ogg', 90, 0)
+			H.playsound_local(null, 'sound/effects/mob/earring_15s.ogg', 100, 0)
 			H.Stun(5)
 			H.Paralyse(2)
 	last_screech = world.time
