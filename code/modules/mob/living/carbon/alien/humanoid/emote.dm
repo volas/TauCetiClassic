@@ -46,7 +46,7 @@
 		if("whimper")
 			if (!muzzled)
 				if(last_sound_emote < world.time)
-					message = "<B>The [src.name]</B> sadly [pick("screeches", "whines")].")
+					message = "<B>The [src.name]</B> sadly [pick("screeches", "whines")]."
 					m_type = 2
 					playsound(src, 'sound/voice/xenomorph/whimper.ogg', 15, 1)
 				else
