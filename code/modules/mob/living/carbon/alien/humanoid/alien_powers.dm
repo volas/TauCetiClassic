@@ -166,25 +166,27 @@ Doesn't work on other aliens/AI.*/
 
 	playsound(src, 'sound/voice/xenomorph/queen_roar.ogg', 100, 0)
 	for(var/mob/living/carbon/human/H in oviewers())
-		if(H.sdisabilities & DEAF || istype(H.l_ear, /obj/item/clothing/ears/earmuffs) || istype(H.r_ear, /obj/item/clothing/ears/earmuffs))
+		if(H.sdisabilities & DEAF || H.stat == DEAD || istype(H.l_ear, /obj/item/clothing/ears/earmuffs) || istype(H.r_ear, /obj/item/clothing/ears/earmuffs))
 			to_chat(H, "<span class='warning'>You feel strong vibrations and quiet noise...</span>")
 			continue
 
 		to_chat(H, pick("<font color='red' size='7'>RRRRRRAAAAAAAAAAAAAAAAAAGHHHHHH! MY EA-A-ARS! ITS TOO LO-O-O-O-O-O-UD! NGGGHHHHHHH!</font>", "<font color='red' size='7'>VVNNNGGGGHHHHHHH! MY EARS! ITS TOO LOUD! HHHHHHOOO!</font>"))
 		H.SetSleeping(0)
 		H.stuttering += 20
-		H.ear_deaf += 30
 		H.Weaken(3)
-		if(prob(30))
+		if(prob(30)) // long stun
 			H.playsound_local(null, 'sound/effects/mob/earring_30s.ogg', 100, 0)
 			H.Stun(10)
+			H.ear_deaf += 30
+			if(H.stat != UNCONSCIOUS) // human is trying to yell and hear themselve.
+				H.show_message("[H.name] falls to their [pick("side", "knees")], covers their [pick("head", "ears")] and [pick("shrivels their face in agony", "it looks like screams loud")]!", "<span class='warning'>You're trying to scream in hopes of hearing your voice...</span>")
+				if(H.gender == FEMALE)
+					H.playsound_local(null, 'sound/effects/mob/earring_yell_female.ogg', 100, 0)
+				else
+					H.playsound_local(null, 'sound/effects/mob/earring_yell_male.ogg', 100, 0)
 			H.Paralyse(4)
-			H.show_message("[H.name] falls to their [pick("side", "knees")], covers their [pick("head", "ears")] and [pick("shrivels their face in agony", "it looks like screams loud")]!", "<span class='warning'>You're trying to scream in hopes of hearing your voice...</span>")
-			if(H.gender == FEMALE)
-				H.playsound_local(null, 'sound/effects/mob/earring_yell_female.ogg', 100, 0)
-			else
-				H.playsound_local(null, 'sound/effects/mob/earring_yell_male.ogg', 100, 0)
-		else
+		else // short stun
+			H.ear_deaf += 15
 			H.playsound_local(null, 'sound/effects/mob/earring_15s.ogg', 100, 0)
 			H.Stun(5)
 			H.Paralyse(2)
