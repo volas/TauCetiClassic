@@ -170,6 +170,7 @@ This is chestburster mechanic for damaging
 			chestburster.loc = get_turf(H)
 			chestburster.visible_message("<span class='danger'>[chestburster] bursts thru [H]'s chest!</span>")
 			chestburster.playsound_local(null, 'sound/voice/xenomorph/small_roar.ogg', 100, 1)
+			send_sound(chestburster, 'sound/voice/hiss5.ogg')
 			if(H.key)
 				H.death()
 				H.ghostize(can_reenter_corpse = FALSE, bancheck = TRUE)
