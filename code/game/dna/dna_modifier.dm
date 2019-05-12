@@ -296,12 +296,10 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/scan_consolenew/atom_init_late()
-	var/dir_initial = dir // so it doesnt rotate // we arent using initial(dir), cause we need the current one
-	for(dir in list(NORTH,EAST,SOUTH,WEST))
-		connected = locate(/obj/machinery/dna_scannernew, get_step(src, dir))
+	for(var/newdir in list(NORTH, EAST, SOUTH, WEST))
+		connected = locate(/obj/machinery/dna_scannernew, get_step(src, newdir))
 		if(!isnull(connected))
 			break
-	dir = dir_initial
 	spawn(250)
 		injector_ready = 1
 

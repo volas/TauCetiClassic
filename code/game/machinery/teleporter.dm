@@ -30,12 +30,10 @@
 /obj/machinery/computer/teleporter/proc/link_power_station()
 	if(power_station)
 		return
-	var/dir_initial // so it doesnt rotate // we arent using initial(dir), cause we need the current one
-	for(dir in list(NORTH,EAST,SOUTH,WEST))
-		power_station = locate(/obj/machinery/teleport/station, get_step(src, dir))
+	for(var/newdir in list(NORTH, EAST, SOUTH, WEST))
+		power_station = locate(/obj/machinery/teleport/station, get_step(src, newdir))
 		if(power_station)
 			break
-	dir = dir_initial
 	return power_station
 
 /obj/machinery/computer/teleporter/attackby(I, mob/living/user)

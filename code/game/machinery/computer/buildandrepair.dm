@@ -504,9 +504,9 @@
 				transfer_fingerprints_to(new_computer)
 				qdel(src)
 
-/obj/structure/computerframe/verb/rorate()
+/obj/structure/computerframe/verb/rotate()
 	set category = "Object"
-	set name = "Rorate"
+	set name = "Rotate"
 	set src in oview(1)
 	if(get_dist(src, usr) > 1 || usr.restrained() || usr.lying || usr.stat || issilicon(usr))
 		return

@@ -48,30 +48,26 @@
 
 /obj/machinery/computer/cloning/proc/findscanner()
 	var/obj/machinery/dna_scannernew/scannerf = null
-	var/dir_initial = dir // so it doesnt rotate // we arent using initial(dir), cause we need the current one
 	// Loop through every direction
-	for(dir in list(NORTH,EAST,SOUTH,WEST))
+	for(var/nextdir in list(NORTH, EAST, SOUTH, WEST))
 
 		// Try to find a scanner in that direction
-		scannerf = locate(/obj/machinery/dna_scannernew, get_step(src, dir))
+		scannerf = locate(/obj/machinery/dna_scannernew, get_step(src, nextdir))
 
 		// If found, then we break, and return the scanner
-		if (!isnull(scannerf))
+		if(!isnull(scannerf))
 			break
-	dir = dir_initial
 	// If no scanner was found, it will return null
 	return scannerf
 
 /obj/machinery/computer/cloning/proc/findcloner()
 	var/obj/machinery/clonepod/podf = null
-	var/dir_initial = dir
-	for(dir in list(NORTH,EAST,SOUTH,WEST))
+	for(var/newdir in list(NORTH, EAST, SOUTH, WEST))
 
-		podf = locate(/obj/machinery/clonepod, get_step(src, dir))
+		podf = locate(/obj/machinery/clonepod, get_step(src, newdir))
 
-		if (!isnull(podf))
+		if(!isnull(podf))
 			break
-	dir = dir_initial
 	return podf
 
 /obj/machinery/computer/cloning/attackby(obj/item/W, mob/user)

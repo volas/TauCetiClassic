@@ -14,13 +14,11 @@
 
 /obj/machinery/computer/operating/atom_init()
 	. = ..()
-	var/dir_initial = dir // so it doesnt rotate // we arent using initial(dir), cause we need the current one
-	for(dir in list(NORTH,EAST,SOUTH,WEST))
-		table = locate(/obj/machinery/optable, get_step(src, dir))
-		if (table)
+	for(var/newdir in list(NORTH, EAST, SOUTH, WEST))
+		table = locate(/obj/machinery/optable, get_step(src, newdir))
+		if(table)
 			table.computer = src
 			break
-	dir = dir_initial
 
 /obj/machinery/computer/operating/ui_interact(mob/user)
 	if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN|NOPOWER)) )
