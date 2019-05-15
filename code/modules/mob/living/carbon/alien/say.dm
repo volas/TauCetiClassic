@@ -5,8 +5,8 @@
 
 	message = sanitize(message)
 
-	if(copytext(message,1,2) == "*")
-		return emote(copytext(message,2))
+	if(copytext(message, 1, 2) == "*")
+		return emote(copytext(message, 2))
 
 	if (length(message) >= 1)
 		if (department_radio_keys[copytext(message, 1, 3)] == "alientalk")
