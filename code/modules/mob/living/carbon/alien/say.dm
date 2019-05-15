@@ -17,7 +17,7 @@
 			else
 				alien_talk(message)
 		else
-			if (copytext(message, 1, 2) != "*" && !stat)
+			if (!stat)
 				playsound(loc, "xenomorph_talk", 25, 1, 1)//So aliens can hiss while they hiss yo/N
 			return ..("<span class='alien'>[message]</span>", sanitize = 0)
 
