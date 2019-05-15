@@ -38,7 +38,7 @@
 		if("whimper")
 			if (!muzzled)
 				if(last_sound_emote < world.time)
-					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, 1)
+					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, TRUE)
 					message = "<B>The [src.name]</B> whimpers sadly."
 					m_type = 2
 					last_sound_emote = world.time + 4 SECONDS
@@ -50,7 +50,7 @@
 		if("roar")
 			if (!muzzled)
 				if(last_sound_emote < world.time)
-					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, 1)
+					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, TRUE)
 					message = "<B>The [src.name]</B> roars [pick("softly", "like a little predator")]."
 					m_type = 2
 					last_sound_emote = world.time + 4 SECONDS
@@ -101,7 +101,7 @@
 		if("hiss")
 			if(!muzzled)
 				if(last_sound_emote < world.time)
-					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, 1)
+					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, TRUE)
 					message = "<B>The [src.name]</B> hisses softly."
 					m_type = 2
 					last_sound_emote = world.time + 4 SECONDS
@@ -113,7 +113,7 @@
 		if("growl")
 			if(!muzzled)
 				if(last_sound_emote < world.time)
-					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, 1)
+					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, TRUE)
 					message = "<B>The [src.name]</B> growls softly."
 					m_type = 2
 				else

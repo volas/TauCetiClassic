@@ -29,7 +29,7 @@ Doesn't work on other aliens/AI.*/
 
 	if(powerc(50,1))
 		adjustToxLoss(-50)
-		playsound(src, 'sound/effects/resin_build.ogg', 33, 1)
+		playsound(src, 'sound/effects/resin_build.ogg', 33, TRUE)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(text("\green <B>[src] has planted some alien weeds!</B>"), 1)
 		new /obj/structure/alien/weeds/node(loc)
@@ -164,7 +164,7 @@ Doesn't work on other aliens/AI.*/
 		to_chat(src, "<span class='warning'>You're too tired to scream so loud again. You need [round((last_screech + screech_delay - world.time)/10)] seconds to rest...</span>")
 		return
 
-	playsound(src, 'sound/voice/xenomorph/queen_roar.ogg', 100, 0)
+	playsound(src, 'sound/voice/xenomorph/queen_roar.ogg', 100)
 	for(var/mob/living/carbon/human/H in oviewers())
 		if(H.sdisabilities & DEAF || H.stat == DEAD || istype(H.l_ear, /obj/item/clothing/ears/earmuffs) || istype(H.r_ear, /obj/item/clothing/ears/earmuffs))
 			to_chat(H, "<span class='warning'>You feel strong vibrations and quiet noise...</span>")
@@ -175,19 +175,19 @@ Doesn't work on other aliens/AI.*/
 		H.stuttering += 20
 		H.Weaken(3)
 		if(prob(30)) // long stun
-			H.playsound_local(null, 'sound/effects/mob/earring_30s.ogg', 100, 0)
+			H.playsound_local(null, 'sound/effects/mob/earring_30s.ogg', 100)
 			H.Stun(10)
 			H.ear_deaf += 30
 			if(H.stat != UNCONSCIOUS) // human is trying to yell and hear themselve.
 				H.show_message("[H.name] falls to their [pick("side", "knees")], covers their [pick("head", "ears")] and [pick("shrivels their face in agony", "it looks like screams loud")]!", "<span class='warning'>You're trying to scream in hopes of hearing your voice...</span>")
 				if(H.gender == FEMALE)
-					H.playsound_local(null, 'sound/effects/mob/earring_yell_female.ogg', 100, 0)
+					H.playsound_local(null, 'sound/effects/mob/earring_yell_female.ogg', 100)
 				else
-					H.playsound_local(null, 'sound/effects/mob/earring_yell_male.ogg', 100, 0)
+					H.playsound_local(null, 'sound/effects/mob/earring_yell_male.ogg', 100)
 			H.Paralyse(4)
 		else // short stun
 			H.ear_deaf += 15
-			H.playsound_local(null, 'sound/effects/mob/earring_15s.ogg', 100, 0)
+			H.playsound_local(null, 'sound/effects/mob/earring_15s.ogg', 100)
 			H.Stun(5)
 			H.Paralyse(2)
 	last_screech = world.time
@@ -302,7 +302,7 @@ Doesn't work on other aliens/AI.*/
 		if(!choice || !powerc(75))	return
 		adjustToxLoss(-75)
 		to_chat(src, "\green You shape a [choice].")
-		playsound(src, 'sound/effects/resin_build.ogg', 100, 1)
+		playsound(src, 'sound/effects/resin_build.ogg', 100, TRUE)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(text("\red <B>[src] vomits up a thick purple substance and begins to shape it!</B>"), 1)
 		switch(choice)
@@ -343,7 +343,7 @@ Doesn't work on other aliens/AI.*/
 
 	if(powerc(250, 1))
 		adjustToxLoss(-250)
-		playsound(src, 'sound/effects/resin_build.ogg', 100, 1)
+		playsound(src, 'sound/effects/resin_build.ogg', 100, TRUE)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(text("\green <B>[src] has planted some alien weeds!</B>"), 1)
 		new /obj/structure/alien/air_plant(loc)

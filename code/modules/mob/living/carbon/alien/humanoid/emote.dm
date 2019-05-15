@@ -32,7 +32,7 @@
 				if(last_sound_emote < world.time)
 					message = "<B>[src]</B> lets out a waning guttural screech, green blood bubbling from its maw..."
 					m_type = 1
-					playsound(src, 'sound/voice/xenomorph/death_1.ogg', 40, 1)
+					playsound(src, 'sound/voice/xenomorph/death_1.ogg', 40, TRUE)
 					last_sound_emote = world.time + 15 SECONDS
 					to_chat(src, "<span class='warning'>Pretending to be dead is not a good idea. I must fight for my Queen!</span>")
 				else
@@ -48,7 +48,7 @@
 				if(last_sound_emote < world.time)
 					message = "<B>The [src.name]</B> sadly [pick("screeches", "whines")]."
 					m_type = 2
-					playsound(src, 'sound/voice/xenomorph/whimper.ogg', 15, 1)
+					playsound(src, 'sound/voice/xenomorph/whimper.ogg', 15, TRUE)
 				else
 					to_chat(src, "<span class='warning'>You notice you make too much noises! You can give out your location to the hosts, you don't want to risk it!</span>")
 			else
@@ -59,7 +59,7 @@
 				if(last_sound_emote < world.time)
 					message = "<B>The [src.name]</B>[pick(" triumphantly", " menacingly", "")] roars."
 					m_type = 2
-					playsound(src, "xenomorph_roar", 70, 0)
+					playsound(src, "xenomorph_roar", 70)
 					last_sound_emote = world.time + 10 SECONDS
 				else
 					to_chat(src, "<span class='warning'>You notice you make too much noises! You can give out your location to the hosts, you don't want to risk it!</span>")
@@ -80,7 +80,7 @@
 				if(last_sound_emote < world.time)
 					message = "<B>The [src.name]</B> [pick("cheerfully", "joyfully")] hisses!"
 					m_type = 2
-					playsound(src, "xenomorph_hiss", 60, 0)
+					playsound(src, "xenomorph_hiss", 60)
 					last_sound_emote = world.time + 6 SECONDS
 				else
 					to_chat(src, "<span class='warning'>You notice you make too much noises! You can give out your location to the hosts, you don't want to risk it!</span>")
@@ -92,7 +92,7 @@
 				if(last_sound_emote < world.time)
 					message = "<B>The [src.name]</B>[pick(" predatory", " dissatisfied", " maliciously", " menacingly", " suspiciously", "")] hisses!"
 					m_type = 2
-					playsound(src, "xenomorph_hiss", 80, 0)
+					playsound(src, "xenomorph_hiss", 80)
 					last_sound_emote = world.time + 6 SECONDS
 				else
 					to_chat(src, "<span class='warning'>You notice you make too much noises! You can give out your location to the hosts, you don't want to risk it!</span>")
@@ -104,7 +104,7 @@
 				if(last_sound_emote < world.time)
 					message = "<B>The [src.name]</B>[pick(" relaxed", " predatory", " excitedly", " joyfully", " maliciously", " menacingly", " suspiciously", "")] growls."
 					m_type = 2
-					playsound(src, "xenomorph_growl", 80, 0)
+					playsound(src, "xenomorph_growl", 80)
 					last_sound_emote = world.time + 6 SECONDS
 				else
 					to_chat(src, "<span class='warning'>You notice you make too much noises! You can give out your location to the hosts, you don't want to risk it!</span>")
