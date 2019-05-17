@@ -179,7 +179,7 @@ Doesn't work on other aliens/AI.*/
 			H.Stun(10)
 			H.ear_deaf += 30
 			if(H.stat != UNCONSCIOUS) // human is trying to yell and hear themselve.
-				H.show_message("[H.name] falls to their [pick("side", "knees")], covers their [pick("head", "ears")] and [pick("shrivels their face in agony", "it looks like screams loud")]!", "<span class='warning'>You're trying to scream in hopes of hearing your voice...</span>")
+				H.visible_message("[H.name] falls to their [pick("side", "knees")], covers their [pick("head", "ears")] and [pick("shrivels their face in agony", "it looks like screams loud")]!", "<span class='warning'>You're trying to scream in hopes of hearing your voice...</span>")
 				if(H.gender == FEMALE)
 					H.playsound_local(null, 'sound/effects/mob/earring_yell_female.ogg', 100)
 				else
