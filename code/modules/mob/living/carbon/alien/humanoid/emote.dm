@@ -20,9 +20,8 @@
 			m_type = 1
 			to_chat(src, "<span class='warning'>Pretending to be dead is not a good idea. I must fight for my Queen!</span>")
 			if(CAN_MAKE_A_SOUND)
-				if(last_sound_emote < world.time)
-					playsound(src, 'sound/voice/xenomorph/death_1.ogg', 40, TRUE)
-					last_sound_emote = world.time + 7 SECONDS
+				playsound(src, 'sound/voice/xenomorph/death_1.ogg', 40, TRUE)
+				last_sound_emote = world.time + 7 SECONDS
 		if("whimper")
 			message = "<B>The [src.name]</B> sadly [pick("screeches", "whines")]."
 			m_type = 2
