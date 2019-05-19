@@ -12,51 +12,24 @@
 	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle)
 
 	switch(act)
-		if("me")
-			if(silent)
-				return
-			if (src.client)
-				if (client.prefs.muted & MUTE_IC)
-					to_chat(src, "<span class='warning'> You cannot send IC messages (muted).</span>")
-					return
-				if (src.client.handle_spam_prevention(message, MUTE_IC))
-					return
-			if (stat)
-				return
-			if(!(message))
-				return
-			return custom_emote(m_type, message)
 
-		if("custom")
-			return custom_emote(m_type, message)
-		if("scratch")
-			if (!src.restrained())
-				message = "<B>The [src.name]</B> scratches."
-				m_type = 1
+//  ========== SOUNDED ==========
+
+		if("hiss")
+			message = "<B>The [src.name]</B> hisses softly."
+			m_type = 2
+		if("growl")
+			message = "<B>The [src.name]</B> growls softly."
+			m_type = 2
 		if("whimper")
-			if (!muzzled)
-				if(last_sound_emote < world.time)
-					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, TRUE)
-					message = "<B>The [src.name]</B> whimpers sadly."
-					m_type = 2
-					last_sound_emote = world.time + 4 SECONDS
-				else
-					to_chat(src, "<span class='warning'>You can give out your location to the hosts, you don't want to risk it!</span>")
-			else
-				message = "<B>The [src.name]</B> makes a weak noise."
-				m_type = 2
+			message = "<B>The [src.name]</B> whimpers sadly."
+			m_type = 2
 		if("roar")
-			if (!muzzled)
-				if(last_sound_emote < world.time)
-					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, TRUE)
-					message = "<B>The [src.name]</B> roars [pick("softly", "like a little predator")]."
-					m_type = 2
-					last_sound_emote = world.time + 4 SECONDS
-				else
-					to_chat(src, "<span class='warning'>You can give out your location to the hosts, you don't want to risk it!</span>")
-			else
-				message = "<B>The [src.name]</B> makes a noise."
-				m_type = 2
+			message = "<B>The [src.name]</B> roars [pick("softly", "like a little predator")]."
+			m_type = 2
+
+//  ========== BASIC ==========
+
 		if("tail")
 			message = "<B>The [src.name]</B> waves its tail[pick(" like a snake", "")]."
 			m_type = 1
@@ -78,6 +51,12 @@
 		if("twitch")
 			message = "<B>The [src.name]</B> twitches violently."
 			m_type = 1
+		if("shake")
+			message = "<B>The [src.name]</B> shakes its head."
+			m_type = 1
+
+//  ========== EXTENDED ==========
+
 		if("dance")
 			if (!src.restrained())
 				message = "<B>The [src.name]</B> dances around [pick("happily", "joyfully")]."
@@ -86,49 +65,76 @@
 			if (!src.restrained())
 				message = "<B>The [src.name]</B> rolls [pick("like a snake", "on the floor", "around itslef")]."
 				m_type = 1
-		if("shake")
-			message = "<B>The [src.name]</B> shakes its head."
-			m_type = 1
 		if("gnarl")
 			if(!muzzled)
 				message = "<B>The [src.name]</B> gnarls and shows its teeth."
 				m_type = 1
 		if("jump")
-			message = "<B>The [src.name]</B> jumps around[pick(" happily", " joyfully", "")]."
-			m_type = 1
-		if("hiss")
-			if(!muzzled)
-				if(last_sound_emote < world.time)
-					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, TRUE)
-					message = "<B>The [src.name]</B> hisses softly."
-					m_type = 2
-					last_sound_emote = world.time + 4 SECONDS
-				else
-					to_chat(src, "<span class='warning'>You can give out your location to the hosts, you don't want to risk it!</span>")
-			else
-				message = "<B>The [src.name]</B> makes a weak noise."
+			if(!src.restrained())
+				message = "<B>The [src.name]</B> jumps around[pick(" happily", " joyfully", "")]."
+				m_type = 1
+		if("scratch")
+			if (!src.restrained())
+				message = "<B>The [src.name]</B> scratches."
+				m_type = 1
+
+//  ========== SPECIAL ==========
+
+		if ("custom")
+			var/input = sanitize(input("Choose an emote to display.") as text|null)
+			if (!input)
+				return
+			var/input2 = input("Is this a visible or hearable emote?") in list("Visible","Hearable")
+			if (input2 == "Visible")
+				m_type = 1
+			else if (input2 == "Hearable")
+				if (has_trait(TRAIT_MUTE))
+					return
 				m_type = 2
-		if("growl")
-			if(!muzzled)
-				if(last_sound_emote < world.time)
-					playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 100, TRUE)
-					message = "<B>The [src.name]</B> growls softly."
-					m_type = 2
-				else
-					to_chat(src, "<span class='warning'>You can give out your location to the hosts, you don't want to risk it!</span>")
 			else
-				message = "<B>The [src.name]</B> makes a weak noise."
+				alert("Unable to use this emote, must be either hearable or visible.")
+				return
+			return custom_emote(m_type, message)
+		if ("me")
+			if (src.client)
+				if (client.prefs.muted & MUTE_IC)
+					to_chat(src, "\red You cannot send IC messages (muted).")
+					return
+				if (src.client.handle_spam_prevention(message,MUTE_IC))
+					return
+			if (stat)
+				return
+			if(!(message))
+				return
+			return custom_emote(m_type, message)
 		if("help")
-			to_chat(src, "<span class ='notice'>SOUNDED IN <B>BOLD</B>:   dance, drool, grin, jump, <B>hiss</B>, nod, \
-			                                                              <B>roar</B>, roll, scratch, shake, sit, sway, tail, twitch, <B>whimper</B>, <B>growl</B></span>")
+			to_chat(src, "<span class ='notice'>SOUNDED IN <B>BOLD</B>:   dance, drool, grin, jump, <B>hiss</B>, nod, <B>roar</B>, roll, custom, me, \
+			                                                              scratch, shake, sit, sway, tail, twitch, <B>whimper</B>, <B>growl</B></span>")
 		else
 			to_chat(src, "<span class='notice'>This action is not provided: \"[act]\". Write \"*help\" to find out all available emotes. Write \"*me\" or \"*custom\" to do your own emote. \
 			                                   Otherwise, you can perform your action via the \"F4\" button.</span>")
 	if(message)
+		if(muzzled && (m_type & 2))
+			message = "<B>The [src.name]</B>[pick("", " looks around angrily and", " shakes violently and")] makes a[pick("", " very faint", " very weak", " very quiet")] noise."
+		if(m_type & 2)
+			if(last_sound_emote < world.time)
+				last_sound_emote = world.time + 4 SECONDS
+			else
+				to_chat(src, "<span class='warning'>You notice you make too much noises! You can give out your location to the hosts, you don't want to risk it!</span>")
+				return
 		log_emote("[name]/[key] : [message]")
+
+		for(var/mob/M in observer_list)
+			if(!M.client)
+				continue //skip leavers
+			if((M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(src,null)))
+				M.show_message(message)
+
 		if(m_type & 1)
 			for(var/mob/O in viewers(src, null))
 				O.show_message(message, m_type)
 		else if(m_type & 2)
+			if(!muzzled)
+				playsound(src, 'sound/voice/xenomorph/small_roar.ogg', 60, TRUE)
 			for(var/mob/O in hearers(src, null))
 				O.show_message(message, m_type)
