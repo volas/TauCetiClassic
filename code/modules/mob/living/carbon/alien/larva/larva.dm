@@ -15,7 +15,6 @@
 	var/amount_grown = 0
 	var/max_grown = 200
 	var/time_of_birth
-	var/last_sound_emote = 0 //prevents sounds spam
 
 	var/obj/item/clothing/suit/wear_suit = null		//TODO: necessary? Are they even used? ~Carn
 	var/obj/item/weapon/r_store = null

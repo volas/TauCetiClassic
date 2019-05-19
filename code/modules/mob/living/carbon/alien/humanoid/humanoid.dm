@@ -8,7 +8,6 @@
 	var/obj/item/weapon/r_store = null
 	var/obj/item/weapon/l_store = null
 	var/caste = ""
-	var/last_sound_emote = 0 // prevents sounds spam
 	//var/perception = 0 //0 - standart mode, 1 - SEE_TURF mode
 	var/praetorians = 2
 	//update_icon = 1
