@@ -99,7 +99,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 		S.falloff = (falloff ? falloff : FALLOFF_SOUNDS)
 	if(!is_global)
 		S.environment = 2
-	if(src.stat == UNCONSCIOUS || src.sleeping > 0) // unconscious people will hear illegible sounds
+	if(src.stat == UNCONSCIOUS) // unconscious people will hear illegible sounds
 		S.volume /= 3
 		S.environment = 10
 	src << S
