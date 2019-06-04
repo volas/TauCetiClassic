@@ -248,8 +248,10 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	for(var/client/C in clients)
 		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+			to_chat(C, "addr byond://[config.server]")
 			C << link("byond://[config.server]")
 		else
+			to_chat(C, "addr byond://[world.address]:[world.port]")
 			C << link("byond://[world.address]:[world.port]")
 
 	..(reason)
