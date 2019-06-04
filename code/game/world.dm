@@ -254,6 +254,13 @@ var/world_topic_spam_protect_time = world.timeofday
 			to_chat(C, "addr byond://[world.address]:[world.port]")
 			C << link("byond://[world.address]:[world.port]")
 
+	if(fexists("scripts/hooks/round_end.sh")) //nevermind, we drop windows support for this things a little
+		var/list/O = world.shelleo("./scripts/hooks/round_end.sh")
+		if(O[SHELLEO_ERRORLEVEL])
+			world.log << O[SHELLEO_STDERR]
+		else
+			world.log << O[SHELLEO_STDOUT]
+
 	..(reason)
 
 
