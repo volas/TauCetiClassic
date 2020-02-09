@@ -59,6 +59,7 @@
 	armor = list(melee = 30, bullet = 10, laser = 10,energy = 20, bomb = 20, bio = 20, rad = 20)
 	allowed = list(/obj/item/weapon/teleportation_scroll)
 	flags_inv = HIDEJUMPSUIT
+	flags = ONESIZEFITSALL
 	siemens_coefficient = 0.4
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
@@ -80,12 +81,12 @@
 	icon_state = "redwizard"
 	item_state = "redwizrobe"
 
-
 /obj/item/clothing/suit/wizrobe/marisa
 	name = "witch robe"
 	desc = "Magic is all about the spell power, ZE!"
 	icon_state = "marisa"
 	item_state = "marisarobe"
+	flags = null  //reset for ONESIZEFITSALL
 
 /obj/item/clothing/suit/wizrobe/magusblue
 	name = "magus robe"
@@ -126,6 +127,7 @@
 	desc = "Strange-looking hat-wear, makes you want to cast fireballs."
 	icon_state = "marisa"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	flags = null
 
 /obj/item/clothing/suit/wizrobe/marisa/fake
 	name = "witch robe"
@@ -134,3 +136,4 @@
 	item_state = "marisarobe"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	flags = null

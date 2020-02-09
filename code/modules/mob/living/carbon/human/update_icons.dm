@@ -430,6 +430,7 @@ Please contact me on #coderbus IRC. ~Carn x
 
 		if(HAS_TRAIT(src, TRAIT_FAT))
 			if(U.flags & ONESIZEFITSALL)
+				world.log << "render new dmi"
 				standing.icon	= 'icons/mob/uniform_fat.dmi'
 			else
 				to_chat(src, "<span class='warning'>You burst out of \the [U]!</span>")
