@@ -402,7 +402,7 @@
 									if(ishuman(M))
 										var/mob/living/carbon/human/H = M
 										H.vars[variable] = new_value
-										H.update_height()
+										H.apply_height_filter()
 								else
 									M.vars[variable] = O.vars[variable]
 						CHECK_TICK
