@@ -286,11 +286,13 @@ var/global/list/blacklisted_builds = list(
 
 	connection_time = world.time
 
-	if(custom_event_msg && custom_event_msg != "")
-		to_chat(src, "<h1 class='alert'>Custom Event</h1>")
-		to_chat(src, "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>")
-		to_chat(src, "<span class='alert'>[custom_event_msg]</span>")
-		to_chat(src, "<br>")
+	if(SSticker.custom_event_msg && SSticker.custom_event_msg != "")
+		to_chat(src, CUSTOM_EVENT_MESSAGE_FORMATTED)
+
+	if(length(SSticker.admin_events))
+		for(var/datum/admin_event/AE in SSticker.admin_events)
+			if(length(AE.player_verbs))
+				verbs |= AE.player_verbs
 
 	if( (world.address == address || !address) && !host )
 		host = key

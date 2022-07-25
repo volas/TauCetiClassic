@@ -30,6 +30,12 @@
 	desc = "A tank of oxygen, this one is red."
 	icon_state = "oxygen_fr"
 
+// todo: event green tank, but we don't have green sprite so temporary made with yellow sprite + blue color
+/obj/item/weapon/tank/oxygen/green
+	desc = "A tank of oxygen, this one is green."
+	icon_state = "oxygen_f"
+	color = "#00ff00" // pls halp me
+
 /*
  * Anesthetic
  */

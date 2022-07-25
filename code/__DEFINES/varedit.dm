@@ -14,6 +14,7 @@
 		/atom/movable/screen/buildmode,\
 		/datum/tgui_list_input,\
 		/datum/tgui_modal,\
+		/datum/admin_event,\
 	)
 
 /* protected variables */

@@ -17,6 +17,9 @@ SUBSYSTEM_DEF(ticker)
 	var/datum/modesbundle/bundle = null
 	var/datum/game_mode/mode = null
 
+	var/custom_event_msg = null
+	var/list/admin_events
+
 	var/login_music			// music played in pregame lobby
 
 	var/list/datum/mind/minds = list() //The people in the game. Used for objective tracking.

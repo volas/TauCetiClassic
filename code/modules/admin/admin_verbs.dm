@@ -204,6 +204,7 @@ var/global/list/admin_verbs_permissions = list(
 	/client/proc/regisration_panic_bunker,
 	/client/proc/host_announcements,
 	/client/proc/add_round_admin,
+	/client/proc/load_admin_event,
 	)
 var/global/list/admin_verbs_rejuv = list(
 	/client/proc/cmd_admin_rejuvenate,
@@ -1142,7 +1143,7 @@ var/global/list/admin_verbs_hideable = list(
 	message_admins("[key_name_admin(src)] started loading event-map [choice]")
 	log_admin("[key_name(src)] started loading event-map [choice]")
 
-	if(maploader.load_new_z_level(choice, linkage))//, load_speed = 100)
+	if(maploader.load_new_z_level(choice, list(ZTRAIT_LINKAGE = linkage)))//, load_speed = 100)
 		message_admins("[key_name_admin(src)] loaded event-map [choice], zlevel [world.maxz], linkage [linkage ? linkage : "not set"]")
 		log_admin("[key_name(src)] loaded event-map [choice], zlevel [world.maxz], linkage [linkage ? linkage : "not set"]")
 	else

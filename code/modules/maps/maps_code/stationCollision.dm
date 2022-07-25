@@ -20,24 +20,38 @@
  */
 //Gateroom gets its own APC specifically for the gate
 /area/awaymission/stationcollision/gateroom
+	name = "Away Mission Gateway"
+	icon_state = "exit"
 
 //Library, medbay, storage room
 /area/awaymission/stationcollision/southblock
+	name = "South Block"
+	icon_state = "away3"
 
 //Arrivals, security, hydroponics, shuttles (since they dont move, they dont need specific areas)
 /area/awaymission/stationcollision/arrivalblock
+	name = "Arrival Block"
+	icon_state = "away"
 
 //Crew quarters, cafeteria, chapel
 /area/awaymission/stationcollision/midblock
+	name = "Middle Block"
+	icon_state = "away2"
 
 //engineering, bridge (not really north but it doesnt really need its own APC)
 /area/awaymission/stationcollision/northblock
+	name = "North Block"
+	icon_state = "away1"
 
 //That massive research room
 /area/awaymission/stationcollision/research
+	name = "Research Block"
+	icon_state = "away4"
 
 //Syndicate shuttle
 /area/awaymission/stationcollision/syndishuttle
+	name = "Syndicate Crash Site"
+	icon_state = "red2"
 
 
 /*

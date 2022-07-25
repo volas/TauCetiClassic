@@ -4,6 +4,10 @@
 
 /var/global/log_end = world.system_type == UNIX ? ascii2text(13) : ""
 
+//gives us the stack trace from CRASH() without ending the current proc.
+/proc/stack_trace(msg)
+	CRASH(msg)
+
 //print an error message to world.log
 #define ERROR(MSG) error("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
 /proc/error(msg)

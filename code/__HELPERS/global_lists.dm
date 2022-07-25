@@ -249,6 +249,10 @@
 	for(var/emote_type in subtypesof(/datum/emote))
 		global.all_emotes[emote_type] = new emote_type
 
+	global.admin_events_types = list()
+	for(var/datum/admin_event/event in subtypesof(/datum/admin_event))
+		admin_events_types[initial(event.name)] = event
+
 /proc/init_joblist() // Moved here because we need to load map config to edit jobs, called from SSjobs
 	//List of job. I can't believe this was calculated multiple times per tick!
 	for(var/T in (subtypesof(/datum/job) - list(/datum/job/ai,/datum/job/cyborg)))
