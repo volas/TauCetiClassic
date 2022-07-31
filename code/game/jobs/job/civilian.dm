@@ -227,6 +227,28 @@
 	*/
 	restricted_species = list(SKRELL, UNATHI, TAJARAN, DIONA, VOX)
 
+/datum/job/pilot
+	title = "Pilot Officer"
+	flag = PO
+	department_flag = CIVILIAN
+	faction = "Station"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "The Central Command"
+	selection_color = "#919fe2"
+	idtype = /obj/item/weapon/card/id/po
+	access = list(access_sec_doors, access_heads, access_medical, access_research, access_mailsorting, access_engineering_lobby, access_mining_station, access_xenoarch, access_external_airlocks, access_maint_tunnels, access_expedition_shuttles)
+	salary = 200
+	minimal_player_ingame_minutes = 10000
+	outfit = /datum/outfit/job/po
+	skillsets = list("Pilot Officer" = /datum/skillset/pilot_officer)
+	/*
+		HEY YOU!
+		ANY TIME YOU TOUCH THIS, PLEASE CONSIDER GOING TO preferences_savefile.dm
+		AND BUMPING UP THE SAVEFILE_VERSION_MAX, AND SAVEFILE_VERSION_SPECIES_JOBS
+		~Luduk
+	*/
+	restricted_species = list(SKRELL, UNATHI, TAJARAN, DIONA, VOX)
 
 /datum/job/clown
 	title = "Clown"
@@ -268,26 +290,3 @@
 		H.AddSpell(new /obj/effect/proc_holder/spell/targeted/forcewall/mimewall)
 		H.AddSpell(new /obj/effect/proc_holder/spell/no_target/mime_speak)
 		H.miming = TRUE
-
-/datum/job/pilot
-	title = "Pilot Officer"
-	flag = PO
-	department_flag = CIVILIAN
-	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "The Central Command"
-	selection_color = "#3f2ff1"
-	idtype = /obj/item/weapon/card/id/po
-	access = list(access_sec_doors, access_medical, access_research, access_mailsorting, access_engineering_lobby, access_mining_station, access_xenoarch, access_external_airlocks, access_maint_tunnels, access_expedition_shuttles)
-	salary = 200
-	minimal_player_ingame_minutes = 10000
-	outfit = /datum/outfit/job/lawyer
-	skillsets = list("Pilot Officer" = /datum/skillset/pilot_officer)
-	/*
-		HEY YOU!
-		ANY TIME YOU TOUCH THIS, PLEASE CONSIDER GOING TO preferences_savefile.dm
-		AND BUMPING UP THE SAVEFILE_VERSION_MAX, AND SAVEFILE_VERSION_SPECIES_JOBS
-		~Luduk
-	*/
-	restricted_species = list(SKRELL, UNATHI, TAJARAN, DIONA, VOX)

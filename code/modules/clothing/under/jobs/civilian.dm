@@ -109,7 +109,7 @@
 	flags = ONESIZEFITSALL
 
 /obj/item/clothing/under/rank/pilot_officer
-	desc = "Удобная облегающая форма, которую носят професиональный ."
+	desc = "Comfortable tight uniform worn by professional pilots ."
 	name = "Pilot Officier's uniform"
 	icon_state = "nt_pmc_uniform"
 	item_state = "nt_pmc_uniform"
