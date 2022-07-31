@@ -100,6 +100,14 @@
 	item_state = "int_headset"
 	ks2type = /obj/item/device/encryptionkey/headset_int
 
+/obj/item/device/radio/headset/headset_po
+	name = "pillot officer's radio headset"
+	desc = "The headset of NT's trusted pilot. Channels are as follows: :c - command, :s - security, :u - supply, :n - science."
+	icon = 'icons/obj/radio.dmi'
+	icon_state = "int_headset"
+	item_state = "int_headset"
+	ks2type = /obj/item/device/encryptionkey/headset_po
+
 /obj/item/device/radio/headset/headset_eng
 	name = "engineering radio headset"
 	desc = "When the engineers wish to chat like girls. To access the engineering channel, use :e. "

@@ -29,6 +29,16 @@
 		/datum/skill/police = SKILL_LEVEL_NOVICE
 	)
 
+/datum/skillset/pilot_officer
+	name = "Pilot Officer"
+	initial_skills = list(
+		/datum/skill/command = SKILL_LEVEL_TRAINED,
+		/datum/skill/police = SKILL_LEVEL_TRAINED,
+		/datum/skill/firearms = SKILL_LEVEL_TRAINED,
+		/datum/skill/civ_mech = SKILL_LEVEL_TRAINED,
+		/datum/skill/combat_mech = SKILL_LEVEL_NOVICE
+	)
+
 /datum/skillset/bartender
 	name = "Bartender"
 	initial_skills = list(

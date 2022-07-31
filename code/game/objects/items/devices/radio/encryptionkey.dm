@@ -39,6 +39,12 @@
 	icon_state = "int_cypherkey"
 	channels = list("Security" = 1, "Command" = 1)
 
+/obj/item/device/encryptionkey/headset_po
+	name = "Pilot Officier's Encryption Key"
+	desc = "An encyption key for a radio headset.  Contains cypherkeys."
+	icon_state = "int_cypherkey"
+	channels = list("Command" = 1, "Supply" = 1, "Science" = 0, "Security" = 0)
+
 /obj/item/device/encryptionkey/headset_eng
 	name = "Engineering Radio Encryption Key"
 	desc = "An encyption key for a radio headset.  Contains cypherkeys."

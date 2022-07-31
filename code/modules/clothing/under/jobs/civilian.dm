@@ -108,6 +108,12 @@
 	item_state = "internalaffairs"
 	flags = ONESIZEFITSALL
 
+/obj/item/clothing/under/rank/pilot_officer
+	desc = "Удобная облегающая форма, которую носят професиональный ."
+	name = "Pilot Officier's uniform"
+	icon_state = "nt_pmc_uniform"
+	item_state = "nt_pmc_uniform"
+	flags = ONESIZEFITSALL
 
 /obj/item/clothing/under/rank/janitor
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."

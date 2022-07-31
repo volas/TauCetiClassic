@@ -203,6 +203,12 @@
 	icon_state = "int"
 	item_state = "int_id"
 
+/obj/item/weapon/card/id/po
+	name = "identification card"
+	desc = "A card issued to pilot officer."
+	icon_state = "civGold"
+	item_state = "civGold_id"
+
 /obj/item/weapon/card/id/secGold
 	name = "identification card"
 	desc = "A card which represents honor and protection."

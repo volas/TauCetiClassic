@@ -51,6 +51,8 @@ var/global/const/MIME				=(1<<12)
 var/global/const/ASSISTANT			=(1<<13)
 var/global/const/RECYCLER			=(1<<14)
 var/global/const/BARBER			=(1<<15)
+var/global/const/PO					=(1<<16)
+
 
 var/global/list/assistant_occupations = list(
 )
@@ -62,7 +64,7 @@ var/global/list/command_positions = list(
 	"Head of Security",
 	"Chief Engineer",
 	"Research Director",
-	"Chief Medical Officer"
+	"Chief Medical Officer",
 )
 
 
@@ -110,6 +112,7 @@ var/global/list/civilian_positions = list(
 	"Shaft Miner",
 	"Recycler",
 	"Internal Affairs Agent",
+	"Pilot Officer",
 	"Chaplain",
 	"Test Subject",
 	"Clown",
