@@ -31,9 +31,8 @@
 	r_hand_back = /obj/item/weapon/storage/box/ids
 
 // PO
-
 /datum/outfit/job/po
-	name = OUTFIT_JOB_NAME("Pilot officer")
+	name = OUTFIT_JOB_NAME("Pilot Officer")
 
 	head = /obj/item/clothing/head/soft/nt_pmc_cap
 	uniform = /obj/item/clothing/under/rank/pilot_officer

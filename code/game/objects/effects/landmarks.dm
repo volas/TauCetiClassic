@@ -164,6 +164,10 @@
 	name = "Internal Affairs Agent"
 	icon_state = "Internal Affairs Agent"
 
+/obj/effect/landmark/start/pilot_officer
+	name = "Pilot Officer"
+	icon_state = "Pilot Officer"
+
 /obj/effect/landmark/start/clown
 	name = "Clown"
 	icon_state = "Clown"
