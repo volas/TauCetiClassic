@@ -31300,7 +31300,7 @@
 "bdL" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/captain,
+/obj/item/weapon/skill_cartridge/usp10,
 /turf/simulated/floor/wood,
 /area/station/bridge/captain_quarters)
 "bdM" = (
@@ -31400,6 +31400,7 @@
 	name = "Station Intercom (General)";
 	pixel_x = -30
 	},
+/obj/item/weapon/stamp/captain,
 /obj/item/device/megaphone,
 /turf/simulated/floor/wood,
 /area/station/bridge/captain_quarters)
@@ -31415,6 +31416,7 @@
 "bdV" = (
 /obj/structure/table/woodentable,
 /obj/item/device/flashlight/lamp/green,
+/obj/item/weapon/paper/cmf_manual,
 /turf/simulated/floor/wood,
 /area/station/bridge/captain_quarters)
 "bdW" = (
@@ -38991,10 +38993,12 @@
 	pixel_y = 20
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/structure/table/reinforced,
+/obj/item/weapon/paper/cmf_manual,
 /turf/simulated/floor{
 	icon_state = "dark"
 	},
-/area/station/bridge/server)
+/area/station/bridge/cmf_room)
 "brR" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -39065,10 +39069,8 @@
 	name = "Station Intercom (General)";
 	pixel_y = 20
 	},
-/obj/structure/stool/bed/chair/office/dark{
-	dir = 4
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/machinery/recharge_station,
 /turf/simulated/floor{
 	icon_state = "dark"
 	},
@@ -40056,7 +40058,7 @@
 /turf/simulated/floor{
 	icon_state = "dark"
 	},
-/area/station/bridge/server)
+/area/station/bridge/cmf_room)
 "btM" = (
 /obj/machinery/hologram/holopad,
 /obj/structure/cable{
@@ -40849,17 +40851,11 @@
 /obj/machinery/light_switch{
 	pixel_y = -25
 	},
-/obj/machinery/camera{
-	c_tag = "Messaging Server";
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
-/area/station/bridge/server)
+/turf/simulated/floor/bluegrid,
+/area/station/bridge/cmf_room)
 "bvi" = (
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -41940,10 +41936,6 @@
 /turf/simulated/floor,
 /area/station/medical/surgery2)
 "bwS" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Messaging Server";
-	req_access = list(30)
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -41955,11 +41947,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/airlock/highsecurity{
+	name = "CMF altering";
+	req_access = list(60)
+	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor{
 	icon_state = "dark"
 	},
-/area/station/bridge/server)
+/area/station/bridge/cmf_room)
 "bwT" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -42798,13 +42794,14 @@
 	},
 /area/station/hallway/primary/port)
 "byt" = (
-/obj/machinery/message_server,
-/turf/simulated/floor/bluegrid,
-/area/station/bridge/server)
+/turf/simulated/floor{
+	icon_state = "dark"
+	},
+/area/station/bridge/cmf_room)
 "byu" = (
 /obj/machinery/power/apc{
 	dir = 1;
-	name = "Messaging Server APC";
+	name = "USP implanting APC";
 	pixel_y = 24
 	},
 /obj/structure/cable{
@@ -42812,8 +42809,12 @@
 	icon_state = "0-2";
 	pixel_y = 1
 	},
-/turf/simulated/floor/bluegrid,
-/area/station/bridge/server)
+/obj/structure/table/reinforced,
+/obj/machinery/computer/skills_console,
+/turf/simulated/floor{
+	icon_state = "dark"
+	},
+/area/station/bridge/cmf_room)
 "byv" = (
 /obj/machinery/camera{
 	c_tag = "Recycler Lobby";
@@ -42829,7 +42830,7 @@
 /area/station/cargo/recycleroffice)
 "byw" = (
 /turf/simulated/wall/r_wall,
-/area/station/bridge/server)
+/area/station/bridge/cmf_room)
 "byx" = (
 /obj/machinery/camera{
 	c_tag = "Pre Vault"
@@ -42895,16 +42896,12 @@
 	name = "Cyborg Station APC";
 	pixel_y = 24
 	},
-/obj/structure/table,
-/obj/item/weapon/phone{
-	pixel_x = -3;
-	pixel_y = 3
-	},
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2";
 	pixel_y = 1
 	},
+/obj/machinery/computer/message_monitor,
 /turf/simulated/floor/bluegrid,
 /area/station/bridge/comms{
 	name = "Cyborg Station"
@@ -43544,6 +43541,7 @@
 /obj/structure/table,
 /obj/item/weapon/folder/blue,
 /obj/item/weapon/stamp/hop,
+/obj/item/weapon/paper/cmf_manual,
 /turf/simulated/floor,
 /area/station/bridge/hop_office)
 "bzM" = (
@@ -43553,13 +43551,15 @@
 /turf/simulated/floor,
 /area/station/bridge/hop_office)
 "bzN" = (
-/obj/machinery/computer/message_monitor{
-	dir = 4
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/highsecurity{
+	name = "CMF altering";
+	req_access = list(57)
 	},
 /turf/simulated/floor{
 	icon_state = "dark"
 	},
-/area/station/bridge/server)
+/area/station/bridge/hop_office)
 "bzO" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -43569,7 +43569,7 @@
 /turf/simulated/floor{
 	icon_state = "dark"
 	},
-/area/station/bridge/server)
+/area/station/bridge/cmf_room)
 "bzP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -44597,18 +44597,15 @@
 /obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/station/maintenance/engineering)
-"bBH" = (
-/obj/machinery/blackbox_recorder,
-/turf/simulated/floor/bluegrid,
-/area/station/bridge/server)
 "bBI" = (
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
 /obj/machinery/light/small,
+/obj/machinery/optable/skill_scanner,
 /turf/simulated/floor/bluegrid,
-/area/station/bridge/server)
+/area/station/bridge/cmf_room)
 "bBJ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -44683,13 +44680,13 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/machinery/recharge_station,
+/obj/machinery/blackbox_recorder,
 /turf/simulated/floor/bluegrid,
 /area/station/bridge/comms{
 	name = "Cyborg Station"
 	})
 "bBR" = (
-/obj/machinery/recharge_station,
+/obj/machinery/message_server,
 /turf/simulated/floor/bluegrid,
 /area/station/bridge/comms{
 	name = "Cyborg Station"
@@ -64943,6 +64940,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/status_display{
+	layer = 4;
+	pixel_x = 32
+	},
 /turf/simulated/floor{
 	dir = 5;
 	icon_state = "blue"
@@ -68519,10 +68520,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor{
 	dir = 4;
@@ -71736,6 +71733,12 @@
 	icon_state = "blue"
 	},
 /area/station/medical/reception)
+"fTn" = (
+/obj/structure/closet/secure_closet/usp_cartridges,
+/turf/simulated/floor{
+	icon_state = "dark"
+	},
+/area/station/bridge/cmf_room)
 "fUb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -74419,10 +74422,6 @@
 /turf/simulated/floor/carpet,
 /area/station/civilian/library)
 "iTp" = (
-/obj/machinery/status_display{
-	layer = 4;
-	pixel_x = 32
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -74432,6 +74431,10 @@
 	dir = 9
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor{
 	dir = 4;
 	icon_state = "blue"
@@ -76874,6 +76877,9 @@
 	icon_state = "yellow"
 	},
 /area/station/hallway/primary/aft)
+"lJR" = (
+/turf/simulated/floor/bluegrid,
+/area/station/bridge/cmf_room)
 "lKb" = (
 /turf/simulated/floor{
 	dir = 4;
@@ -114242,7 +114248,7 @@ bra
 bra
 bra
 bra
-bra
+bzN
 bra
 bra
 cxb
@@ -114498,9 +114504,9 @@ aah
 aaa
 aaa
 byw
+fTn
 byt
-bzN
-bBH
+lJR
 byw
 cxe
 ovb
