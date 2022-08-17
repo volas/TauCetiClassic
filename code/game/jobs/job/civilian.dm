@@ -239,7 +239,7 @@
 	idtype = /obj/item/weapon/card/id/po
 	access = list(access_sec_doors, access_heads, access_medical, access_research, access_mailsorting, access_engineering_lobby, access_mining_station, access_xenoarch, access_external_airlocks, access_maint_tunnels, access_expedition_shuttles)
 	salary = 200
-	minimal_player_ingame_minutes = 10000
+	minimal_player_ingame_minutes = 20000
 	outfit = /datum/outfit/job/po
 	skillsets = list("Pilot Officer" = /datum/skillset/pilot_officer)
 	/*
