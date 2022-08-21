@@ -1,4 +1,4 @@
-/obj/docking_port/stationary/ 
+/obj/docking_port/stationary/daedalus 
 	name = "Daedalus hangar pad"
 	id = SHUTTLE_EXPLORATION
 	roundstart_template = /datum/map_template/shuttle/daedalus

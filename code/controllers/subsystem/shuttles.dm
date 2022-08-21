@@ -66,6 +66,15 @@ SUBSYSTEM_DEF(shuttle)
 	var/datum/announcement/station/shuttle/emer_docked/announce_emer_docked = new
 	var/datum/announcement/station/shuttle/emer_left/announce_emer_left = new
 
+	var/list/mobile = list()
+	var/list/stationary = list()
+	var/list/transit = list()
+
+	/// For ID generation
+	var/list/assoc_mobile = list()
+	/// For ID generation
+	var/list/assoc_stationary = list()
+
 	//var/datum/round_event/shuttle_loan/shuttle_loan
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
@@ -75,7 +84,9 @@ SUBSYSTEM_DEF(shuttle)
 	for(var/typepath in subtypesof(/datum/supply_pack))
 		var/datum/supply_pack/P = new typepath()
 		supply_packs[ckey(P.name)] = P		//Convert to canonical form to avoid possible problems resulting from punctuation
-
+	for(var/s in stationary)
+		var/obj/docking_port/stationary/S = s
+		S.load_roundstart()
 	..()
 
 /datum/controller/subsystem/shuttle/fire()
@@ -649,6 +660,13 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/set_eta_timeofday(flytime = SSshuttle.movetime)
 	eta_timeofday = (REALTIMEOFDAY + flytime) % MIDNIGHT_ROLLOVER
+
+/datum/controller/subsystem/shuttle/proc/action_load(datum/map_template/shuttle/loading_template, obj/docking_port/stationary/destination_port)
+	var/T = get_turf(destination_port)
+	var/sid = "[initial(loading_template.shuttle_id)]"
+	var/datum/map_template/shuttle/shuttle = shuttle_templates[sid]
+	shuttle.load(T, centered = TRUE, initBounds = FALSE)
+
 
 /obj/effect/bgstar
 	name = "star"

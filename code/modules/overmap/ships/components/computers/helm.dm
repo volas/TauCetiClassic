@@ -11,3 +11,5 @@
 	var/accellimit = 0.001 //manual limiter for acceleration
 	/// The mob currently operating the helm - The last one to click one of the movement buttons and be on the overmap screen. Set to `null` for autopilot or when the mob isn't in range.
 	var/mob/current_operator
+	/// The custom docking port placed by this console
+	var/obj/docking_port/stationary/my_port

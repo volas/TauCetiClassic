@@ -83225,7 +83225,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/medbay)
 "tDF" = (
-/obj/docking_port/mobile/daedalus,
+/obj/docking_port/stationary/daedalus,
 /turf/environment/space,
 /area/space)
 "tEw" = (
@@ -88460,7 +88460,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+tDF
 aaa
 aaa
 aaa
@@ -89231,7 +89231,7 @@ fgF
 aaa
 aaa
 aaa
-tDF
+aaa
 aaa
 aaa
 aaa

@@ -34,6 +34,11 @@
 
 
 
+/obj/docking_port/atom_init(mapload, ...)
+	. = ..()
+	if(!registered)
+		register()
+
 /obj/docking_port/proc/register()
 	if(registered)
 		WARNING("docking_port registered multiple times")
@@ -211,6 +216,42 @@
 	///The ID of the shuttle reserving this dock.
 	var/reservedId = null
 
+/obj/docking_port/stationary/proc/load_roundstart()
+	if(roundstart_template)
+		var/sid = "[initial(roundstart_template.shuttle_id)]"
+
+		roundstart_template = shuttle_templates[sid]
+		if(!roundstart_template)
+			CRASH("Invalid path ([roundstart_template]) passed to docking port.")
+
+	if(roundstart_template)
+		SSshuttle.action_load(roundstart_template, src)
+
+/obj/docking_port/stationary/register(replace = FALSE)
+	. = ..()
+	if(!id)
+		id = "dock"
+	else
+		port_destinations = id
+
+	if(!name)
+		name = "dock"
+
+	var/counter = SSshuttle.assoc_stationary[id]
+	if(!replace || !counter)
+		if(counter)
+			counter++
+			SSshuttle.assoc_stationary[id] = counter
+			id = "[id]_[counter]"
+			name = "[name] [counter]"
+		else
+			SSshuttle.assoc_stationary[id] = 1
+
+	if(!port_destinations)
+		port_destinations = id
+
+	SSshuttle.stationary += src
+
 /obj/docking_port/mobile
 	name = "shuttle"
 	icon_state = "pinonclose"
@@ -260,4 +301,3 @@
 
 	///Reference of the shuttle docker holding the mobile docking port
 	var/obj/machinery/computer/camera_advanced/shuttle_docker/shuttle_computer
-
