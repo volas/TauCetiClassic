@@ -14,7 +14,7 @@
 #define SHUTTLE_PREARRIVAL "pre-arrival"
 
 
-#define SHUTTLE_EXPLORATION "explorer"
+#define SHUTTLE_EXPLORATION "daedalus"
 
 //Shuttle defaults
 #define SHUTTLE_DEFAULT_SHUTTLE_AREA_TYPE /area/shuttle

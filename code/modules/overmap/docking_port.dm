@@ -261,16 +261,3 @@
 	///Reference of the shuttle docker holding the mobile docking port
 	var/obj/machinery/computer/camera_advanced/shuttle_docker/shuttle_computer
 
-/obj/docking_port/stationary/marine_dropship/minidropship
-	name = "Minidropship hangar pad"
-	id = SHUTTLE_EXPLORATION
-	// roundstart_template = /datum/map_template/shuttle/minidropship
-
-/obj/docking_port/mobile/marine_dropship/minidropship
-	name = "Tadpole"
-	id = SHUTTLE_EXPLORATION
-	dwidth = 0
-	dheight = 0
-	width = 7
-	height = 9
-	rechargeTime = 0

@@ -11067,6 +11067,7 @@
 /turf/simulated/floor,
 /area/station/security/prison)
 "asG" = (
+/obj/effect/landmark/start/pilot_officer,
 /turf/simulated/floor{
 	dir = 8;
 	icon_state = "warning"
@@ -70083,16 +70084,6 @@
 	icon_state = "white"
 	},
 /area/station/rnd/hallway)
-"dRO" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 5
-	},
-/turf/simulated/shuttle/floor/mining{
-	icon_state = "3-4,5,6"
-	},
-/area/space)
 "dSI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -70237,12 +70228,6 @@
 	},
 /turf/simulated/floor,
 /area/station/cargo/office)
-"ebE" = (
-/obj/structure/window/reinforced,
-/turf/simulated/shuttle/floor/mining{
-	icon_state = "3-4,5,6"
-	},
-/area/space)
 "ecb" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet,
@@ -72517,11 +72502,6 @@
 	icon_state = "red"
 	},
 /area/station/medical/reception)
-"gRv" = (
-/turf/simulated/shuttle/floor/mining{
-	icon_state = "3-4,5,6"
-	},
-/area/space)
 "gRB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -72807,12 +72787,6 @@
 	},
 /turf/simulated/floor/plating/airless{
 	icon_state = "platebot"
-	},
-/area/space)
-"hdK" = (
-/obj/machinery/door/unpowered/shuttle/wagon,
-/turf/simulated/shuttle/floor/mining{
-	icon_state = "3-4,5,6"
 	},
 /area/space)
 "hfb" = (
@@ -73340,17 +73314,6 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
 /area/station/maintenance/eva)
-"hOn" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/computer/ship/engines{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor/mining{
-	icon_state = "3-4,5,6"
-	},
-/area/space)
 "hOV" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -75915,10 +75878,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/storage/emergency)
-"kzp" = (
-/obj/machinery/power/apc/mediumcell,
-/turf/simulated/wall,
-/area/space)
 "kAe" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -76907,14 +76866,6 @@
 	icon_state = "vault"
 	},
 /area/station/civilian/bar)
-"lLF" = (
-/obj/machinery/computer/ship/helm{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor/mining{
-	icon_state = "3-4,5,6"
-	},
-/area/space)
 "lLL" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -82123,14 +82074,6 @@
 	},
 /turf/simulated/floor,
 /area/station/engineering/atmos)
-"siE" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor/mining{
-	icon_state = "3-4,5,6"
-	},
-/area/space)
 "siG" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -82823,12 +82766,6 @@
 	icon_state = "whitegreen"
 	},
 /area/station/medical/virology)
-"sTQ" = (
-/obj/effect/landmark/start/pilot_officer,
-/turf/simulated/shuttle/floor/mining{
-	icon_state = "3-4,5,6"
-	},
-/area/space)
 "sUb" = (
 /obj/structure/table/glass,
 /obj/item/weapon/paper_bin,
@@ -83287,6 +83224,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/medbay)
+"tDF" = (
+/obj/docking_port/mobile/daedalus,
+/turf/environment/space,
+/area/space)
 "tEw" = (
 /obj/effect/decal/remains/robot,
 /turf/simulated/floor/plating,
@@ -84878,15 +84819,6 @@
 	icon_state = "cafeteria"
 	},
 /area/station/civilian/kitchen)
-"xle" = (
-/obj/structure/window/reinforced,
-/obj/machinery/computer/ship/sensors{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor/mining{
-	icon_state = "3-4,5,6"
-	},
-/area/space)
 "xoA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 4
@@ -88526,9 +88458,9 @@ aaa
 aaa
 aaa
 aaa
-bkb
-dRO
-bkb
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -88783,9 +88715,9 @@ aaa
 aaa
 aaa
 aaa
-hOn
-lLF
-xle
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -89040,9 +88972,9 @@ aah
 aah
 aah
 aaa
-siE
-gRv
-ebE
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -89297,9 +89229,9 @@ ucj
 inL
 fgF
 aaa
-siE
-gRv
-ebE
+aaa
+aaa
+tDF
 aaa
 aaa
 aaa
@@ -89553,11 +89485,11 @@ aWq
 aXO
 aXT
 kAe
-bkb
-gRv
-gRv
-gRv
-bkb
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -89810,11 +89742,11 @@ aWt
 aXQ
 asG
 aUN
-hdK
-gRv
-sTQ
-gRv
-hdK
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -90067,11 +89999,11 @@ aRV
 aXR
 qCp
 kAe
-bkb
-gRv
-gRv
-gRv
-bkb
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -90325,9 +90257,9 @@ aXS
 inL
 inL
 aaa
-bkb
-gRv
-bkb
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -90582,9 +90514,9 @@ bOt
 inL
 aaa
 aaa
-bkb
-kzp
-bkb
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa

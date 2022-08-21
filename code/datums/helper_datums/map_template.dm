@@ -117,7 +117,7 @@
 	for(var/map in filelist)
 		var/datum/map_template/T = new /datum/map_template(path = "[path][map]", rename = "[map]")
 		map_templates[T.name] = T
-
+	preloadShuttleTemplates()
 	preloadShelterTemplates()
 	preloadHolodeckTemplates()
 	preloadSpaceStructuresTemplates()
@@ -149,3 +149,11 @@
 		var/datum/map_template/space_structure/S = new structure_type()
 		spacestructures_templates[S.structure_id] = S
 		map_templates[S.structure_id] = S
+
+/proc/preloadShuttleTemplates()
+	for(var/item in subtypesof(/datum/map_template/shuttle))
+		var/datum/map_template/shuttle/shuttle_type = item
+		var/datum/map_template/shuttle/S = new shuttle_type()
+
+		shuttle_templates[S.shuttle_id] = S
+		map_templates[S.shuttle_id] = S
