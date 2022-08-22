@@ -2,7 +2,7 @@
 #define SPACE_STRUCTURES_AMOUNT 7
 #define MAX_MINING_SECRET_ROOM 5
 // Uncomment to enable debug output of structure coords
-//#define SPACE_STRUCTURES_DEBUG 1
+#define SPACE_STRUCTURES_DEBUG 1
 
 SUBSYSTEM_DEF(mapping)
 	name = "Mapping"
@@ -48,7 +48,6 @@ SUBSYSTEM_DEF(mapping)
 	preloadTemplates()
 	// Space structures
 	spawn_space_structures()
-
 	..()
 
 /datum/controller/subsystem/mapping/proc/make_mining_asteroid_secrets()
@@ -265,7 +264,7 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/autovote_next_map()
 	var/datum/map_config/current_next_map
 	var/should_revote = FALSE
-	
+
 	 // todo: for some reason maps in SSmapping don't have config/maps.txt params?
 	if(next_map_config)	// maybe we shouldn't if it's admin choice
 		current_next_map = global.config.maplist[next_map_config.map_name]

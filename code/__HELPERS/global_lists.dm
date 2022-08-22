@@ -245,6 +245,8 @@
 		var/datum/skillset/skillset = all_skillsets[s]
 		global.skillset_names_aliases[skillset.name] = s
 
+
+
 	global.all_emotes = list()
 	for(var/emote_type in subtypesof(/datum/emote))
 		global.all_emotes[emote_type] = new emote_type

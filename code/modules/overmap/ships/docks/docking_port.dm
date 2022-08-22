@@ -1,3 +1,5 @@
+#define DOCKING_PORT_HIGHLIGHT
+
 /obj/docking_port
 	invisibility = INVISIBILITY_ABSTRACT
 	icon = 'icons/obj/device.dmi'
@@ -171,7 +173,6 @@
 	var/turf/T1 = locate(L[3],L[4],z)
 	for(var/turf/T in block(T0,T1))
 		T.color = _color
-		LAZYINITLIST(T.atom_colours)
 		T.maptext = null
 	if(_color)
 		var/turf/T = locate(L[1], L[2], z)
@@ -204,100 +205,3 @@
 		return FALSE
 	return TRUE
 
-/obj/docking_port/stationary
-	name = "dock"
-
-	var/last_dock_time
-
-	var/datum/map_template/shuttle/roundstart_template
-	///An optional specific id for the roundstart template, if you don't want the procedural made one
-	var/roundstart_shuttle_specific_id = ""
-	var/json_key
-	///The ID of the shuttle reserving this dock.
-	var/reservedId = null
-
-/obj/docking_port/stationary/proc/load_roundstart()
-	if(roundstart_template)
-		var/sid = "[initial(roundstart_template.shuttle_id)]"
-
-		roundstart_template = shuttle_templates[sid]
-		if(!roundstart_template)
-			CRASH("Invalid path ([roundstart_template]) passed to docking port.")
-
-	if(roundstart_template)
-		SSshuttle.action_load(roundstart_template, src)
-
-/obj/docking_port/stationary/register(replace = FALSE)
-	. = ..()
-	if(!id)
-		id = "dock"
-	else
-		port_destinations = id
-
-	if(!name)
-		name = "dock"
-
-	var/counter = SSshuttle.assoc_stationary[id]
-	if(!replace || !counter)
-		if(counter)
-			counter++
-			SSshuttle.assoc_stationary[id] = counter
-			id = "[id]_[counter]"
-			name = "[name] [counter]"
-		else
-			SSshuttle.assoc_stationary[id] = 1
-
-	if(!port_destinations)
-		port_destinations = id
-
-	SSshuttle.stationary += src
-
-/obj/docking_port/mobile
-	name = "shuttle"
-	icon_state = "pinonclose"
-
-	area_type = SHUTTLE_DEFAULT_SHUTTLE_AREA_TYPE
-
-	var/list/shuttle_areas
-
-	var/timer						//used as a timer (if you want time left to complete move, use timeLeft proc)
-	var/last_timer_length
-
-	var/mode = SHUTTLE_IDLE			//current shuttle mode
-	var/callTime = 100				//time spent in transit (deciseconds). Should not be lower then 10 seconds without editing the animation of the hyperspace ripples.
-	var/ignitionTime = 55			// time spent "starting the engines". Also rate limits how often we try to reserve transit space if its ever full of transiting shuttles.
-	var/rechargeTime = 0			//time spent after arrival before being able to launch again
-	var/prearrivalTime = 0			//delay after call time finishes for sound effects, explosions, etc.
-
-	var/landing_sound = 'sound/effects/controllable_shuttle/engine_landing.ogg'
-	var/ignition_sound = 'sound/effects/controllable_shuttle/engine_startup.ogg'
-
-	// The direction the shuttle prefers to travel in
-	var/preferred_direction = NORTH
-	// And the angle from the front of the shuttle to the port
-	var/port_direction = NORTH
-
-	var/obj/docking_port/stationary/destination
-	var/obj/docking_port/stationary/previous
-
-	var/obj/docking_port/stationary/transit/assigned_transit
-
-
-	var/list/movement_force = list("KNOCKDOWN" = 3, "THROW" = 0)
-
-	var/list/ripples = list()
-	var/use_ripples = TRUE
-	var/engine_coeff = 1 //current engine coeff
-	var/current_engines = 0 //current engine power
-	var/initial_engines = 0 //initial engine power
-	var/can_move_docking_ports = FALSE //if this shuttle can move docking ports other than the one it is docked at
-	var/list/hidden_turfs = list()
-
-	var/crashing = FALSE
-
-	var/shuttle_flags = NONE
-	///All shuttle_control computers that share at least one control flag is able to link to this shuttle
-	var/control_flags = NONE
-
-	///Reference of the shuttle docker holding the mobile docking port
-	var/obj/machinery/computer/camera_advanced/shuttle_docker/shuttle_computer

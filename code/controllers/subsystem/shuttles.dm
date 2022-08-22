@@ -66,6 +66,10 @@ SUBSYSTEM_DEF(shuttle)
 	var/datum/announcement/station/shuttle/emer_docked/announce_emer_docked = new
 	var/datum/announcement/station/shuttle/emer_left/announce_emer_left = new
 
+
+	var/list/hidden_shuttle_turfs = list() //all turfs hidden from navigation computers associated with a list containing the image hiding them and the type of the turf they are pretending to be
+	var/list/hidden_shuttle_turf_images = list() //only the images from the above list
+
 	var/list/mobile = list()
 	var/list/stationary = list()
 	var/list/transit = list()
@@ -666,6 +670,56 @@ SUBSYSTEM_DEF(shuttle)
 	var/sid = "[initial(loading_template.shuttle_id)]"
 	var/datum/map_template/shuttle/shuttle = shuttle_templates[sid]
 	shuttle.load(T, centered = TRUE, initBounds = FALSE)
+
+/datum/controller/subsystem/shuttle/proc/moveShuttleToDock(shuttleId, obj/docking_port/stationary/D, timed)
+	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
+	if(!M)
+		return 1
+	if(timed)
+		if(M.request(D))
+			return 2
+	else
+		if(M.initiate_docking(D) != DOCKING_SUCCESS)
+			return 2
+	return 0	//dock successful
+
+/datum/controller/subsystem/shuttle/proc/getShuttle(id)
+	for(var/obj/docking_port/mobile/M in mobile)
+		if(M.id == id)
+			return M
+	WARNING("couldn't find shuttle with id: [id]")
+
+/datum/controller/subsystem/shuttle/proc/update_hidden_docking_ports(list/remove_turfs, list/add_turfs)
+	var/list/remove_images = list()
+	var/list/add_images = list()
+
+	if(remove_turfs)
+		for(var/T in remove_turfs)
+			var/list/L = hidden_shuttle_turfs[T]
+			if(L)
+				remove_images += L[1]
+		hidden_shuttle_turfs -= remove_turfs
+
+	if(add_turfs)
+		for(var/V in add_turfs)
+			var/turf/T = V
+			var/image/I
+			if(remove_images.len)
+				//we can just reuse any images we are about to delete instead of making new ones
+				I = remove_images[1]
+				remove_images.Cut(1, 2)
+				I.loc = T
+			else
+				I = image(loc = T)
+				add_images += I
+			I.appearance = T.appearance
+			I.override = TRUE
+			hidden_shuttle_turfs[T] = list(I, T.type)
+
+	hidden_shuttle_turf_images -= remove_images
+	hidden_shuttle_turf_images += add_images
+
+	QDEL_LIST(remove_images)
 
 
 /obj/effect/bgstar

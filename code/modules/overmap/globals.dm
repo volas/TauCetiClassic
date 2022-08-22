@@ -1,0 +1,1 @@
+var/global/list/blacklisted_automated_baseturfs = list(/turf/environment/space, /turf/baseturf_bottom)
