@@ -102,3 +102,70 @@
 	message_admins("[key_name_admin(usr)] manually reloaded configuration")
 	log_debug("[key_name(usr)] manually reloaded configuration")
 	world.load_configuration()
+
+/client/proc/force_dropship()
+	set category = "Debug"
+	set name = "Force Dropship"
+
+	var/list/available_shuttles = list()
+	for(var/i in SSshuttle.mobile)
+		var/obj/docking_port/mobile/M = i
+		available_shuttles["[M.name] ([M.id])"] = M.id
+
+	var/answer = tgui_input_list(usr, "Which shuttle do you want to move?", "Force Dropship", available_shuttles)
+	var/shuttle_id = available_shuttles[answer]
+	if(!shuttle_id)
+		return
+
+	var/obj/docking_port/mobile/D
+	for(var/i in SSshuttle.mobile)
+		var/obj/docking_port/mobile/M = i
+		if(M.id == shuttle_id)
+			D = M
+
+	if(!D)
+		to_chat(usr, "<span class='warning'>Unable to find shuttle</>")
+		return
+
+	if(D.mode != SHUTTLE_IDLE && tgui_alert(usr, "[D.name] is not idle, move anyway?", "Force Dropship", list("Yes", "No")) != "Yes")
+		return
+
+	var/list/valid_docks = list()
+	var/i = 1
+	for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
+		if(istype(S, /obj/docking_port/stationary/transit))
+			continue // Don't use transit destinations
+		if(!D.check_dock(S, silent=TRUE))
+			continue
+		valid_docks["[S.name] ([i++])"] = S
+
+	if(!length(valid_docks))
+		to_chat(usr, "<span class='warning'>No valid destinations found!</>")
+		return
+
+	var/dock = tgui_input_list(usr, "Choose the destination.", "Force Dropship", valid_docks)
+	if(!dock)
+		return
+
+	var/obj/docking_port/stationary/target = valid_docks[dock]
+	if(!target)
+		to_chat(usr, "<span class='warning'>No valid dock found!</>")
+		return
+
+	var/instant = FALSE
+	if(tgui_alert(usr, "Do you want to move the [D.name] instantly?", "Force Dropship", list("Yes", "No")) == "Yes")
+		instant = TRUE
+
+	var/success = SSshuttle.moveShuttleToDock(D.id, target, !instant)
+	switch(success)
+		if(0)
+			success = "successfully"
+		if(1)
+			success = "failing to find the shuttle"
+		if(2)
+			success = "failing to dock"
+		else
+			success = "failing somehow"
+
+	log_admin("[key_name(usr)] has moved [D.name] ([D.id]) to [target] ([target.id])[instant ? " instantly" : ""] [success].")
+

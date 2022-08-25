@@ -10,6 +10,14 @@
 	///The ID of the shuttle reserving this dock.
 	var/reservedId = null
 
+/obj/docking_port/stationary/atom_init(mapload, ...)
+	. = ..()
+	register()
+	if(!area_type)
+		var/area/place = get_area(src)
+		area_type = place?.type // We might be created in nullspace
+
+
 /obj/docking_port/stationary/proc/load_roundstart()
 	if(roundstart_template)
 		var/sid = "[initial(roundstart_template.shuttle_id)]"

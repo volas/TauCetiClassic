@@ -48,6 +48,10 @@
 	///Reference of the shuttle docker holding the mobile docking port
 	var/obj/machinery/computer/shuttle_control/shuttle_computer
 
+/obj/docking_port/mobile/atom_init(mapload, ...)
+	. = ..()
+	register()
+
 /obj/docking_port/mobile/register()
 	. = ..()
 	SSshuttle.mobile += src

@@ -669,7 +669,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/T = get_turf(destination_port)
 	var/sid = "[initial(loading_template.shuttle_id)]"
 	var/datum/map_template/shuttle/shuttle = shuttle_templates[sid]
-	shuttle.load(T, centered = TRUE, initBounds = FALSE)
+	shuttle.load(T, centered = TRUE, initBounds = TRUE)
 
 /datum/controller/subsystem/shuttle/proc/moveShuttleToDock(shuttleId, obj/docking_port/stationary/D, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)

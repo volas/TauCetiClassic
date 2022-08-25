@@ -34,19 +34,11 @@
 	///are we registered in SSshuttles?
 	var/registered = FALSE
 
-
-
-/obj/docking_port/atom_init(mapload, ...)
-	. = ..()
-	if(!registered)
-		register()
-
 /obj/docking_port/proc/register()
 	if(registered)
 		WARNING("docking_port registered multiple times")
 		unregister()
 	registered = TRUE
-
 
 ///unregister from SSshuttles
 /obj/docking_port/proc/unregister()

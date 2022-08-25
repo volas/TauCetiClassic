@@ -2,6 +2,10 @@
 	name = "Daedalus hangar pad"
 	id = SHUTTLE_EXPLORATION
 	roundstart_template = /datum/map_template/shuttle/daedalus
+	dwidth = 10
+	dheight = 10
+	width = 10
+	height = 10
 
 /datum/map_template/shuttle/daedalus
 	shuttle_id = SHUTTLE_EXPLORATION
@@ -15,8 +19,8 @@
 /obj/docking_port/mobile/daedalus
 	name = "Daedalus"
 	id = SHUTTLE_EXPLORATION
-	dwidth = 0
-	dheight = 0
+	dwidth = 7
+	dheight = 9
 	width = 7
 	height = 9
 	rechargeTime = 0
