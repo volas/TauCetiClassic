@@ -13413,6 +13413,16 @@
 /obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/asteroid/mine/production)
+"VF" = (
+/obj/docking_port/stationary{
+	dwidth = 9;
+	width = 19;
+	dheight = 15;
+	height = 31;
+	dir = 2
+	},
+/turf/environment/space,
+/area/space)
 "VK" = (
 /obj/structure/sign/warning/securearea{
 	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
@@ -29151,7 +29161,7 @@ aa
 aa
 aa
 aa
-aa
+VF
 aa
 aa
 aa

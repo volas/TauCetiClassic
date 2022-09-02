@@ -20,7 +20,7 @@ All ShuttleMove procs go here
 	if(!(. & (MOVE_TURF|MOVE_CONTENTS)))
 		return
 
-//	var/shuttle_dir = shuttle.dir
+	// var/shuttle_dir = shuttle.dir
 	for(var/atom/thing as anything in contents)
 		if(ismob(thing))
 			if(isliving(thing))
@@ -59,7 +59,7 @@ All ShuttleMove procs go here
 /turf/proc/afterShuttleMove(turf/oldT, rotation)
 	//Dealing with the turf we left behind
 	oldT.TransferComponents(src)
-	// SSexplosions.wipe_turf(src) // TODO:DUSHESS FIND ANALOGUE
+	SSshuttle.clean_arriving_turf(oldT, src) // TODO: Test this
 
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
 	if(shuttle_boundary)

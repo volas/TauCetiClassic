@@ -1,6 +1,4 @@
-/area/space_structures/shuttle
+/area/shuttle/controllable
+	requires_power = 1
+	valid_territory = 1
 	name = "Controllable shuttle"
-
-
-/area/space_structures/daedalus
-	name = "NSV 'Daedalus'"

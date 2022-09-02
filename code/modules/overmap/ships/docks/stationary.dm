@@ -16,6 +16,9 @@
 	if(!area_type)
 		var/area/place = get_area(src)
 		area_type = place?.type // We might be created in nullspace
+	#ifdef DOCKING_PORT_HIGHLIGHT
+	highlight("#f00")
+	#endif
 
 
 /obj/docking_port/stationary/proc/load_roundstart()

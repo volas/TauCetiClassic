@@ -2,79 +2,71 @@
 "a" = (
 /turf/environment/space,
 /area/space)
-"c" = (
-/obj/structure/falsewall/reinforced,
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
 "g" = (
-/obj/machinery/light,
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
+/turf/simulated/wall/r_wall,
+/area/shuttle/controllable/daedalus)
+"s" = (
+/obj/machinery/door/airlock/hatch,
+/turf/simulated/floor,
+/area/shuttle/controllable/daedalus)
 "t" = (
-/obj/structure/stool/bed/chair/schair/wagon{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
-"u" = (
-/obj/machinery/light/spot,
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
+/turf/simulated/floor,
+/area/shuttle/controllable/daedalus)
 "A" = (
-/obj/docking_port/mobile/daedalus,
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
+/obj/docking_port/mobile/daedalus{
+	dir = 2
+	},
+/turf/simulated/floor,
+/area/shuttle/controllable/daedalus)
 "B" = (
+/obj/machinery/computer/ship/engines,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/computer/ship/engines,
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
-"D" = (
+/turf/simulated/floor,
+/area/shuttle/controllable/daedalus)
+"G" = (
 /obj/machinery/power/apc/largecell{
 	dir = 4;
-	layer = 4.85
+	pixel_x = 32
 	},
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/shuttle/controllable/daedalus)
 "O" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/computer/ship/sensors,
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
-"S" = (
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
-"T" = (
-/obj/machinery/light/built{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
-"U" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/shuttle/controllable/daedalus)
+"S" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/shuttle/controllable/daedalus)
+"U" = (
 /obj/machinery/computer/ship/helm,
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/shuttle/controllable/daedalus)
 "W" = (
-/obj/machinery/door/airlock/highsecurity,
-/turf/simulated/floor/plating,
-/area/space_structures/daedalus)
-"Z" = (
-/obj/structure/falsewall/reinforced,
-/turf/environment/space,
-/area/space_structures/daedalus)
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/shuttle/controllable/daedalus)
 
 (1,1,1) = {"
 a
@@ -90,56 +82,56 @@ a
 (2,1,1) = {"
 a
 a
-c
-c
-W
-c
-c
 a
+g
+g
+s
+g
+g
 a
 "}
 (3,1,1) = {"
 a
+a
 O
-T
 S
-S
+t
+t
 S
 g
-c
 a
 "}
 (4,1,1) = {"
 a
+a
 U
 t
 A
-S
-S
-S
-S
-Z
+t
+t
+s
+a
 "}
 (5,1,1) = {"
 a
+a
 B
-S
-D
-S
-S
-u
-c
+G
+t
+t
+W
+g
 a
 "}
 (6,1,1) = {"
 a
 a
-c
-c
-W
-c
-c
 a
+g
+g
+s
+g
+g
 a
 "}
 (7,1,1) = {"

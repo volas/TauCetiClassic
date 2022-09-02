@@ -59,7 +59,7 @@
 #define SHUTTLE_EXPLORATION "daedalus"
 
 //Shuttle defaults
-#define SHUTTLE_DEFAULT_SHUTTLE_AREA_TYPE /area/shuttle
+#define SHUTTLE_DEFAULT_SHUTTLE_AREA_TYPE /area/shuttle/controllable
 #define SHUTTLE_DEFAULT_UNDERLYING_AREA /area/space
 
 

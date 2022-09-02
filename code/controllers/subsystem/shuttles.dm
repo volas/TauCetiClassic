@@ -367,19 +367,23 @@ SUBSYSTEM_DEF(shuttle)
 		if(turf_to_check.y < throw_y)
 			throw_y = turf_to_check.y
 		var/turf/target_turf = locate(turf_to_check.x, throw_y - 1, turf_to_check.z)
-		for(var/i in turf_to_check.contents)
-			var/atom/movable/thing = i
-			if(isliving(thing))
-				var/mob/living/mob_to_gib = thing
-				mob_to_gib.gib()
+		clean_arriving_turf(turf_to_check, target_turf)
+
+/datum/controller/subsystem/shuttle/proc/clean_arriving_turf(turf/turf_to_check, turf/target_turf)
+	for(var/i in turf_to_check.contents)
+		var/atom/movable/thing = i
+		if(isliving(thing))
+			var/mob/living/mob_to_gib = thing
+			mob_to_gib.gib()
+		else
+			if(istype(thing, /obj/singularity))
+				continue
+			if(!thing.anchored)
+				thing.Move(target_turf)
 			else
-				if(istype(thing, /obj/singularity))
-					continue
-				if(!thing.anchored)
-					thing.Move(target_turf)
-				else
-					qdel(thing)
-			CHECK_TICK
+				qdel(thing)
+		CHECK_TICK
+
 
 /datum/controller/subsystem/shuttle/proc/shake_mobs_in_area(area/A, fall_direction)
 	for(var/mob/M in A)
@@ -669,7 +673,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/T = get_turf(destination_port)
 	var/sid = "[initial(loading_template.shuttle_id)]"
 	var/datum/map_template/shuttle/shuttle = shuttle_templates[sid]
-	shuttle.load(T, centered = TRUE, initBounds = TRUE)
+	shuttle.load(T, centered = TRUE, register = TRUE)
 
 /datum/controller/subsystem/shuttle/proc/moveShuttleToDock(shuttleId, obj/docking_port/stationary/D, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)

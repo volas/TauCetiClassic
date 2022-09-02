@@ -4,7 +4,7 @@
 	invisibility = INVISIBILITY_ABSTRACT
 	icon = 'icons/obj/device.dmi'
 	icon_state = "pinonfar"
-
+	
 	anchored = TRUE
 
 	/**
@@ -17,7 +17,7 @@
 	///Possible destinations
 	var/port_destinations
 	///this should point -away- from the dockingport door, ie towards the ship
-	dir = NORTH
+	dir = SOUTH
 	///size of covered area, perpendicular to dir
 	var/width = 0
 	///size of covered area, parallel to dir

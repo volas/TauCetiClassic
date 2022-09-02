@@ -90,6 +90,7 @@
 
 	log_game("[name] loaded at [COORD(T)]")
 	loaded_stuff.Cut()
+	return bounds
 
 /datum/map_template/proc/loadMap(z)
 	return maploader.load_map(get_file(), 1, 1, z, cropMap=TRUE)
