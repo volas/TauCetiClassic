@@ -47,7 +47,8 @@
 
 	///Reference of the shuttle docker holding the mobile docking port
 	var/obj/machinery/computer/shuttle_control/shuttle_computer
-/obj/docking_port/stationary/atom_init(mapload, ...)
+
+/obj/docking_port/mobile/atom_init(mapload, ...)
 	. = ..()
 	register()
 
