@@ -25,5 +25,9 @@
 	height = 9
 	rechargeTime = 0
 
+
+/obj/docking_port/stationary/test_flight
+	name = "Test flight stationary dock"
+
 /area/shuttle/controllable/daedalus
 	name = "NSV 'Daedalus'"

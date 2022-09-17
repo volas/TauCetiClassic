@@ -76534,6 +76534,10 @@
 	icon_state = "cafeteria"
 	},
 /area/station/civilian/kitchen)
+"luT" = (
+/obj/docking_port/stationary/test_flight,
+/turf/environment/space,
+/area/space)
 "lvb" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
@@ -95542,7 +95546,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+luT
 aaa
 aaa
 aaa
