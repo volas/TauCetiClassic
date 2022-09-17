@@ -28,6 +28,10 @@
 
 /obj/docking_port/stationary/test_flight
 	name = "Test flight stationary dock"
+	dwidth = 4
+	dheight = 34
+	width = 8
+	height = 10
 
 /area/shuttle/controllable/daedalus
 	name = "NSV 'Daedalus'"
