@@ -1095,6 +1095,7 @@
 	flesh_color = "#c0c0c0"
 
 	brute_mod = 2
+	brain_mod = 0
 	oxy_mod = 0
 	tox_mod = 0
 	clone_mod = 0
