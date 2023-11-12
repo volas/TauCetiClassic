@@ -35,6 +35,9 @@ SUBSYSTEM_DEF(mapping)
 	system_name = config.system_name
 	system_name = config.system_name_ru
 
+	if(config.world_event)
+		SSworld_event.setup_event(config.world_event)
+
 	loadWorld()
 	renameAreas()
 

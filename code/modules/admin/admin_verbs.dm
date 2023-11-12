@@ -1133,7 +1133,7 @@ var/global/list/admin_verbs_hideable = list(
 // Map loader
 //////////////////////////////
 
-/client/proc/event_map_loader()
+/client/proc/event_map_loader() // rename
 	set category = "Event"
 	set name = "Event map loader"
 	if(!check_rights(R_EVENT))
