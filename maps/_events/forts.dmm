@@ -38,7 +38,7 @@
 /turf/simulated/floor/plating/airless,
 /area/space)
 "k" = (
-/obj/effect/landmark,
+/obj/effect/landmark/red_team,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -121,6 +121,10 @@
 	dir = 1;
 	icon_state = "siding_wood_line"
 	},
+/turf/simulated/floor/plating/airless,
+/area/space)
+"z" = (
+/obj/effect/landmark/blue_team,
 /turf/simulated/floor/plating/airless,
 /area/space)
 
@@ -4621,7 +4625,7 @@ d
 d
 d
 j
-j
+z
 j
 d
 d
@@ -5135,7 +5139,7 @@ a
 a
 d
 j
-j
+z
 j
 d
 a
@@ -5649,7 +5653,7 @@ a
 a
 d
 j
-j
+z
 j
 d
 a

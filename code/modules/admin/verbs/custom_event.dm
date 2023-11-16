@@ -20,7 +20,7 @@
 	SSevents.setup_custom_event(input, "Event") // todo: name
 
 	if(tgui_alert(usr, "Do you want to make an announcement to chat conference?", "Chat announcement", list("Yes", "No, I don't want these people at my party")) == "Yes")
-		SSworld_event.custom_event_announce_bridge()
+		SSevents.custom_event_announce_bridge()
 
 // normal verb for players to view info
 /client/verb/cmd_view_custom_event()
@@ -32,4 +32,4 @@
 		to_chat(src, "Keep in mind: it is possible that an admin has not properly set this.")
 		return
 
-	SSworld_event.announcement(src)
+	SSevents.custom_event_announce(src)

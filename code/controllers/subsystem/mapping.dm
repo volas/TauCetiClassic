@@ -13,6 +13,8 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/map_config/config
 	var/datum/map_config/next_map_config
 
+	var/datum/map_module/loaded_map_module
+
 	var/list/spawned_structures = list()
 	var/list/reserved_space = list()
 
@@ -35,8 +37,8 @@ SUBSYSTEM_DEF(mapping)
 	system_name = config.system_name
 	system_name = config.system_name_ru
 
-	if(config.world_event)
-		SSworld_event.setup_event(config.world_event)
+	if(config.map_module)
+		load_map_module(config.map_module)
 
 	loadWorld()
 	renameAreas()
@@ -53,6 +55,16 @@ SUBSYSTEM_DEF(mapping)
 	spawn_space_structures()
 
 	..()
+
+/datum/controller/subsystem/mapping/proc/load_map_module(module_name)
+	for(var/datum/map_module/MM as anything in subtypesof(/datum/map_module))
+		world.log << "[initial(MM).name] [module_name]"
+		if(initial(MM).name == module_name)
+			loaded_map_module = new MM
+			break
+
+	if(!loaded_map_module)
+		CRASH("Can't setup global event \"[module_name]\"!")
 
 /datum/controller/subsystem/mapping/proc/make_mining_asteroid_secrets()
 	for(var/i in 1 to MAX_MINING_SECRET_ROOM)

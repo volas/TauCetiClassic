@@ -326,8 +326,8 @@ var/global/list/blacklisted_builds = list(
 
 	SSevents.custom_event_announce()
 
-	if(length(global.additional_player_verbs))
-		C.verbs |= global.additional_player_verbs
+	if(length(global.temp_player_verbs))
+		verbs |= global.temp_player_verbs
 
 	if( (world.address == address || !address) && !host )
 		host = key
