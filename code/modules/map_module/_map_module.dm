@@ -9,6 +9,9 @@
 	// list of additional verbs for admins
 	var/list/admin_verbs
 
+	// gamemode to force
+	var/gamemode = "Extended"
+
 	// disables random events, most likely you need it
 	var/config_disable_random_events = FALSE
 	// enables alternative spawn menu for lobby through spawners

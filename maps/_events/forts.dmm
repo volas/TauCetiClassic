@@ -1,138 +1,145 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/environment/space,
-/area/space)
+/area/space/holospace)
 "b" = (
 /turf/unsimulated/wall,
-/area/space)
+/area/space/holospace)
 "c" = (
 /turf/unsimulated/jungle/temple_wall,
-/area/space)
+/area/space/holospace)
 "d" = (
 /obj/structure/lattice,
 /turf/environment/space,
-/area/space)
+/area/space/holospace)
 "e" = (
 /turf/simulated/wall,
-/area/space)
+/area/space/holospace)
 "f" = (
 /turf/simulated/floor/plating/airless/asteroid,
-/area/space)
+/area/space/holospace)
 "g" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/environment/space,
-/area/space)
+/obj/effect/landmark/red_team,
+/obj/machinery/light/smart{
+	dir = 4
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/space/holospace)
 "h" = (
 /turf/simulated/floor/plating/airless{
 	icon_state = "asteroidplating"
 	},
-/area/space)
+/area/space/holospace)
 "i" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/environment/space,
-/area/space)
+/obj/machinery/light/smart{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/space/holospace)
 "j" = (
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/space/holospace)
 "k" = (
 /obj/effect/landmark/red_team,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
-/area/space)
+/area/space/holospace)
 "l" = (
 /obj/structure/lattice,
 /turf/simulated/wall,
-/area/space)
+/area/space/holospace)
 "m" = (
 /obj/effect/decal/turf_decal/dark_red{
 	icon_state = "siding_wood_line"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/space/holospace)
 "n" = (
 /obj/effect/decal/turf_decal/dark_red{
 	dir = 8;
 	icon_state = "siding_wood_corner"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/space/holospace)
 "o" = (
 /obj/structure/windowsill,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/space/holospace)
 "p" = (
 /obj/effect/decal/turf_decal/dark_red{
 	dir = 10;
 	icon_state = "siding_wood_line"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/space/holospace)
 "q" = (
 /obj/structure/window/fulltile/reinforced{
+	color = #ff0000;
 	grilled = 1;
 	icon_state = "gr_window_reinforced"
 	},
-/turf/simulated/wall,
-/area/space)
+/turf/simulated/floor/plating/airless,
+/area/space/holospace)
 "r" = (
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
-/area/space)
+/area/space/holospace)
 "s" = (
 /turf/simulated/floor/wood,
-/area/space)
+/area/space/holospace)
 "t" = (
+/obj/machinery/light/smart{
+	dir = 1
+	},
+/turf/simulated/floor/plating/airless,
+/area/space/holospace)
+"u" = (
 /obj/effect/decal/turf_decal/alpha/orange{
 	icon_state = "delivery"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
-"u" = (
-/obj/machinery/computer/card/centcom{
+/area/space/holospace)
+"v" = (
+/obj/machinery/light/smart{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
-/area/space)
-"v" = (
-/obj/machinery/mining/drill,
-/turf/simulated/floor/plating/airless,
-/area/space)
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/space/holospace)
 "w" = (
-/obj/effect/decal/turf_decal/dark_red{
-	dir = 9;
-	icon_state = "siding_wood_line"
-	},
-/turf/simulated/floor/plating/airless,
-/area/space)
-"x" = (
-/obj/effect/decal/turf_decal/dark_red{
-	dir = 1;
-	icon_state = "siding_wood_corner"
-	},
-/turf/simulated/floor/plating/airless,
-/area/space)
-"y" = (
-/obj/effect/decal/turf_decal/dark_red{
-	dir = 1;
-	icon_state = "siding_wood_line"
-	},
-/turf/simulated/floor/plating/airless,
-/area/space)
-"z" = (
-/obj/effect/landmark/blue_team,
-/turf/simulated/floor/plating/airless,
-/area/space)
-"A" = (
 /obj/effect/landmark{
 	name = "Observer-Start"
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/space/holospace)
+"x" = (
+/obj/machinery/computer/fort_command_computer{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/space/holospace)
+"y" = (
+/obj/effect/decal/turf_decal/alpha/orange{
+	icon_state = "box_white"
+	},
+/turf/simulated/floor/plating/airless,
+/area/space/holospace)
+"z" = (
+/obj/effect/landmark/blue_team,
+/turf/simulated/floor/plating/airless,
+/area/space/holospace)
+"A" = (
+/obj/effect/decal/turf_decal/dark_red{
+	dir = 1;
+	icon_state = "siding_wood_line"
+	},
+/turf/simulated/floor/plating/airless,
+/area/space/holospace)
 
 (1,1,1) = {"
 a
@@ -519,7 +526,7 @@ a
 b
 b
 k
-r
+v
 k
 b
 b
@@ -1542,7 +1549,7 @@ a
 a
 b
 b
-k
+A
 r
 k
 r
@@ -1552,7 +1559,7 @@ k
 r
 k
 r
-k
+A
 b
 b
 a
@@ -2566,7 +2573,7 @@ a
 a
 b
 b
-k
+A
 r
 k
 r
@@ -2584,7 +2591,7 @@ k
 r
 k
 r
-k
+A
 b
 b
 a
@@ -3594,25 +3601,25 @@ k
 r
 k
 r
-k
+g
 r
 k
 r
 k
 r
-k
+g
 r
 k
 r
 k
 r
-k
+g
 r
 k
 r
 k
 r
-k
+g
 r
 k
 r
@@ -5918,12 +5925,12 @@ d
 j
 j
 j
-g
 d
 d
 d
 d
-g
+d
+d
 d
 d
 d
@@ -6694,7 +6701,7 @@ q
 q
 q
 e
-y
+A
 j
 d
 d
@@ -6951,7 +6958,7 @@ s
 s
 s
 e
-y
+A
 j
 d
 a
@@ -7208,7 +7215,7 @@ s
 s
 s
 e
-y
+A
 j
 d
 a
@@ -7433,7 +7440,7 @@ b
 d
 d
 d
-g
+d
 d
 d
 d
@@ -7454,18 +7461,18 @@ j
 m
 e
 e
+i
 s
+s
+s
+w
 s
 s
 s
 A
-s
-s
-s
-s
 e
 e
-y
+A
 j
 d
 d
@@ -7715,14 +7722,14 @@ e
 s
 s
 s
-u
-s
-s
-s
-e
-e
-w
 x
+s
+s
+s
+e
+e
+A
+A
 j
 d
 a
@@ -7977,8 +7984,8 @@ q
 e
 s
 e
-w
-x
+A
+A
 j
 j
 d
@@ -8220,7 +8227,7 @@ a
 a
 a
 d
-g
+d
 l
 j
 j
@@ -8485,9 +8492,9 @@ j
 j
 j
 j
-t
-t
-t
+u
+u
+u
 j
 j
 j
@@ -8742,9 +8749,9 @@ j
 j
 j
 j
-t
-t
-t
+u
+y
+u
 j
 j
 j
@@ -8997,13 +9004,13 @@ e
 j
 j
 e
-j
-j
-t
-t
 t
 j
+u
+u
+u
 j
+A
 e
 j
 j
@@ -9257,7 +9264,7 @@ e
 e
 j
 j
-v
+A
 j
 j
 e
@@ -10030,7 +10037,7 @@ d
 d
 d
 d
-g
+d
 d
 d
 j
@@ -10522,9 +10529,9 @@ a
 a
 a
 a
-i
-g
-g
+d
+d
+d
 a
 a
 a
@@ -10779,9 +10786,9 @@ a
 a
 a
 d
-i
-i
-g
+d
+d
+d
 d
 a
 a
@@ -11036,9 +11043,9 @@ d
 d
 d
 d
-g
-g
-i
+d
+d
+d
 d
 d
 d
@@ -11055,9 +11062,9 @@ j
 j
 d
 d
-g
-g
-g
+d
+d
+d
 d
 d
 j
@@ -11073,11 +11080,11 @@ d
 d
 d
 d
-g
-g
-g
-g
-g
+d
+d
+d
+d
+d
 d
 d
 d
@@ -11356,7 +11363,7 @@ a
 a
 a
 d
-g
+d
 b
 b
 a
@@ -16196,7 +16203,7 @@ a
 a
 a
 d
-g
+d
 d
 a
 a
@@ -16453,7 +16460,7 @@ a
 a
 a
 d
-g
+d
 d
 a
 a
@@ -17437,7 +17444,6 @@ d
 d
 d
 d
-g
 d
 d
 d
@@ -17477,15 +17483,11 @@ d
 d
 d
 d
-g
-g
 d
 d
 d
 d
 d
-g
-g
 d
 d
 d
@@ -17513,7 +17515,6 @@ d
 d
 d
 d
-g
 d
 d
 d
@@ -17523,9 +17524,15 @@ d
 d
 d
 d
-g
 d
-g
+d
+d
+d
+d
+d
+d
+d
+d
 d
 d
 d
@@ -25148,7 +25155,7 @@ d
 d
 d
 d
-g
+d
 d
 d
 d

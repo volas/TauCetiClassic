@@ -3,12 +3,17 @@
 /datum/outfit/forts_team
 	name = "Forts Team"
 	uniform = /obj/item/clothing/under/ert
-	glasses = /obj/item/clothing/glasses/night
+	//glasses = 
 	shoes = /obj/item/clothing/shoes/boots/combat
-	belt = /obj/item/weapon/storage/belt/security/cops
+	belt = /obj/item/weapon/storage/belt/security
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/space/rig/ert/security
 	head = /obj/item/clothing/head/helmet/space/rig/ert/security
+
+	l_pocket = /obj/item/weapon/rcd/bluespace
+	r_pocket = /obj/item/weapon/rcd/pp/bluespace
+
+	//suit_store
 
 	//backpack_contents = list()
 

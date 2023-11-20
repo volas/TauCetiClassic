@@ -137,6 +137,7 @@ var/global/list/admin_verbs_spawn = list(
 var/global/list/admin_verbs_server = list(
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
+	/datum/admins/proc/end_round,
 	/datum/admins/proc/delay,
 	/datum/admins/proc/delay_end,
 	/datum/admins/proc/toggleaban,
@@ -277,6 +278,7 @@ var/global/list/admin_verbs_hideable = list(
 	/client/proc/cmd_admin_add_random_ai_law,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
+	/datum/admins/proc/end_round,
 	/datum/admins/proc/delay,
 	/datum/admins/proc/delay_end,
 	/datum/admins/proc/toggleaban,

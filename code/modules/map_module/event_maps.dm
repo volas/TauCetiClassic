@@ -1,3 +1,5 @@
+// Original idea author: BartNixon, 2019
+
 #define TEAM_NAME_RED "Red Team"
 #define TEAM_NAME_BLUE "Blue Team"
 
@@ -43,9 +45,13 @@
 	var/datum/role/custom/teammate = new
 	teammate.name = "Team Member"
 	// updates here
-	teammate.logo_state = "ert-logo"
-	teammate.antag_hud_type = ANTAG_HUD_ERT
-	teammate.antag_hud_name = "hudoperative"
+	if(team_name == TEAM_NAME_RED)
+		teammate.logo_state = "red"
+	else
+		teammate.logo_state = "blue"
+
+	teammate.antag_hud_type = ANTAG_HUD_TEAMS
+	teammate.antag_hud_name = "hud_team_captain"
 	//skillset_type
 
 	teammate.AssignToFaction(faction)
