@@ -134,9 +134,32 @@
 /turf/simulated/floor/plating/airless,
 /area/space/holospace)
 "A" = (
-/obj/effect/decal/turf_decal/dark_red{
-	dir = 1;
-	icon_state = "siding_wood_line"
+/obj/machinery/light/smart,
+/obj/effect/landmark/red_team,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/space/holospace)
+"E" = (
+/obj/machinery/light/smart,
+/turf/simulated/floor/wood,
+/area/space/holospace)
+"I" = (
+/obj/machinery/light/smart,
+/turf/simulated/floor/plating/airless,
+/area/space/holospace)
+"R" = (
+/obj/machinery/light/smart{
+	dir = 1
+	},
+/obj/effect/landmark/red_team,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/space/holospace)
+"S" = (
+/obj/machinery/light/smart{
+	dir = 4
 	},
 /turf/simulated/floor/plating/airless,
 /area/space/holospace)
@@ -1549,7 +1572,7 @@ a
 a
 b
 b
-A
+R
 r
 k
 r
@@ -2573,7 +2596,7 @@ a
 a
 b
 b
-A
+R
 r
 k
 r
@@ -6701,7 +6724,7 @@ q
 q
 q
 e
-A
+j
 j
 d
 d
@@ -6958,7 +6981,7 @@ s
 s
 s
 e
-A
+j
 j
 d
 a
@@ -7215,7 +7238,7 @@ s
 s
 s
 e
-A
+j
 j
 d
 a
@@ -7469,10 +7492,10 @@ w
 s
 s
 s
-A
+E
 e
 e
-A
+j
 j
 d
 d
@@ -7728,8 +7751,8 @@ s
 s
 e
 e
-A
-A
+j
+j
 j
 d
 a
@@ -7984,8 +8007,8 @@ q
 e
 s
 e
-A
-A
+j
+j
 j
 j
 d
@@ -9010,7 +9033,7 @@ u
 u
 u
 j
-A
+I
 e
 j
 j
@@ -9264,7 +9287,7 @@ e
 e
 j
 j
-A
+S
 j
 j
 e

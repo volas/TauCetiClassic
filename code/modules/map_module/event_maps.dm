@@ -35,11 +35,13 @@
 	. = ..()
 	RegisterSignal(SSticker, COMSIG_TICKER_ENTER_PREGAME, PROC_REF(init_faction))
 
+// some low level factions code here
 /datum/spawner/fort_team/proc/init_faction()
 	faction = new 
 	faction.name = team_name
 	faction.ID = team_name
 	faction.forgeObjectives("Защитите свой командный пункт и уничтожьте командный пункт противника!")
+	SSticker.mode.factions += faction
 
 /datum/spawner/fort_team/proc/assign_to_team(mob/M)
 	var/datum/role/custom/teammate = new
