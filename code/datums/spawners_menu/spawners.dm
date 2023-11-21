@@ -97,8 +97,6 @@
 	var/registration_timer_id
 	var/availability_timer_id
 
-#define SPAWNER_AUTOROLL_ROUND_START
-
 /datum/spawner/New()
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()

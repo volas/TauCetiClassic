@@ -31,17 +31,20 @@
 	var/team_name
 	var/team_outfit
 
+// some low level factions code here, need to wrap it better somehow...
 /datum/spawner/fort_team/New(datum/map_module/MM)
 	. = ..()
 	RegisterSignal(SSticker, COMSIG_TICKER_ENTER_PREGAME, PROC_REF(init_faction))
 
-// some low level factions code here
 /datum/spawner/fort_team/proc/init_faction()
 	faction = new 
 	faction.name = team_name
 	faction.ID = team_name
 	faction.forgeObjectives("Защитите свой командный пункт и уничтожьте командный пункт противника!")
-	SSticker.mode.factions += faction
+
+/datum/spawner/fort_team/roll_registrations()
+	SSticker.mode.factions += faction // todo
+	. = ..()
 
 /datum/spawner/fort_team/proc/assign_to_team(mob/M)
 	var/datum/role/custom/teammate = new
@@ -57,7 +60,7 @@
 	//skillset_type
 
 	teammate.AssignToFaction(faction)
-	teammate.AssignToRole(M.mind, msg_admins = FALSE)
+	teammate.AssignToRole(M.mind, msg_admins = FALSE) // todo: why it announce faction twice
 
 /datum/spawner/fort_team/spawn_body(mob/dead/spectator)
 	var/spawnloc = pick_spawn_location()

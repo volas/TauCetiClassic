@@ -12,6 +12,8 @@
 	// gamemode to force
 	var/gamemode = "Extended"
 
+	// todo: default stats
+
 	// disables random events, most likely you need it
 	var/config_disable_random_events = FALSE
 	// enables alternative spawn menu for lobby through spawners

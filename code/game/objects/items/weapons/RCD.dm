@@ -89,8 +89,9 @@ RCD
 		return FALSE
 	if(istype(target, /area/shuttle))
 		return FALSE
-//	if(!(istype(target, /turf) || istype(target, /obj/machinery/door/airlock)))
-//		return FALSE
+	if(!(mode in available_modes))
+		to_chat(user, "<span class='warning'>Somehow you broke it. Please contact developers.</span>")
+		return
 
 	switch(mode)
 		if(RCD_MODE_FLOOR_WALLS)

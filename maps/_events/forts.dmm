@@ -6,7 +6,8 @@
 /turf/unsimulated/wall,
 /area/space/holospace)
 "c" = (
-/turf/unsimulated/jungle/temple_wall,
+/obj/effect/effect/antiliving_shield,
+/turf/environment/space,
 /area/space/holospace)
 "d" = (
 /obj/structure/lattice,
@@ -16,7 +17,12 @@
 /turf/simulated/wall,
 /area/space/holospace)
 "f" = (
-/turf/simulated/floor/plating/airless/asteroid,
+/obj/effect/decal/turf_decal/alpha/yellow{
+	icon_state = "box_white"
+	},
+/turf/simulated/floor/plating{
+	icon_state = "asteroidplating"
+	},
 /area/space/holospace)
 "g" = (
 /obj/effect/landmark/red_team,
@@ -28,7 +34,7 @@
 	},
 /area/space/holospace)
 "h" = (
-/turf/simulated/floor/plating/airless{
+/turf/simulated/floor/plating{
 	icon_state = "asteroidplating"
 	},
 /area/space/holospace)
@@ -39,7 +45,7 @@
 /turf/simulated/floor/wood,
 /area/space/holospace)
 "j" = (
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "k" = (
 /obj/effect/landmark/red_team,
@@ -55,25 +61,25 @@
 /obj/effect/decal/turf_decal/dark_red{
 	icon_state = "siding_wood_line"
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "n" = (
 /obj/effect/decal/turf_decal/dark_red{
 	dir = 8;
 	icon_state = "siding_wood_corner"
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "o" = (
 /obj/structure/windowsill,
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "p" = (
 /obj/effect/decal/turf_decal/dark_red{
 	dir = 10;
 	icon_state = "siding_wood_line"
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "q" = (
 /obj/structure/window/fulltile/reinforced{
@@ -81,7 +87,7 @@
 	grilled = 1;
 	icon_state = "gr_window_reinforced"
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "r" = (
 /turf/unsimulated/floor{
@@ -95,13 +101,13 @@
 /obj/machinery/light/smart{
 	dir = 1
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "u" = (
 /obj/effect/decal/turf_decal/alpha/orange{
 	icon_state = "delivery"
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "v" = (
 /obj/machinery/light/smart{
@@ -127,11 +133,11 @@
 /obj/effect/decal/turf_decal/alpha/orange{
 	icon_state = "box_white"
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "z" = (
 /obj/effect/landmark/blue_team,
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "A" = (
 /obj/machinery/light/smart,
@@ -146,7 +152,7 @@
 /area/space/holospace)
 "I" = (
 /obj/machinery/light/smart,
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 "R" = (
 /obj/machinery/light/smart{
@@ -161,7 +167,8 @@
 /obj/machinery/light/smart{
 	dir = 4
 	},
-/turf/simulated/floor/plating/airless,
+/obj/machinery/mining/drill,
+/turf/simulated/floor/plating,
 /area/space/holospace)
 
 (1,1,1) = {"
@@ -18237,11 +18244,11 @@ a
 a
 a
 a
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
 a
 a
 a
@@ -18323,11 +18330,11 @@ a
 a
 a
 a
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
 a
 a
 a
@@ -18493,13 +18500,13 @@ a
 a
 a
 a
-f
-f
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
+h
+h
 a
 a
 a
@@ -18579,13 +18586,13 @@ a
 a
 a
 a
-f
-f
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
+h
+h
 a
 a
 a
@@ -18750,13 +18757,13 @@ a
 a
 a
 a
-f
-f
 h
 h
 h
-f
-f
+h
+h
+h
+h
 a
 a
 a
@@ -18836,13 +18843,13 @@ a
 a
 a
 a
-f
-f
 h
 h
 h
-f
-f
+h
+h
+h
+h
 a
 a
 a
@@ -19007,13 +19014,13 @@ a
 a
 a
 a
-f
-f
+h
+h
 h
 f
 h
-f
-f
+h
+h
 a
 a
 a
@@ -19093,13 +19100,13 @@ a
 a
 a
 a
-f
-f
+h
+h
 h
 f
 h
-f
-f
+h
+h
 a
 a
 a
@@ -19264,13 +19271,13 @@ a
 a
 a
 a
-f
-f
 h
 h
 h
-f
-f
+h
+h
+h
+h
 a
 a
 a
@@ -19350,13 +19357,13 @@ a
 a
 a
 a
-f
-f
 h
 h
 h
-f
-f
+h
+h
+h
+h
 a
 a
 a
@@ -19521,13 +19528,13 @@ a
 a
 a
 e
-f
-f
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
+h
+h
 e
 a
 a
@@ -19607,13 +19614,13 @@ a
 a
 a
 e
-f
-f
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
+h
+h
 e
 a
 a
@@ -19779,11 +19786,11 @@ a
 a
 e
 e
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
 e
 e
 a
@@ -19865,11 +19872,11 @@ a
 a
 e
 e
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
 e
 e
 a
@@ -24448,11 +24455,11 @@ a
 a
 d
 d
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
 d
 d
 a
@@ -24704,13 +24711,13 @@ a
 a
 a
 d
-f
-f
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
+h
+h
 d
 a
 a
@@ -24961,13 +24968,13 @@ a
 a
 a
 d
-f
-f
 h
 h
 h
-f
-f
+h
+h
+h
+h
 d
 a
 a
@@ -25218,13 +25225,13 @@ d
 d
 d
 d
-f
-f
+h
+h
 h
 f
 h
-f
-f
+h
+h
 d
 d
 d
@@ -25475,13 +25482,13 @@ a
 a
 a
 a
-f
-f
 h
 h
 h
-f
-f
+h
+h
+h
+h
 a
 a
 a
@@ -25732,13 +25739,13 @@ a
 a
 a
 e
-f
-f
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
+h
+h
 e
 a
 a
@@ -25990,11 +25997,11 @@ a
 a
 e
 e
-f
-f
-f
-f
-f
+h
+h
+h
+h
+h
 e
 e
 a
@@ -26763,7 +26770,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -27020,7 +27027,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -27277,7 +27284,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -27534,7 +27541,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -27791,7 +27798,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -28048,7 +28055,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -28305,7 +28312,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -28562,7 +28569,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -28819,7 +28826,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -29076,7 +29083,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -29333,7 +29340,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -29590,7 +29597,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -29847,7 +29854,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -30104,7 +30111,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -30361,7 +30368,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -30618,7 +30625,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -30875,7 +30882,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -31132,7 +31139,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -31389,7 +31396,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -31646,7 +31653,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -34216,7 +34223,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -34473,7 +34480,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -34730,7 +34737,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -34987,7 +34994,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -35244,7 +35251,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -35501,7 +35508,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -35758,7 +35765,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -36015,7 +36022,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -36272,7 +36279,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -36529,7 +36536,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -36786,7 +36793,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -37043,7 +37050,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -37300,7 +37307,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -37557,7 +37564,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -37814,7 +37821,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -38071,7 +38078,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -38328,7 +38335,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -38585,7 +38592,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -38842,7 +38849,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -39099,7 +39106,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -39356,7 +39363,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -39613,7 +39620,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -39870,7 +39877,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -40127,7 +40134,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -40384,7 +40391,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -40641,7 +40648,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -40898,7 +40905,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -41155,7 +41162,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -41412,7 +41419,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -41669,7 +41676,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -41926,7 +41933,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -42183,7 +42190,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -42440,7 +42447,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -42697,7 +42704,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -42954,7 +42961,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -43211,7 +43218,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -43468,7 +43475,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -43725,7 +43732,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -43982,7 +43989,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -44239,7 +44246,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -44496,7 +44503,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -44753,7 +44760,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -45010,7 +45017,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -45267,7 +45274,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -45524,7 +45531,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -45781,7 +45788,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -46038,7 +46045,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -46295,7 +46302,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -46552,7 +46559,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -46809,7 +46816,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -47066,7 +47073,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -47323,7 +47330,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -47580,7 +47587,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -47837,7 +47844,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -48094,7 +48101,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -48351,7 +48358,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -48608,7 +48615,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -48865,7 +48872,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -49122,7 +49129,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -49379,7 +49386,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -49636,7 +49643,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -49893,7 +49900,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -50150,7 +50157,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -50407,7 +50414,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -50664,7 +50671,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -50921,7 +50928,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -51178,7 +51185,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -51435,7 +51442,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -51692,7 +51699,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -51949,7 +51956,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -52206,7 +52213,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -52463,7 +52470,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -52720,7 +52727,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -52977,7 +52984,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -53234,7 +53241,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -53491,7 +53498,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -53748,7 +53755,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -54005,7 +54012,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -54262,7 +54269,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -54519,7 +54526,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -54776,7 +54783,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -55033,7 +55040,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -55290,7 +55297,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -55547,7 +55554,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -55804,7 +55811,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -56061,7 +56068,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -56318,7 +56325,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -56575,7 +56582,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -56832,7 +56839,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -57089,7 +57096,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -57346,7 +57353,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -57603,7 +57610,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -57860,7 +57867,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -58117,7 +58124,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -58374,7 +58381,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -58631,7 +58638,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -58888,7 +58895,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -59145,7 +59152,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -59402,7 +59409,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -59659,7 +59666,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -59916,7 +59923,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -60173,7 +60180,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -60430,7 +60437,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -60687,7 +60694,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -60944,7 +60951,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -61201,7 +61208,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -61458,7 +61465,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -61715,7 +61722,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -61972,7 +61979,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -62229,7 +62236,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -62486,7 +62493,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -62743,7 +62750,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -63000,7 +63007,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -63257,7 +63264,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -63514,7 +63521,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -63771,7 +63778,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -64028,7 +64035,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -64285,7 +64292,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -64542,7 +64549,7 @@ a
 a
 a
 a
-c
+a
 a
 a
 a
@@ -64799,7 +64806,7 @@ b
 a
 a
 a
-c
+a
 a
 a
 a
@@ -65056,7 +65063,7 @@ b
 b
 a
 a
-c
+a
 a
 a
 b
@@ -65313,7 +65320,7 @@ a
 b
 b
 a
-c
+a
 a
 b
 b

@@ -29,10 +29,10 @@
 	for(var/lot in subtypesof(/datum/fort_command_computer_lot))
 		shoplist += new lot
 
+	sortTim(shoplist, GLOBAL_PROC_REF(cmp_general_order_asc))
+
 /obj/machinery/computer/fort_command_computer/process(seconds_per_tick)
-	// last time = ...
 	points += seconds_per_tick * points_per_second
-	//updateDialog()
 
 /obj/machinery/computer/fort_command_computer/Destroy() // fail team
 	. = ..()
@@ -41,7 +41,9 @@
 	spawn_zone.Cut()
 
 /obj/machinery/computer/fort_command_computer/ui_interact(mob/user)
-	var/html = "<div class='Section__title'>Purshase list</div><div class='Section'>Current budget: <b>[points] points</b></div><div class='Section'>"
+	var/html = "<div class='Section__title'>Purshase list</div>"
+
+	html += "<div class='Section'>Current budget: <b>[points] points</b></div><div class='Section'>"
 	for(var/datum/fort_command_computer_lot/lot in shoplist)
 		html += "<a href='?src=[REF(src)];purshase=[REF(lot)]' title='[lot.desc]'>[lot.name] ([lot.price] points)</a><br>"
 	html += "</div>"
@@ -49,7 +51,6 @@
 	var/datum/browser/popup = new(user, "fort_command_computer", "Command Computer")
 	popup.set_content(html)
 	popup.open()
-
 
 /obj/machinery/computer/fort_command_computer/Topic(href, href_list)
 	. = ..()
@@ -65,8 +66,10 @@
 			return
 
 		points -= lot.price
-		var/atom/A = lot.purshase(src)
-		new /obj/effect/falling_effect(pick(spawn_zone), null, A)
+		updateDialog()
+		var/atom/A = lot.purshase(usr)
+		if(istype(A))
+			new /obj/effect/falling_effect(pick(spawn_zone), null, A)
 
 /obj/machinery/computer/fort_command_computer/red
 	name = "Red Team Command Computer"
@@ -83,9 +86,23 @@
 	var/unlocked = TRUE
 	var/order = 100
 
-// should return atom for spawn
-/datum/fort_command_computer_lot/proc/purshase()
+// atom for spawn or null
+/datum/fort_command_computer_lot/proc/purshase(mob/user)
 	return null
+
+/datum/fort_command_computer_lot/team_announce
+	name = "Team Announce"
+	desc = "Make big scary announcement for team only"
+	price = 50
+
+	order = 1
+
+/datum/fort_command_computer_lot/global_announce
+	name = "Global Announce"
+	desc = "Dominate other team with words"
+	price = 50
+
+	order = 2
 
 /datum/fort_command_computer_lot/metal
 	name = "Metal 5x50"
@@ -107,7 +124,7 @@
 	desc = "5x50 glass lists"
 	price = 50
 
-	order = 10
+	order = 11
 
 /datum/fort_command_computer_lot/glass/purshase()
 	var/obj/structure/closet/crate/C = new /obj/structure/closet/crate/engi
@@ -122,7 +139,7 @@
 	desc = "10 cartridges of compressed RCD ammunition"
 	price = 200
 
-	order = 10
+	order = 20
 
 /datum/fort_command_computer_lot/rcd_ammo/purshase()
 	var/obj/structure/closet/crate/C = new /obj/structure/closet/crate/scicrate
@@ -130,3 +147,20 @@
 		new /obj/item/weapon/rcd_ammo/bluespace(C)
 
 	return C
+
+/datum/fort_command_computer_lot/update_map
+	name = "Update Holomap"
+	desc = "Scan battlefield and update holomap"
+	price = 200
+
+	order = 100
+
+/datum/fort_command_computer_lot/update_map/purshase()
+	SSholomaps.default_holomap = image(SSholomaps.generate_holo_map()) // todo: own holomap for each team
+
+/datum/fort_command_computer_lot/rename_team
+	name = "Rename Team"
+	desc = "Name your Red or Blue to something more original"
+	price = 200
+
+	order = 800
