@@ -8,6 +8,11 @@ var/global/list/preferences_datums = list()
 #define MAX_GEAR_COST_SUPPORTER MAX_GEAR_COST+3
 /datum/preferences
 	var/client/parent
+
+	// list of new PLAYER datumized preferences
+	var/list/datum/pref/player/player_settings = list()
+	var/player_settings_dirty = FALSE // list of dirty DOMAINS!!
+
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
@@ -62,7 +67,7 @@ var/global/list/preferences_datums = list()
 	var/tgui_lock = FALSE
 
 	//sound volume preferences
-	var/snd_music_vol = 100
+/*	var/snd_music_vol = 100
 	var/snd_ambient_vol = 100
 	var/snd_effects_master_vol = 100
 	var/snd_effects_voice_announcement_vol = 100
@@ -70,7 +75,7 @@ var/global/list/preferences_datums = list()
 	var/snd_effects_instrument_vol = 100
 	var/snd_notifications_vol = 100
 	var/snd_admin_vol = 100
-	var/snd_jukebox_vol = 100
+	var/snd_jukebox_vol = 100*/
 
 	//antag preferences
 	var/list/be_role = list()
@@ -185,6 +190,11 @@ var/global/list/preferences_datums = list()
 	parent = C
 	UI_style = global.available_ui_styles[1]
 	custom_emote_panel = global.emotes_for_emote_panel
+
+	for(var/datum/pref/player/P as anything in subtypesof(/datum/pref/player))
+		if(initial(P.category) && initial(P.name))
+			player_settings[initial(P.type)] = new P
+
 	if(istype(C))
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
@@ -195,6 +205,33 @@ var/global/list/preferences_datums = list()
 	real_name = random_name(gender)
 	key_bindings = deepCopyList(global.hotkey_keybinding_list_by_key) // give them default keybinds too
 	C?.set_macros()
+
+/datum/preferences/proc/read_preference(type)
+	return player_settings[type].get_value()
+
+// by type or by ref?
+/datum/preferences/proc/write_preference(type, new_value)
+	var/datum/pref/player/write_pref = player_settings[type]
+	if(!write_pref)
+		CRASH("Can't write [type] preference for [parent]!")
+	world.log << "writting [write_pref.name] / [type]"
+
+	write_pref.set_value(new_value, parent)
+
+	mark_dirty()
+
+/datum/preferences/proc/get_category_preferences(category)
+	. = list()
+	for(var/type in player_settings)
+		if(player_settings[type] == category)
+			. += player_settings[type]
+
+	return .
+
+// makr as needed to update
+/datum/preferences/proc/mark_dirty()
+	player_settings_dirty = TRUE
+	//SSpreferences.mark_dirty(src)
 
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)	return

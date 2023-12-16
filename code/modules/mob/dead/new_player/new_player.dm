@@ -129,6 +129,10 @@
 
 			return
 
+	if(href_list["lobby_settings"])
+		client.client_settings()
+		return
+
 	if(href_list["lobby_join"])
 		if(config.alt_lobby_menu)
 			return

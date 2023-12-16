@@ -75,6 +75,21 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(current_version < 44)
 		custom_emote_panel = global.emotes_for_emote_panel
 
+	// moving prefs to new system
+	//if(current_version < 50)
+	if(TRUE)
+		// audio
+		// сами переменные можно убрать и заменить во всем билде
+		write_preference(/datum/pref/player/audio/lobby, S["snd_music_vol"])
+		write_preference(/datum/pref/player/audio/ambient, S["snd_ambient_vol"])
+		write_preference(/datum/pref/player/audio/effect_master, S["snd_effects_master_vol"])
+		write_preference(/datum/pref/player/audio/effect_announcement, S["snd_effects_voice_announcement_vol"])
+		write_preference(/datum/pref/player/audio/effect_misc, S["snd_effects_misc_vol"])
+		write_preference(/datum/pref/player/audio/effect_instrument, S["snd_effects_instrument_vol"])
+		write_preference(/datum/pref/player/audio/notifications, S["snd_notifications_vol"])
+		write_preference(/datum/pref/player/audio/jukebox, S["snd_jukebox_vol"])
+		write_preference(/datum/pref/player/audio/admin_sound, S["snd_admin_vol"])
+
 /datum/preferences/proc/update_character(current_version, savefile/S)
 	if(current_version < 17)
 		for(var/organ_name in organ_data)
@@ -352,48 +367,53 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["ignore_cid_warning"]	>> ignore_cid_warning
 
 	//General preferences
-	S["ooccolor"]          >> ooccolor
-	S["aooccolor"]         >> aooccolor
+	S["ooccolor"]          >> ooccolor // + (не используется)
+	S["aooccolor"]         >> aooccolor // +
 	S["lastchangelog"]     >> lastchangelog
-	S["UI_style"]          >> UI_style
-	S["UI_style_color"]    >> UI_style_color
-	S["UI_style_alpha"]    >> UI_style_alpha
-	S["clientfps"]         >> clientfps
-	S["default_slot"]      >> default_slot
-	S["chat_toggles"]      >> chat_toggles
-	S["toggles"]           >> toggles
-	S["chat_ghostsight"]   >> chat_ghostsight
-	S["randomslot"]        >> randomslot
-	S["permamuted"]        >> permamuted
-	S["permamuted"]        >> muted
-	S["parallax"]          >> parallax
-	S["ambientocclusion"]  >> ambientocclusion
-	S["glowlevel"]         >> glowlevel
-	S["lampsexposure"]     >> lampsexposure
-	S["lampsglare"]        >> lampsglare
-	S["eye_blur_effect"]   >> eye_blur_effect
-	S["auto_fit_viewport"] >> auto_fit_viewport
-	S["lobbyanimation"]    >> lobbyanimation
-	S["tooltip"]           >> tooltip
+	S["UI_style"]          >> UI_style // +
+	S["UI_style_color"]    >> UI_style_color // +
+	S["UI_style_alpha"]    >> UI_style_alpha // +
+	S["clientfps"]         >> clientfps // +
+	S["default_slot"]      >> default_slot // !meta!character (default user character!)
+	S["chat_toggles"]      >> chat_toggles // +? возможно перенести в тгюичат?
+	S["toggles"]           >> toggles // + see preferences_toggles.dm (progressbar, animation, больше вроде нету?)
+	S["chat_ghostsight"]   >> chat_ghostsight // +
+	S["randomslot"]        >> randomslot // !meta!character (sets random character!)
+	S["permamuted"]        >> permamuted // wtf
+	S["permamuted"]        >> muted // wtf
+	S["parallax"]          >> parallax //+
+	S["ambientocclusion"]  >> ambientocclusion //+
+
+	S["glowlevel"]         >> glowlevel //+
+	S["lampsexposure"]     >> lampsexposure //+
+	S["lampsglare"]        >> lampsglare //+
+	S["eye_blur_effect"]   >> eye_blur_effect //+
+
+	S["auto_fit_viewport"] >> auto_fit_viewport //+
+
+	S["lobbyanimation"]    >> lobbyanimation //+
+
+	S["tooltip"]           >> tooltip // +
 	S["tooltip_size"]      >> tooltip_size
 	S["tooltip_font"]      >> tooltip_font
-	S["outline_enabled"]   >> outline_enabled
-	S["outline_color"]     >> outline_color
+
+	S["outline_enabled"]   >> outline_enabled //+
+	S["outline_color"]     >> outline_color //+
 	S["eorg_enabled"]      >> eorg_enabled
-	S["show_runechat"]     >> show_runechat
+	S["show_runechat"]     >> show_runechat //+
 	S["emote_panel"]       >> custom_emote_panel
 
 	// Custom hotkeys
-	S["key_bindings"] >> key_bindings
+	S["key_bindings"] >> key_bindings // +, but maybe later
 	check_keybindings()
-	S["hotkeys"]      >> hotkeys
+	S["hotkeys"]      >> hotkeys // same
 
-	//TGUI
+	//TGUI // ???
 	S["tgui_fancy"]		>> tgui_fancy
 	S["tgui_lock"]		>> tgui_lock
 
-	//Sound preferences
-	S["snd_music_vol"]                      >> snd_music_vol
+	//Sound preferences // +
+/*	S["snd_music_vol"]                      >> snd_music_vol
 	S["snd_ambient_vol"]                    >> snd_ambient_vol
 	S["snd_effects_master_vol"]             >> snd_effects_master_vol
 	S["snd_effects_voice_announcement_vol"]	>> snd_effects_voice_announcement_vol
@@ -401,7 +421,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["snd_effects_instrument_vol"]         >> snd_effects_instrument_vol
 	S["snd_notifications_vol"]              >> snd_notifications_vol
 	S["snd_admin_vol"]                      >> snd_admin_vol
-	S["snd_jukebox_vol"]                    >> snd_jukebox_vol
+	S["snd_jukebox_vol"]                    >> snd_jukebox_vol*/
 
 	//*** FOR FUTURE UPDATES, SO YOU KNOW WHAT TO DO ***//
 	//try to fix any outdated data if necessary
@@ -444,7 +464,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	ignore_cid_warning	= sanitize_integer(ignore_cid_warning, 0, 1, initial(ignore_cid_warning))
 	custom_emote_panel  = sanitize_emote_panel(custom_emote_panel)
 
-	snd_music_vol	= sanitize_integer(snd_music_vol, 0, 100, initial(snd_music_vol))
+/*	snd_music_vol	= sanitize_integer(snd_music_vol, 0, 100, initial(snd_music_vol))
 	snd_ambient_vol = sanitize_integer(snd_ambient_vol, 0, 100, initial(snd_ambient_vol))
 	snd_effects_master_vol	= sanitize_integer(snd_effects_master_vol, 0, 100, initial(snd_effects_master_vol))
 	snd_effects_voice_announcement_vol	= sanitize_integer(snd_effects_voice_announcement_vol, 0, 100, initial(snd_effects_voice_announcement_vol))
@@ -452,7 +472,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	snd_effects_instrument_vol	= sanitize_integer(snd_effects_instrument_vol, 0, 100, initial(snd_effects_instrument_vol))
 	snd_notifications_vol	= sanitize_integer(snd_notifications_vol, 0, 100, initial(snd_notifications_vol))
 	snd_admin_vol	= sanitize_integer(snd_admin_vol, 0, 100, initial(snd_admin_vol))
-	snd_jukebox_vol = sanitize_integer(snd_jukebox_vol, 0, 100, initial(snd_jukebox_vol))
+	snd_jukebox_vol = sanitize_integer(snd_jukebox_vol, 0, 100, initial(snd_jukebox_vol))*/
 
 	if(needs_update >= 0) //save the updated version
 		var/old_default_slot = default_slot
@@ -525,7 +545,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["tgui_lock"]		<< tgui_lock
 
 	//Sound preferences
-	S["snd_music_vol"]                      << snd_music_vol
+/*	S["snd_music_vol"]                      << snd_music_vol
 	S["snd_ambient_vol"]                    << snd_ambient_vol
 	S["snd_effects_master_vol"]             << snd_effects_master_vol
 	S["snd_effects_voice_announcement_vol"] << snd_effects_voice_announcement_vol
@@ -533,7 +553,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["snd_effects_instrument_vol"]         << snd_effects_instrument_vol
 	S["snd_notifications_vol"]              << snd_notifications_vol
 	S["snd_admin_vol"]                      << snd_admin_vol
-	S["snd_jukebox_vol"]                    << snd_jukebox_vol
+	S["snd_jukebox_vol"]                    << snd_jukebox_vol*/
 	return 1
 
 /datum/preferences/proc/load_saved_character(dir)

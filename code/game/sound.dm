@@ -223,41 +223,41 @@ voluminosity = if FALSE, removes the difference between left and right ear.
 		CRASH("type mismatch for volume_channel or volume channel is not set.")
 
 	if(volume_channel & VOL_MUSIC)
-		. = prefs.snd_music_vol
+		. = prefs.read_preference(/datum/pref/player/audio/lobby)
 	else if(volume_channel & VOL_AMBIENT)
-		. = prefs.snd_ambient_vol
+		. = prefs.read_preference(/datum/pref/player/audio/ambient)
 	else if(volume_channel & VOL_EFFECTS_MASTER)
-		. = prefs.snd_effects_master_vol
+		. = prefs.read_preference(/datum/pref/player/audio/effect_master)
 		switch(volume_channel) // now for sub categories
 			if(VOL_EFFECTS_VOICE_ANNOUNCEMENT)
-				. *= prefs.snd_effects_voice_announcement_vol * 0.01
+				. *= read_preference(/datum/pref/player/audio/effect_announcement) * 0.01
 			if(VOL_EFFECTS_MISC)
-				. *= prefs.snd_effects_misc_vol * 0.01
+				. *= read_preference(/datum/pref/player/audio/effect_misc) * 0.01
 			if(VOL_EFFECTS_INSTRUMENT)
-				. *= prefs.snd_effects_instrument_vol * 0.01
+				. *= read_preference(/datum/pref/player/audio/effect_instrument) * 0.01
 	else if(volume_channel & VOL_NOTIFICATIONS)
-		. = prefs.snd_notifications_vol
+		. = read_preference(/datum/pref/player/audio/notifications)
 	else if(volume_channel & VOL_ADMIN)
-		. = prefs.snd_admin_vol
+		. = read_preference(/datum/pref/player/audio/admin_sound)
 	else if(volume_channel & VOL_JUKEBOX)
-		. = prefs.snd_jukebox_vol
+		. = read_preference(/datum/pref/player/audio/jukebox)
 	else
 		CRASH("unknown volume_channel: [volume_channel]")
 
 	if(. > 0)
 		. = max(0.002, VOL_LINEAR_TO_NON(.)) // max(master slider won't kill sub slider's volume if both are less than max value).
 
-/client/proc/set_sound_volume(volume_channel, vol)
+/*/client/proc/set_sound_volume(volume_channel, vol)
 	vol = clamp(vol, 0, 100)
 
 	switch(volume_channel)
 		if(VOL_MUSIC)
 			prefs.snd_music_vol = vol
-			mob.playsound_music_update_volume(volume_channel, CHANNEL_MUSIC)
+//			mob.playsound_music_update_volume(volume_channel, CHANNEL_MUSIC)
 		if(VOL_AMBIENT)
 			prefs.snd_ambient_vol = vol
-			mob.playsound_music_update_volume(volume_channel, CHANNEL_AMBIENT)
-			mob.playsound_music_update_volume(volume_channel, CHANNEL_AMBIENT_LOOP)
+//			mob.playsound_music_update_volume(volume_channel, CHANNEL_AMBIENT)
+//			mob.playsound_music_update_volume(volume_channel, CHANNEL_AMBIENT_LOOP)
 		if(VOL_EFFECTS_MASTER)
 			prefs.snd_effects_master_vol = vol
 		if(VOL_EFFECTS_VOICE_ANNOUNCEMENT)
@@ -270,7 +270,7 @@ voluminosity = if FALSE, removes the difference between left and right ear.
 			prefs.snd_notifications_vol = vol
 		if(VOL_ADMIN)
 			prefs.snd_admin_vol = vol
-			mob.playsound_music_update_volume(volume_channel, CHANNEL_ADMIN)
+//			mob.playsound_music_update_volume(volume_channel, CHANNEL_ADMIN)
 		if(VOL_JUKEBOX)
 			var/old_vol = prefs.snd_jukebox_vol
 
@@ -283,8 +283,8 @@ voluminosity = if FALSE, removes the difference between left and right ear.
 					media.stop_music()
 				else if(vol && !old_vol)
 					media.update_music()
-
-/client/proc/update_volume(href_list)
+*/
+/*/client/proc/update_volume(href_list)
 	var/slider
 	var/vol_raw
 
@@ -307,8 +307,8 @@ voluminosity = if FALSE, removes the difference between left and right ear.
 	if(!isnum(vol_raw) || !isnum(slider))
 		return
 
-	set_sound_volume(slider, vol_raw)
-
+	set_sound_volume(slider, vol_raw)*/
+/*
 /client/verb/show_volume_controls()
 	set name = ".showvolumecontrols"
 	set hidden = TRUE
@@ -467,3 +467,4 @@ voluminosity = if FALSE, removes the difference between left and right ear.
 	var/datum/browser/popup = new(usr, "volcontrols", "Audio Settings:", 620, 500, null, CSS_THEME_LIGHT)
 	popup.set_content(dat)
 	popup.open()
+*/

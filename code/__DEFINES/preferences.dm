@@ -1,3 +1,13 @@
+#define PREF_TYPE_TEXT   "text"
+#define PREF_TYPE_RANGE  "range"
+#define PREF_TYPE_CHOICE "choice"
+#define PREF_TYPE_HEX    "hex"
+
+#define PREF_DOMAIN_PLAYER     "player"
+#define PREF_DOMAIN_KEYBINDS   "keybinds"
+#define PREF_DOMAIN_CHARACTER  "character" // todo
+
+
 //Preference toggles (it had more bits, but updating player saves without wiping method is a bit more complex).
 #define SHOW_ANIMATIONS	16
 #define SHOW_PROGBAR	32
