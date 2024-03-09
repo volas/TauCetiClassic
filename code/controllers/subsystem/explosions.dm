@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(explosions)
 	init_order = SS_INIT_EXPLOSIONS
 	priority = SS_PRIORITY_EXPLOSIONS
 	wait = SS_WAIT_EXPLOSION
-	flags = SS_TICKER | SS_NO_INIT | SS_SHOW_IN_MC_TAB
+	flags = SS_TICKER | SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/cost_lowturf = 0

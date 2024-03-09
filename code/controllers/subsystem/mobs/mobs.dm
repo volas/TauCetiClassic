@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(mobs)
 
 	priority      = SS_PRIORITY_MOBS
 
-	flags = SS_KEEP_TIMING | SS_NO_INIT | SS_SHOW_IN_MC_TAB
+	flags = SS_KEEP_TIMING | SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/currentrun = list()
