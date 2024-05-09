@@ -178,7 +178,7 @@
 			ambientocclusion = !ambientocclusion
 			if(parent && parent.screen && parent.screen.len)
 				var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in parent.screen
-				PM.backdrop(parent.mob)
+				PM.apply_effects(parent.mob)
 
 		if("lobbyanimation")
 			lobbyanimation = !lobbyanimation // shouldn't prefs changes be saved somewhere here?

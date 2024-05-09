@@ -73,12 +73,19 @@
 	var/severity = 0
 	var/atom/movable/screen/fullscreen/screen_part
 
+/atom/movable/screen/fullscreen/set_map_view(map_view)
+	assigned_map = map_view
+	screen_loc = "[map_view]:[initial(screen_loc)]"
+
 /atom/movable/screen/fullscreen/Destroy()
 	QDEL_NULL(screen_part)
 	severity = 0
 	return ..()
 
 /atom/movable/screen/fullscreen/proc/update_for_view(client_view)
+	if(assigned_map) // used in external map view, no need to resize
+		return
+
 	if (screen_loc == "CENTER-7,CENTER-7" && view != client_view)
 		var/list/actualview = getviewsize(client_view)
 		view = client_view

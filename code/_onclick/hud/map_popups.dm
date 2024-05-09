@@ -1,27 +1,7 @@
-/**
- * A screen object, which acts as a container for turfs and other things
- * you want to show on the map, which you usually attach to "vis_contents".
- */
-/atom/movable/screen/map_view
-	// Map view has to be on the lowest plane to enable proper lighting
-	icon = null
-	icon_state = null
-	layer = GAME_PLANE
-	plane = GAME_PLANE
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-
-/**
- * A generic background object.
- * It is also implicitly used to allocate a rectangle on the map, which will
- * be used for auto-scaling the map.
- */
-/atom/movable/screen/background
-	name = "background"
-	icon = 'icons/hud/map_backgrounds.dmi'
-	icon_state = "clear"
-	layer = GAME_PLANE
-	plane = GAME_PLANE
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+register_map_obj - не нужен, просто добавлять сразу на скрин
+background - добавлять на screen/map как андерлей?
+clear_map - просто циклом обходить и смотреть assigned_map
+set_position и fill_rect - перенести в movable/screen?
 
 /**
  * Sets screen_loc of this screen object, in form of point coordinates,
@@ -50,17 +30,15 @@
  * Registers screen obj with the client, which makes it visible on the
  * assigned map, and becomes a part of the assigned map's lifecycle.
  */
-/client/proc/register_map_obj(atom/movable/screen/screen_obj)
+/*/client/proc/register_map_obj(atom/movable/screen/screen_obj)
 	if(!screen_obj.assigned_map)
 		CRASH("Can't register [screen_obj] without 'assigned_map' property.")
 	if(!screen_maps[screen_obj.assigned_map])
 		screen_maps[screen_obj.assigned_map] = list()
 	// NOTE: Possibly an expensive operation
 	var/list/screen_map = screen_maps[screen_obj.assigned_map]
-	if(!screen_map.Find(screen_obj))
-		screen_map += screen_obj
-	if(!screen.Find(screen_obj))
-		screen += screen_obj
+	screen_map |= screen_obj
+	screen |= screen_obj*/
 
 /**
  * Clears the map of registered screen objects.
@@ -69,21 +47,22 @@
  * on relog. any of the buttons are going to get caught by garbage collection
  * anyway. they're effectively qdel'd.
  */
-/client/proc/clear_map(map_name)
+/*/client/proc/clear_map(map_name)
 	if(!map_name || !(map_name in screen_maps))
 		return FALSE
 	for(var/atom/movable/screen/screen_obj in screen_maps[map_name])
 		screen_maps[map_name] -= screen_obj
+		screen -= screen_obj
 		if(screen_obj.del_on_map_removal)
 			qdel(screen_obj)
-	screen_maps -= map_name
+	screen_maps -= map_name*/
 
 /**
  * Clears all the maps of registered screen objects.
  */
-/client/proc/clear_all_maps()
+/*/client/proc/clear_all_maps()
 	for(var/map_name in screen_maps)
-		clear_map(map_name)
+		clear_map(map_name)*/
 
 /**
  * Creates a popup window with a basic map element in it, without any
@@ -117,7 +96,7 @@
  *
  * Width and height are multiplied by 64 by default.
  */
-/client/proc/setup_map_popup(popup_name, width = 9, height = 9, \
+/client/verb/setup_map_popup(popup_name as text, width = 9, height = 9, \
 		tilesize = 2, bg_icon)
 	if(!popup_name)
 		return
