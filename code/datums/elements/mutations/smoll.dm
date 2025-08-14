@@ -1,8 +1,5 @@
 // ELEMENT_TRAIT_SMOLL
 
-#define RESIZE_VALUE 0.4
-#define SHIFT_Y_VALUE 8
-
 /datum/element/mutation/smoll
 	traits = list(
 		TRAIT_VENTCRAWLER,
@@ -15,10 +12,10 @@
 
 	L.pass_flags |= (PASSTABLE | PASSMOB)
 
-	L.resize = RESIZE_VALUE
+	L.resize = VENTCRAWLER_RESIZE_VALUE
 	L.update_transform()
 
-	L.pixel_y -= SHIFT_Y_VALUE
+	L.pixel_y -= VENTCRAWLER_SHIFT_Y_VALUE
 
 	L.verbs += /mob/living/simple_animal/mouse/verb/hide
 
@@ -31,12 +28,9 @@
 
 	L.density = initial(L.density)
 
-	L.resize = 1 / RESIZE_VALUE
+	L.resize = 1 / VENTCRAWLER_RESIZE_VALUE
 	L.update_transform()
 
-	L.pixel_y += SHIFT_Y_VALUE
+	L.pixel_y += VENTCRAWLER_SHIFT_Y_VALUE
 
 	L.verbs -= /mob/living/simple_animal/mouse/verb/hide
-
-#undef RESIZE_VALUE
-#undef SHIFT_Y_VALUE

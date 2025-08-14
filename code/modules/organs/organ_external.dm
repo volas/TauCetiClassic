@@ -98,7 +98,7 @@
 	var/is_husk
 	var/is_burnt
 
-// todo: currently it's impossible to spawn organs out of body 
+// todo: currently it's impossible to spawn organs out of body
 // as insert_organ() call with owner is required for proper init
 /*
 /obj/item/organ/external/atom_init(mapload)
@@ -380,6 +380,10 @@
 // no point to call it when organ is inside (attached to) the body
 /obj/item/organ/external/proc/apply_appearance()
 	overlays = generate_appearances()
+	if(owner && HAS_TRAIT(owner, ELEMENT_TRAIT_SMOLL))
+		resize = VENTCRAWLER_RESIZE_VALUE
+		update_transform()
+		item_state = "nothing" // we dont want to show a big inhand icon
 
 /obj/item/organ/external/proc/harvest(obj/item/I, mob/user)
 	if(!locate(/obj/structure/table) in loc)
@@ -665,11 +669,10 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(!should_delete)
 		forceMove(owner.loc)
-		owner = null
-		apply_appearance()
-
 		var/matrix/M = matrix()
 		transform = M.Turn(rand(180))
+		apply_appearance()
+		owner = null
 
 		if(!clean)
 			// Throw limb around.
@@ -1114,8 +1117,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 	// todo: should move it to own organ, make /eyes external
 	if(species.eyes_static_layer)
 		var/mutable_appearance/eyes_static_layer = mutable_appearance(
-			species.eyes_icon, 
-			species.eyes_static_layer, 
+			species.eyes_icon,
+			species.eyes_static_layer,
 			-EYES_LAYER
 		)
 
@@ -1126,8 +1129,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(species.eyes_colorable_layer)
 		var/mutable_appearance/eyes_colorable_layer = mutable_appearance(
-			species.eyes_icon, 
-			species.eyes_colorable_layer, 
+			species.eyes_icon,
+			species.eyes_colorable_layer,
 			-EYES_LAYER
 		)
 

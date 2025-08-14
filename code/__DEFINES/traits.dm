@@ -144,8 +144,8 @@
 #define TRAIT_EPILEPSY            "epilepsy"
 /// mob is fat and should use fat icons if possible
 #define TRAIT_FAT                 "fatness"
-/// can't become fat, should prevent previous trait 
-/// note: you can screw things up if you give TRAIT_FAT 
+/// can't become fat, should prevent previous trait
+/// note: you can screw things up if you give TRAIT_FAT
 /// without checking TRAIT_NEWER_FAT first
 #define TRAIT_NEVER_FAT           "never_fat"
 #define TRAIT_HIGH_PAIN_THRESHOLD "high_pain_threshold"
@@ -233,12 +233,13 @@
 #define TRAIT_HUSK                "husk"
 /// no hair, scorched body
 #define TRAIT_BURNT               "burnt"
+/// even smaller than SMALLSIZE mutation
 #define TRAIT_VENTCRAWLER         "ventcrawler"
-
-
+#define VENTCRAWLER_RESIZE_VALUE 0.4
+#define VENTCRAWLER_SHIFT_Y_VALUE 8
 
 /*
- * Elements traits - these will attach trait and corresponding /datum/element 
+ * Elements traits - these will attach trait and corresponding /datum/element
  * to the object, and detach element when no trait sources left
  * useful for elements with multiple sources
  * (similar to AddElementTrait() on tg, easier to manage but no support for arguments)
